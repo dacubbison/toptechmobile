@@ -4,11 +4,10 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Select, { SingleValue } from 'react-select';
-import { differenceInDays } from 'date-fns'; // Add this import if not already
+import { differenceInDays } from 'date-fns';
 
 export default function Hero() {
   const [daysLeft, setDaysLeft] = useState(0);
-
   useEffect(() => {
     const promoEndDate = new Date('2025-08-20');
     const updateCountdown = () => {
@@ -16,9 +15,8 @@ export default function Hero() {
       const diff = differenceInDays(promoEndDate, now);
       setDaysLeft(diff > 0 ? diff : 0);
     };
-
     updateCountdown();
-    const interval = setInterval(updateCountdown, 60000); // Update every minute
+    const interval = setInterval(updateCountdown, 60000);
     return () => clearInterval(interval);
   }, []);
 
@@ -48,7 +46,6 @@ export default function Hero() {
     setErrorMessage('');
     alert("I'll review your shop quote and call you back soon!");
     toggleQuoteModal();
-    // GA event
     if (typeof window !== 'undefined' && window.gtag) {
       window.gtag('event', 'submit_quote', { 'event_category': 'engagement' });
     }
@@ -59,7 +56,7 @@ export default function Hero() {
 
   return (
     <div className="hero-section relative">
-      {/* ASE Logos: Gold on left (Master Technician), Blue on right (We Support ASE) */}
+      {/* ASE Logos */}
       <Image
         src="/images/ASE-Logo-GOLD.png"
         alt="ASE Certified Master Technician"
@@ -74,20 +71,25 @@ export default function Hero() {
         height={120}
         className="absolute right-4 top-4 md:right-10 md:top-10 w-20 md:w-32 opacity-90"
       />
-
-      {/* Existing hero content */}
+      {/* Hero text */}
       <div className="hero-text">
         <h1>Top Tech Mobile Mechanic: ASE-Certified</h1>
         <p>I'm your trusted on-site auto service in The Woodlands, Montgomery County, and Kingwood areas.</p>
         <p>Fair pricing—share your shop quote, and I'll often beat it by up to 50%!</p>
         <p>Call or Text me for a Free Quote: 936-529-4748</p>
-        <p className="text-green-500 font-bold">New Customer Special: 10% off your first service! (Ends in {daysLeft} days - Valid through 8/20/2025)</p>
+        {/* Removed expired special; added new ongoing one */}
+        <p className="text-green-500 font-bold">Ongoing Special: 10% off your first service! Contact us to claim.</p>
       </div>
       <div className="hero-buttons">
         <button onClick={toggleCallModal} className="call-now-btn" aria-label="Open contact modal for mobile mechanic in The Woodlands">Call Now</button>
-        <button onClick={toggleQuoteModal} className="book-now-btn" aria-label="Send shop quote for auto service in Montgomery County">Beat Quote Now</button> {/* A/B test text */}
+        <a 
+          href="mailto:david@toptechmobile.com?subject=Shop%20Quote%20for%20Price%20Beat&body=Hi%20David,%0A%0APlease%20find%20attached%20my%20shop%20quote%20(PDF%20or%20screenshot).%20I'd%20like%20to%20see%20if%20you%20can%20beat%20it!%0A%0AVehicle%20Details:%20[Year/Make/Model]%0AAddress/ZIP:%20[Your%20Address]%0AContact:%20[Phone/Email]%0A%0AThanks!" 
+          className="book-now-btn" 
+          aria-label="Email shop quote for auto service in Montgomery County"
+        >
+          Beat Quote Now
+        </a>
       </div>
-
       {isCallModalOpen && (
         <div className="modal-overlay" aria-modal="true" role="dialog">
           <div className="book-modal-content">
@@ -100,7 +102,6 @@ export default function Hero() {
           </div>
         </div>
       )}
-
       {isQuoteModalOpen && (
         <div className="modal-overlay" aria-modal="true" role="dialog">
           <div className="book-modal-content">
@@ -116,27 +117,19 @@ export default function Hero() {
                 required
                 aria-label="Enter full address for auto service in The Woodlands"
               />
-
               <label htmlFor="zip">ZIP Code</label>
               <input id="zip" type="text" value={zip} onChange={(e) => setZip(e.target.value)} required aria-label="Enter ZIP code for on-site repair in Montgomery County" placeholder="e.g., 77381" />
-
               <label htmlFor="year">Vehicle Year</label>
               <Select options={years} value={year} onChange={(newValue) => setYear(newValue)} placeholder="Select Year" isSearchable />
-
               <label htmlFor="make">Vehicle Make</label>
               <Select options={makes} value={make} onChange={(newValue) => setMake(newValue)} placeholder="Select Make" isSearchable />
-
               <label htmlFor="model">Vehicle Model</label>
               <input id="model" type="text" value={model} onChange={(e) => setModel(e.target.value)} required aria-label="Enter vehicle model for diagnostics" />
-
               <label htmlFor="vin">VIN (Optional)</label>
               <input id="vin" type="text" value={vin} onChange={(e) => setVin(e.target.value)} aria-label="Enter VIN for quote" />
-
               <label htmlFor="licensePlate">License Plate (Optional)</label>
               <input id="licensePlate" type="text" value={licensePlate} onChange={(e) => setLicensePlate(e.target.value)} aria-label="Enter license plate for additional vehicle info" />
-
               {errorMessage && <p className="error-message">{errorMessage} <a href="tel:9365294748">Call Now</a></p>}
-
               <button type="submit" className="modal-btn submit-btn" aria-label="Submit shop quote">Submit Shop Quote</button>
               <button type="button" onClick={toggleQuoteModal} className="modal-btn close-btn">Close</button>
             </form>
@@ -145,8 +138,4 @@ export default function Hero() {
       )}
     </div>
   );
-}
-// Example in Hero.tsx handleQuoteSubmit
-if (typeof window !== 'undefined' && window.gtag) {
-  window.gtag('event', 'submit_quote', { 'category': 'engagement', 'label': 'Shop Quote Form' });
 }

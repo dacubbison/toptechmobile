@@ -1,13 +1,10 @@
 /* globals.css */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { font-family: 'Roboto', sans-serif; background: #f8f9fa; color: #333; }
-
 /* Animations for engagement */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(20px); }
@@ -16,7 +13,6 @@ body { font-family: 'Roboto', sans-serif; background: #f8f9fa; color: #333; }
 .hero-section, .card {
   animation: fadeIn 1s ease-out;
 }
-
 /* Hero Section (optimized with background image and better mobile fit) */
 .hero-section {
   position: relative;
@@ -51,7 +47,6 @@ body { font-family: 'Roboto', sans-serif; background: #f8f9fa; color: #333; }
   position: relative; 
   z-index: 1; 
 }
-
 /* Services Section - More text-heavy */
 .services-section {
   padding: 40px 20px;
@@ -63,7 +58,6 @@ body { font-family: 'Roboto', sans-serif; background: #f8f9fa; color: #333; }
 .service-group h3 { text-align: center; font-size: 1.8rem; margin-bottom: 20px; color: #001F3F; }
 .service-list { list-style: disc; padding-left: 20px; }
 .service-list li { margin-bottom: 10px; font-size: 1.1rem; }
-
 /* About Section - Personal touch */
 .about-section {
   padding: 40px 20px;
@@ -76,15 +70,12 @@ body { font-family: 'Roboto', sans-serif; background: #f8f9fa; color: #333; }
 .about-section h2 { text-align: center; font-size: 2rem; margin-bottom: 20px; }
 .about-section p { margin-bottom: 15px; font-size: 1.1rem; line-height: 1.6; }
 .about-photo { width: 200px; height: auto; border-radius: 50%; margin: 0 auto 20px; display: block; }
-
 /* CTA accents */
 a, button { color: #28A745; text-decoration: none; font-weight: bold; }
-
 /* Media query for mobile */
 @media (max-width: 768px) {
   .hero-section { min-height: 300px; padding: 60px 10px; } /* Further reduced for better fit */
 }
-
 /* Hero Buttons */
 .hero-buttons {
   position: relative;
@@ -124,7 +115,6 @@ a, button { color: #28A745; text-decoration: none; font-weight: bold; }
   background: #218838;
   transform: scale(1.05);
 }
-
 /* Modal Popup */
 .modal-overlay {
   position: fixed;
@@ -182,7 +172,6 @@ a, button { color: #28A745; text-decoration: none; font-weight: bold; }
 .close-btn:hover {
   background: #C82333;
 }
-
 /* Quote Form Section */
 .quote-form-section {
   background: #001F3F; /* Dark navy background like live site */
@@ -248,13 +237,11 @@ a, button { color: #28A745; text-decoration: none; font-weight: bold; }
   background: #0056b3;
   transform: scale(1.05);
 }
-
 /* Responsive for mobile */
 @media (max-width: 768px) {
   .quote-form-section { padding: 30px 10px; }
   .quote-form { gap: 10px; }
 }
-
 /* Footer Section */
 .footer-section {
   background: #001F3F;
@@ -271,14 +258,12 @@ a, button { color: #28A745; text-decoration: none; font-weight: bold; }
 .footer-section a:hover {
   color: #218838;
 }
-
 /* Google Maps Embed in Footer */
 .map-embed {
   margin: 20px auto;
   max-width: 600px;
   height: 300px;
 }
-
 /* Updated Modal Styles for Consistency */
 .modal-overlay {
   position: fixed;
@@ -369,7 +354,6 @@ a, button { color: #28A745; text-decoration: none; font-weight: bold; }
 .close-btn:hover {
   background: #C82333;
 }
-
 /* Service Item Buttons */
 .service-item .buttons-container {
   display: flex;
@@ -404,7 +388,6 @@ a, button { color: #28A745; text-decoration: none; font-weight: bold; }
   background: #218838;
   transform: scale(1.05);
 }
-
 /* Media query for modals on mobile */
 @media (max-width: 768px) {
   .book-modal-content {
@@ -414,7 +397,6 @@ a, button { color: #28A745; text-decoration: none; font-weight: bold; }
     gap: 10px; /* Tighter spacing */
   }
 }
-
 /* Blog Styles */
 .blog-main {
   padding: 40px 20px;
@@ -449,7 +431,6 @@ a, button { color: #28A745; text-decoration: none; font-weight: bold; }
   margin-bottom: 5px;
   text-align: left;
 }
-
 /* Blog Post Styles */
 .blog-post {
   padding: 40px 20px;
@@ -463,7 +444,6 @@ a, button { color: #28A745; text-decoration: none; font-weight: bold; }
 .blog-post p {
   line-height: 1.6;
 }
-
 /* Service Area Table */
 .service-table {
   width: 100%;
@@ -478,7 +458,6 @@ a, button { color: #28A745; text-decoration: none; font-weight: bold; }
 .service-table th {
   background-color: #f2f2f2;
 }
-
 /* Service Area Main */
 .service-area-main {
   padding: 40px 20px;
@@ -513,7 +492,6 @@ a, button { color: #28A745; text-decoration: none; font-weight: bold; }
 .service-table td {
   background-color: #f9f9f9;
 }
-
 /* Authorization and Signature Styles */
 .authorization-text {
   max-height: 150px;
@@ -531,7 +509,6 @@ a, button { color: #28A745; text-decoration: none; font-weight: bold; }
   border: 1px solid #ddd;
   background: white;
 }
-
 /* Testimonials Section */
 .testimonials-section {
   background: #f8f9fa;
@@ -571,22 +548,39 @@ a, button { color: #28A745; text-decoration: none; font-weight: bold; }
   max-height: 300px;
   object-fit: cover;
 }
-
-/* New: AI Chatbot Placeholder Styles */
+/* New: AI Chatbot Placeholder Styles - Enhanced for better UX */
 .ai-chatbot {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
+  bottom: 30px; /* Slightly higher for mobile comfort */
+  right: 30px;
   background: #007BFF;
   color: white;
-  padding: 10px 20px;
+  padding: 12px 24px;
   border-radius: 50px;
   cursor: pointer;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
   z-index: 1000;
-  transition: background 0.2s, transform 0.2s;
+  transition: background 0.3s, transform 0.3s, opacity 0.3s;
+  font-weight: bold;
+  font-size: 1rem;
 }
 .ai-chatbot:hover {
   background: #0056b3;
   transform: scale(1.1);
+  opacity: 0.9;
+}
+/* Hide on small screens if needed, or adjust */
+@media (max-width: 768px) {
+  .ai-chatbot {
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+}
+/* Optional: Style for Botpress chat window if customizing */
+.chat-window {
+  /* Add custom styles here if overriding Botpress defaults */
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.15);
 }
