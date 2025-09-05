@@ -35,7 +35,7 @@ export default function ServiceArea() {
 
       const distance = getDistance(lat, lng, shopLat, shopLng);
       const isAvailable = distance <= radius || (zip && safeZips.includes(zip.trim().replace(/-/g, '')));
-      setAvailable(isAvailable);
+      setAvailable(!!isAvailable); // Convert to boolean
       setMessage(isAvailable ? `We service your area! Distance: ${distance.toFixed(1)} miles.` : 'Sorry, outside our service area—call 936-529-4748!');
     } catch (error) {
       setMessage('Error checking address—try again or call us.');

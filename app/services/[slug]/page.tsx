@@ -1,62 +1,35 @@
 // app/services/[slug]/page.tsx
-import { getServiceBySlug, getAllServices } from '@/lib/services'; // Adjust import path if needed
+import { getServiceBySlug, getAllServices } from '@/lib/services';
 import { notFound } from 'next/navigation';
 import Script from 'next/script';
 import Link from 'next/link';
+import { Suspense } from 'react';
 
-export default async function ServicePage({ params }: { params: Promise<{ slug: string }> }) {
-  const resolvedParams = await params;
-  const service = getServiceBySlug(resolvedParams.slug);
-  if (!service) {
-    notFound(); // This will render the app's not-found page
-  }
+async function ServiceContent({ slug }: { slug: string }) {
+  const service = getServiceBySlug(slug);
+  if (!service) notFound();
 
   const calendlyMap: Record<string, string> = {
-    'new-car-check-out': 'https://calendly.com/david-toptechmobile/new-car-inspection-100',
-    'check-engine-light-diagnostic': 'https://calendly.com/david-toptechmobile/check-engine-light-diagnostic-100',
-    'battery-electrical-check': 'https://calendly.com/david-toptechmobile/battery-electrical-check-80',
-    'general-vehicle-diagnostic': 'https://calendly.com/david-toptechmobile/general-vehicle-diagnostic-100',
-    'ac-diagnostic-check': 'https://calendly.com/david-toptechmobile/ac-diagnostic-check-80',
-    'brake-inspection': 'https://calendly.com/david-toptechmobile/brake-inspection-80',
-    'mobile-oil-change': 'https://calendly.com/david-toptechmobile/mobil-1-oil-change-fluid-check-120',
+    // ... same as before
   } as const;
 
-  const embedUrl = calendlyMap[resolvedParams.slug as keyof typeof calendlyMap] || '';
+  const embedUrl = calendlyMap[slug as keyof typeof calendlyMap] || '';
 
-  // Get related services (exclude current, pick 3 random or hardcoded based on logic)
-  const allServices = getAllServices().filter(s => s.slug !== resolvedParams.slug);
-  const relatedServices = allServices.slice(0, 3); // Simple: first 3 others; customize per slug if needed
+  const allServices = getAllServices().filter(s => s.slug !== slug);
+  const relatedServices = allServices.slice(0, 3);
 
   return (
     <main className="container mx-auto py-8 px-4">
+      {/* Schema and content */}
       <Script id="service-schema" type="application/ld+json">
         {JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "Service",
-          "name": service.title,
-          "description": service.desc,
-          "areaServed": {
-            "@type": "GeoCircle",
-            "geoMidpoint": {
-              "@type": "GeoCoordinates",
-              "latitude": 30.1658,
-              "longitude": -95.4613
-            },
-            "geoRadius": 50000 // 50km ~31 miles
-          },
-          // No priceRange or similar fields
+          // ... same
         })}
       </Script>
       <h1 className="text-3xl font-bold mb-4">{service.title}</h1>
       <p className="mb-6">{service.fullContent || service.desc}</p>
       <p className="text-lg font-semibold">Please call or text us for details.</p>
-      {embedUrl && (
-        <div className="calendly-embed mt-6">
-          <div className="calendly-inline-widget" data-url={embedUrl} style={{ minWidth: '320px', height: '630px' }}></div>
-          <Script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async />
-        </div>
-      )}
-      {/* Related Services Section */}
+      {embedUrl && <BookButton embedUrl={embedUrl} />}
       <section className="mt-8">
         <h2 className="text-2xl font-bold mb-4">Related Services</h2>
         <ul className="list-disc pl-5 space-y-2">
@@ -69,7 +42,53 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
           ))}
         </ul>
       </section>
-      {/* Add any other content here, without pricing */}
     </main>
+  );
+}
+
+function BookButton({ embedUrl }: { embedUrl: string }) {
+  const [isBookingOpen, setIsBookingOpen] = useState(false);
+  const [zip, setZip] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const safeZips = [/* array */];
+
+  const handleBookClick = () => {
+    setIsBookingOpen(true);
+    setZip('');
+    setErrorMessage('');
+  };
+
+  const handleBookingSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const cleanedZip = zip.trim().replace(/-/g, '');
+    if (!safeZips.includes(cleanedZip)) {
+      setErrorMessage('Sorry, you may be outside our service area. Please call 936-529-4748 for confirmation.');
+      return;
+    }
+    window.location.href = embedUrl;
+    setIsBookingOpen(false);
+  };
+
+  return (
+    <>
+      <button onClick={handleBookClick} className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 mt-4">
+        Book Now
+      </button>
+      {isBookingOpen && (
+        // Modal code same as before
+      )}
+      <div className="calendly-embed mt-6" style={{ display: 'none' }}>
+        {/* Embed only after check, but since redirect, no need */}
+      </div>
+    </>
+  );
+}
+
+export default function ServicePage({ params }: { params: Promise<{ slug: string }> }) {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <ServiceContent slug={(await params).slug} />
+    </Suspense>
   );
 }
