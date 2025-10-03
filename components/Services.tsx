@@ -1,5 +1,5 @@
 // components/Services.tsx
-'use client'; // Add this to make it a Client Component for state
+'use client'; // Client Component for state
 
 import Image from 'next/image';
 import Link from 'next/link';
@@ -34,6 +34,11 @@ export default function Services() {
     setIsBookingOpen(false);
   };
 
+  const handleCloseModal = () => {
+    setIsBookingOpen(false);
+    setErrorMessage('');
+  };
+
   return (
     <section className="py-8 bg-white">
       <div className="container mx-auto px-4">
@@ -41,7 +46,7 @@ export default function Services() {
         <p className="text-center mb-8">As your local ASE-certified mobile mechanic near The Woodlands TX, we specialize in convenient, on-site services. From routine maintenance to complex repairs, we handle it all with precision and care right at your home or office in Kingwood TX or Montgomery County. Limited time: 10% off first service!</p>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {services.map((service) => (
-            <div key={service.slug} className="bg-white rounded-lg shadow-md overflow-hidden flex flex-col"> {/* flex-col to push buttons to bottom */}
+            <div key={service.slug} className="bg-white rounded-lg shadow-md overflow-hidden flex flex-col">
               <Image
                 src={service.image}
                 alt={service.title}
@@ -49,10 +54,10 @@ export default function Services() {
                 height={200}
                 className="w-full h-48 object-cover"
               />
-              <div className="p-4 flex flex-col flex-grow"> {/* flex-grow to expand content */}
+              <div className="p-4 flex flex-col flex-grow">
                 <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
-                <p className="text-gray-600 mb-4 flex-grow">{service.desc}</p> {/* flex-grow on desc to push buttons down */}
-                <div className="flex justify-between mt-auto"> {/* mt-auto to align at bottom */}
+                <p className="text-gray-600 mb-4 flex-grow">{service.desc}</p>
+                <div className="flex justify-between mt-auto">
                   <Link href={`/services/${service.slug}`} className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
                     Learn More
                   </Link>
@@ -70,13 +75,13 @@ export default function Services() {
             </div>
           ))}
         </div>
-        {/* Booking Modal */}
+        {/* Booking Modal - Fixed with Tailwind for overlay/z-index */}
         {isBookingOpen && (
-          <div className="modal-overlay" aria-modal="true" role="dialog">
-            <div className="book-modal-content">
-              <div className="modal-header">Confirm Service Area</div>
-              <form onSubmit={handleBookingSubmit} className="book-form">
-                <label htmlFor="zip">Enter Your ZIP Code to Check Availability</label>
+          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50" role="dialog" aria-modal="true">
+            <div className="bg-white p-6 rounded-lg shadow-lg max-w-md w-full mx-4">
+              <h3 className="text-xl font-bold mb-4">Confirm Service Area</h3>
+              <form onSubmit={handleBookingSubmit} className="space-y-4">
+                <label htmlFor="zip" className="block text-sm font-medium">Enter Your ZIP Code to Check Availability</label>
                 <input 
                   id="zip" 
                   type="text" 
@@ -85,10 +90,15 @@ export default function Services() {
                   required 
                   aria-label="Enter ZIP code to confirm service area" 
                   placeholder="e.g., 77381" 
+                  className="w-full p-2 border border-gray-300 rounded-md"
                 />
-                {errorMessage && <p className="error-message">{errorMessage}</p>}
-                <button type="submit" className="modal-btn submit-btn" aria-label="Check and Book">Check & Book</button>
-                <button type="button" onClick={() => setIsBookingOpen(false)} className="modal-btn close-btn">Close</button>
+                {errorMessage && <p className="text-red-500 text-sm">{errorMessage}</p>}
+                <div className="flex justify-end space-x-3">
+                  <button type="button" onClick={handleCloseModal} className="px-4 py-2 bg-gray-300 text-gray-700 rounded-md hover:bg-gray-400">
+                    Close
+                  </button>
+                  <button type="submit" className="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600">Check & Book</button>
+                </div>
               </form>
             </div>
           </div>

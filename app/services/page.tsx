@@ -1,33 +1,57 @@
-// app/services/[slug]/page.tsx
-import { getServiceBySlug } from '@/lib/services'; // Adjust import path if needed
-import { notFound } from 'next/navigation';
+// app/services/page.tsx
+import Link from 'next/link';
+import { getAllServices } from '@/lib/services';
 import Script from 'next/script';
 
-export default async function ServicePage({ params }: { params: Promise<{ slug: string }> }) {
-  const resolvedParams = await params;
-  const service = getServiceBySlug(resolvedParams.slug);
-  if (!service) {
-    notFound(); // This will render the app's not-found page
-  }
+export default async function ServicesPage() {
+  const services = getAllServices();
+
   return (
     <main className="container mx-auto py-8 px-4">
-      <Script id="service-schema" type="application/ld+json">
+      <Script id="services-schema" type="application/ld+json">
         {JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "Service",
-          "name": service.title,
-          "description": service.desc,
-          "areaServed": {
-            // Your existing geo data...
-            "geoRadius": 50000,
-          },
-          // No priceRange or similar fields
+          '@context': 'https://schema.org',
+          '@type': 'ItemList',
+          'itemListElement': services.map((service, index) => ({
+            '@type': 'ListItem',
+            'position': index + 1,
+            'item': {
+              '@type': 'Service',
+              'name': service.title,
+              'description': service.desc,
+              'url': `https://toptechmobile.com/services/${service.slug}`,
+            },
+          })),
         })}
       </Script>
-      <h1 className="text-3xl font-bold mb-4">{service.title}</h1>
-      <p className="mb-6">{service.fullContent || service.desc}</p> {/* Use fullContent if available, fallback to desc */}
-      <p className="text-lg font-semibold">Please call or text us for details.</p>
-      {/* Add any other content here, without pricing */}
+      <h1 className="text-3xl font-bold mb-6 text-center">Our Mobile Mechanic Services</h1>
+      <p className="text-center mb-8 text-lg">ASE-certified repairs at your door in The Woodlands, Kingwood, and Montgomery County. Pick a service below to learn more and book!</p>
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {services.map((service) => (
+          <div key={service.slug} className="bg-white p-6 rounded-lg shadow-md border border-gray-200">
+            <h2 className="text-xl font-bold mb-2">{service.title}</h2>
+            <p className="mb-4 text-gray-600">{service.desc}</p>
+            <Link
+              href={`/services/${service.slug}`}
+              className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 inline-block mr-2"
+            >
+              Learn More
+            </Link>
+            {service.calendlyLink ? (
+              <a href={service.calendlyLink} className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 inline-block">
+                Book Now
+              </a>
+            ) : (
+              <Link href="/contact" className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 inline-block">
+                Get Quote
+              </Link>
+            )}
+          </div>
+        ))}
+      </div>
+      <div className="text-center mt-8">
+        <p className="text-lg">Not sure what you need? Call us at <a href="tel:9365294748" className="text-blue-600 hover:underline">936-529-4748</a> for a free quote.</p>
+      </div>
     </main>
   );
 }

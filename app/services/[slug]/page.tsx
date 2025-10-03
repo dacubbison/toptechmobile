@@ -1,18 +1,17 @@
 // app/services/[slug]/page.tsx
-"use client"; // Required for client-side hooks (useState, useEffect)
-import { getServiceBySlug, getAllServices } from '@/lib/services';
+"use client"; // Client for BookButton hooks
+import { getServiceBySlug } from '@/lib/services';
 import { notFound } from 'next/navigation';
 import Script from 'next/script';
 import Link from 'next/link';
 import { Suspense, useState } from 'react';
 
-function BookButton({ embedUrl }: { embedUrl: string }) {
+function BookButton({ calendlyLink }: { calendlyLink: string }) {
   const [isBookingOpen, setIsBookingOpen] = useState(false);
   const [zip, setZip] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
-  // Sample ZIP codes for The Woodlands, Kingwood, Montgomery County
-  const safeZips = ['77380', '77381', '77382', '77384', '77385', '77386', '77339', '77345', '77316', '77356'];
+  const safeZips = ['77301', '77302', '77303', '77304', '77305', '77306', '77316', '77318', '77327', '77328', '77333', '77338', '77339', '77345', '77346', '77353', '77354', '77355', '77356', '77357', '77362', '77365', '77372', '77373', '77378', '77379', '77380', '77381', '77382', '77384', '77385', '77386', '77388', '77389', '77393', '77447', '77873', '77014', '77032', '77073', '77090', '77096', '77396'];
 
   const handleBookClick = () => {
     setIsBookingOpen(true);
@@ -27,7 +26,7 @@ function BookButton({ embedUrl }: { embedUrl: string }) {
       setErrorMessage('Sorry, you may be outside our service area. Please call 936-529-4748 for confirmation.');
       return;
     }
-    window.location.href = embedUrl;
+    window.location.href = calendlyLink;
     setIsBookingOpen(false);
   };
 
@@ -45,31 +44,27 @@ function BookButton({ embedUrl }: { embedUrl: string }) {
         Book Now
       </button>
       {isBookingOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white p-6 rounded-lg shadow-lg max-w-md w-full">
-            <h2 className="text-xl font-bold mb-4">Enter Your ZIP Code</h2>
-            <form onSubmit={handleBookingSubmit}>
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50" role="dialog" aria-modal="true">
+          <div className="bg-white p-6 rounded-lg shadow-lg max-w-md w-full mx-4">
+            <h3 className="text-xl font-bold mb-4">Confirm Service Area</h3>
+            <form onSubmit={handleBookingSubmit} className="space-y-4">
+              <label htmlFor="zip" className="block text-sm font-medium">Enter Your ZIP Code</label>
               <input
+                id="zip"
                 type="text"
                 value={zip}
                 onChange={(e) => setZip(e.target.value)}
-                placeholder="Enter ZIP code"
-                className="w-full p-2 border rounded mb-4"
+                placeholder="e.g., 77381"
                 required
+                className="w-full p-2 border border-gray-300 rounded-md"
+                aria-label="Enter ZIP code to confirm service area"
               />
-              {errorMessage && <p className="text-red-500 mb-4">{errorMessage}</p>}
-              <div className="flex justify-end space-x-4">
-                <button
-                  type="button"
-                  onClick={handleClose}
-                  className="bg-gray-300 text-black px-4 py-2 rounded hover:bg-gray-400"
-                >
+              {errorMessage && <p className="text-red-500 text-sm">{errorMessage}</p>}
+              <div className="flex justify-end space-x-3">
+                <button type="button" onClick={handleClose} className="px-4 py-2 bg-gray-300 text-gray-700 rounded-md hover:bg-gray-400">
                   Cancel
                 </button>
-                <button
-                  type="submit"
-                  className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
-                >
+                <button type="submit" className="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600">
                   Submit
                 </button>
               </div>
@@ -85,71 +80,51 @@ async function ServiceContent({ slug }: { slug: string }) {
   const service = getServiceBySlug(slug);
   if (!service) notFound();
 
-  const calendlyMap: Record<string, string> = {
-    'oil-change': 'https://calendly.com/toptechmobile/oil-change',
-    'brake-service': 'https://calendly.com/toptechmobile/brake-service',
-    'battery-replacement': 'https://calendly.com/toptechmobile/battery-replacement',
-    'tire-services': 'https://calendly.com/toptechmobile/tire-services',
-    'ac-repair': 'https://calendly.com/toptechmobile/ac-repair',
-    'diagnostic-services': 'https://calendly.com/toptechmobile/diagnostic-services',
-    'ev-maintenance': 'https://calendly.com/toptechmobile/ev-maintenance',
-    // Add more as needed
-  } as const;
-
-  const embedUrl = calendlyMap[slug as keyof typeof calendlyMap] || '';
-
-  const allServices = getAllServices().filter((s) => s.slug !== slug);
-  const relatedServices = allServices.slice(0, 3);
-
   return (
     <main className="container mx-auto py-8 px-4">
       <Script id="service-schema" type="application/ld+json">
         {JSON.stringify({
-          '@context': 'https://schema.org',
-          '@type': 'Service',
-          'serviceType': service.title,
-          'provider': {
-            '@type': 'LocalBusiness',
-            'name': 'Top Tech Mobile Mechanic',
-            'telephone': '936-529-4748',
-            'address': {
-              '@type': 'PostalAddress',
-              'addressLocality': 'The Woodlands',
-              'addressRegion': 'TX',
-              'postalCode': '77380',
-              'addressCountry': 'US',
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "name": service.title,
+          "description": service.desc,
+          "provider": {
+            "@type": "LocalBusiness",
+            "name": "Top Tech Mobile Mechanic",
+            "telephone": "936-529-4748",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "The Woodlands",
+              "addressRegion": "TX",
+              "postalCode": "77380",
+              "addressCountry": "US",
             },
           },
-          'areaServed': [
+          "areaServed": [
             {
-              '@type': 'City',
-              'name': 'The Woodlands',
+              "@type": "City",
+              "name": "The Woodlands",
             },
             {
-              '@type': 'City',
-              'name': 'Kingwood',
+              "@type": "City",
+              "name": "Kingwood",
             },
             {
-              '@type': 'AdministrativeArea',
-              'name': 'Montgomery County',
+              "@type": "AdministrativeArea",
+              "name": "Montgomery County",
             },
           ],
         })}
       </Script>
       <h1 className="text-3xl font-bold mb-4">{service.title}</h1>
       <p className="mb-6">{service.fullContent || service.desc}</p>
-      <p className="text-lg font-semibold">Please call or text us for details.</p>
-      {embedUrl && <BookButton embedUrl={embedUrl} />}
+      <p className="text-lg font-semibold mb-4">Please call or text us for details.</p>
+      {service.calendlyLink && <BookButton calendlyLink={service.calendlyLink} />}
       <section className="mt-8">
         <h2 className="text-2xl font-bold mb-4">Related Services</h2>
         <ul className="list-disc pl-5 space-y-2">
-          {relatedServices.map((rel) => (
-            <li key={rel.slug}>
-              <Link href={`/services/${rel.slug}`} className="text-blue-600 hover:underline">
-                {`Need ${rel.title.toLowerCase()} too? Check out our ${rel.title}`}
-              </Link>
-            </li>
-          ))}
+          {/* Add related logic if needed; placeholder */}
+          <li><Link href="/services" className="text-blue-600 hover:underline">View All Services</Link></li>
         </ul>
       </section>
     </main>
