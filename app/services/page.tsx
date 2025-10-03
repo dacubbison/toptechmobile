@@ -1,4 +1,6 @@
 // app/services/page.tsx
+"use client"; // Client for useState in BookButton modal
+
 import Link from 'next/link';
 import Image from 'next/image';
 import { getAllServices } from '@/lib/services';
