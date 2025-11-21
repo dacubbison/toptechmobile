@@ -14,7 +14,7 @@ export default function WinterizingHero({ cityLine }: Props) {
       
       <div className="relative z-10 px-6 pt-32 pb-20 max-w-6xl mx-auto">
         <h1 className="text-5xl md:text-7xl font-black mb-6 drop-shadow-2xl leading-tight">
-          $89 Winterizing Special<br className="sm:hidden" />Running Now!
+          $129 Winterizing Special<br className="sm:hidden" />Running Now!
         </h1>
         <p className="text-3xl md:text-5xl font-bold mb-8 text-amber-300 drop-shadow-2xl">
           Zero-Turn Mowers • Generators • Pressure Washers
@@ -25,10 +25,10 @@ export default function WinterizingHero({ cityLine }: Props) {
         <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
           <CTAButton />
           <a
-            href="https://wa.me/19365294748?text=Hey%20David%2C%20I%20want%20the%20%2489%20winterizing%20special!"
+            href="https://wa.me/19365294748?text=Hey%20David%2C%20I%20want%20the%20%24129%20winterizing%20special!"
             className="bg-green-600 hover:bg-green-700 text-white font-bold py-5 px-10 rounded-xl text-xl shadow-2xl transition transform hover:scale-105"
           >
-            Book $89 Winterizing Now
+            Book $129 Winterizing Now
           </a>
         </div>
         <p className="mt-10 text-lg opacity-95">
