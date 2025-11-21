@@ -2,7 +2,8 @@
 import './globals.css';
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import ClientWrapper from '../components/ClientWrapper'; // Adjust path if needed
+import ClientWrapper from '../components/ClientWrapper';
+import FloatingWhatsApp from '@/components/FloatingWhatsApp';   // ← NEW LINE
 
 export const metadata: Metadata = {
   title: 'Top Tech Mobile Mechanic',
@@ -29,7 +30,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <li><Link href="/about">About</Link></li>
             </ul>
           </nav>
+
           {children}
+
+          {/* 🔥 FLOATING WHATSAPP BUTTON 🔥 */}
+          <FloatingWhatsApp />
+
         </ClientWrapper>
       </body>
     </html>
