@@ -5,14 +5,17 @@ export default function Footer() {
   return (
     <footer className="footer-section bg-navy-900 text-white text-center py-5 text-sm">
       <p>Top Tech Mobile Mechanic - ASE-Certified Mobile Mechanic Near Me</p>
-      <p>Serving The Woodlands, Kingwood, and Montgomery County TX</p>
-      <p>Phone: 936-529-4748 | Address: 123 Example St, The Woodlands, TX 77381</p> {/* NAP for SEO */}
+      <p>Serving The Woodlands, Kingwood, Conroe, Spring, Humble, Porter, Atascocita, and all of Montgomery County TX – including small engine & zero-turn mower repair</p>
+      <p>Phone: 936-529-4748 | Address: 15392 Rusty Oak Trl Ste 200, Conroe, TX 77302</p> {/* NAP for SEO */}
       <p>
         <a href="tel:9365294748" className="text-green-500">Call Me Now</a> | 
-        <a href="https://calendly.com/your-username/your-event" className="text-green-500">Book Appointment</a> | 
         <Link href="/blog" className="text-green-500">Blog</Link> | 
         <Link href="/service-area" className="text-green-500">Service Area</Link>
       </p>
+      <div className="social-links mt-4">
+        <a href="https://www.facebook.com/profile.php?id=61553382422240" target="_blank" rel="noopener noreferrer" className="text-green-500 mx-2">Facebook</a> | 
+        <a href="https://www.instagram.com/toptechmobile3" target="_blank" rel="noopener noreferrer" className="text-green-500 mx-2">Instagram</a>
+      </div>
       {/* Embedded Google Maps for local SEO */}
       <iframe
         className="map-embed"
