@@ -28,7 +28,6 @@ export default function WinterizingHero({ cityLine }: Props) {
             href="https://wa.me/19365294748?text=Hey%20David%2C%20I%20want%20the%20%2489%20winterizing%20special!"
             className="bg-green-600 hover:bg-green-700 text-white font-bold py-5 px-10 rounded-xl text-xl shadow-2xl transition transform hover:scale-105"
           >
-            >
             Book $89 Winterizing Now
           </a>
         </div>
