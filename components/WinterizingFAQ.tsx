@@ -9,7 +9,7 @@ export default function WinterizingFAQ() {
             <p className="text-xl">Even mild winters can gum up carbs and corrode engines with ethanol gas. $129 special protects your $5k+ Bad Boy – fires up first try in March.</p>
           </div>
           <div>
-            <h3 className="text-2xl font-bold mb-2">What does the $129 special include?</p>
+            <h3 className="text-2xl font-bold mb-2">What does the $129 special include?</h3>
             <p className="text-xl">Fuel stabilizer, fresh oil change, full clean, engine fogging, basic check-up. Upsells: blade sharpening $29, pickup $39.</p>
           </div>
           <div>
