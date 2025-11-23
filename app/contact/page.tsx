@@ -28,7 +28,7 @@ export default function Contact() {
         'service_qwd7ppr',
         'template_eshjegs',
         templateParams,
-        'user_GKtBdMlfFWUKUn7M7'
+        'GKtBdMlfFWUKUn7M7'  // ← Updated to your provided public key (without 'user_')
       )
       .then(() => {
         setStatus('success');
@@ -36,6 +36,9 @@ export default function Contact() {
       })
       .catch((err) => {
         console.error('EmailJS error:', err);
+        if (err.text) {
+          err.text().then((text) => console.error('Error details:', text));
+        }
         setStatus('error');
       });
   };
