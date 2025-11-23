@@ -3,15 +3,12 @@ import CTAButton from '@/components/CTAButton';
 
 export const metadata: Metadata = {
   title: 'Mobile Mechanic Humble TX | Car & Truck Repair At Your Home',
-  description: 'ASE certified mobile mechanic Humble TX – brakes, no-start, AC, diagnostics. Beat shop quotes by 50%+, no trip fee in Humble/Atascocita. Text photos - (936) 529-4748',
+  description: 'ASE certified mobile mechanic Humble TX – brakes, no-start, AC, diagnostics. Beat shop quotes by 50%+. Text photos - (936) 529-4748',
 };
 
 export default function HumbleMechanicPage() {
   return (
     <>
-      {/* Same full code as Conroe above – just replace "Conroe" with "Humble" in all h1/p/text, villages = Atascocita, Summerwood, Fall Creek, Kings River */}
-      {/* ★ line becomes: ★ ASE Certified ★ Beat Shop Quotes by 50%+ ★ No Trip Fee in Humble/Atascocita ★ 90-Day Warranty */}
-      {/* I'll write it full so no mistakes */}
       <section 
         className="relative min-h-screen bg-cover bg-center bg-no-repeat flex items-center justify-center text-center text-white"
         style={{ backgroundImage: "url('https://images.unsplash.com/photo-1544636331-9576b8bf12ec?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')" }}
@@ -36,13 +33,79 @@ export default function HumbleMechanicPage() {
             </a>
           </div>
           <p className="mt-10 text-lg opacity-95">
-            ★ ASE Certified ★ Beat Shop Quotes by 50%+ ★ No Trip Fee in Humble/Atascocita ★ 90-Day Warranty
+            ★ ASE Certified ★ Beat Shop Quotes by 50%+
           </p>
         </div>
       </section>
 
-      {/* Rest identical to Conroe/Kingwood – villages list: Atascocita, Summerwood, Fall Creek, Kings River, etc. */}
-      {/* ... full body same ... */}
+      <section className="py-24 bg-gray-50">
+        <div className="max-w-6xl mx-auto px-6">
+          <h2 className="text-4xl md:text-5xl font-black text-center mb-16">
+            Why Humble & Atascocita Choose Top Tech Mobile
+          </h2>
+          <div className="grid md:grid-cols-2 gap-10 max-w-4xl mx-auto text-xl">
+            <div className="flex items-start gap-4">
+              <span className="text-4xl text-green-600">✔</span>
+              <p>ASE-certified 20+ years – brakes, diagnostics, AC, check engine, hybrids/EVs</p>
+            </div>
+            <div className="flex items-start gap-4">
+              <span className="text-4xl text-green-600">✔</span>
+              <p>We come to Atascocita, Summerwood, Fall Creek, Kings River – every neighborhood</p>
+            </div>
+            <div className="flex items-start gap-4">
+              <span className="text-4xl text-green-600">✔</span>
+              <p>Beat any written shop quote by 50% or more – guaranteed</p>
+            </div>
+            <div className="flex items-start gap-4">
+              <span className="text-4xl text-green-600">✔</span>
+              <p>Text photos → quote in minutes → same/next day service</p>
+            </div>
+          </div>
+
+          <h2 className="text-4xl md:text-5xl font-black text-center mt-16 mb-8">
+            Common Repairs in Humble TX
+          </h2>
+          <div className="grid md:grid-cols-2 gap-10 max-w-4xl mx-auto text-xl">
+            <div className="flex items-start gap-4">
+              <span className="text-4xl text-green-600">✔</span>
+              <p>Flood-related battery corrosion from Lake Houston rains – quick mobile swaps</p>
+            </div>
+            <div className="flex items-start gap-4">
+              <span className="text-4xl text-green-600">✔</span>
+              <p>AC recharges for Humble's humid summers in Atascocita neighborhoods</p>
+            </div>
+            <div className="flex items-start gap-4">
+              <span className="text-4xl text-green-600">✔</span>
+              <p>Brake fixes for stop-and-go on FM 1960 and Highway 59</p>
+            </div>
+            <div className="flex items-start gap-4">
+              <span className="text-4xl text-green-600">✔</span>
+              <p>Check engine light diagnostics for older trucks in Fall Creek</p>
+            </div>
+          </div>
+
+          <div className="text-center mt-16">
+            <CTAButton />
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-green-700 text-white text-center">
+        <div className="max-w-5xl mx-auto px-6">
+          <h2 className="text-4xl md:text-6xl font-bold mb-8">
+            Humble – Your Mechanic Comes to You<br />(936) 529-4748
+          </h2>
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
+            <CTAButton />
+            <a
+              href="https://wa.me/19365294748"
+              className="bg-white text-green-700 hover:bg-gray-100 font-bold py-5 px-10 rounded-xl text-xl shadow-2xl transition transform hover:scale-105"
+            >
+              WhatsApp Chat
+            </a>
+          </div>
+        </div>
+      </section>
     </>
   );
 }

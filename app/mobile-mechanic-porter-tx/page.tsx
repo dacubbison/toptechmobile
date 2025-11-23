@@ -33,7 +33,7 @@ export default function PorterMechanicPage() {
             </a>
           </div>
           <p className="mt-10 text-lg opacity-95">
-            ★ ASE Certified ★ Beat Shop Quotes by 50%+ ★ No Trip Fee in Porter/New Caney ★ 90-Day Warranty
+            ★ ASE Certified ★ Beat Shop Quotes by 50%+
           </p>
         </div>
       </section>
@@ -58,17 +58,32 @@ export default function PorterMechanicPage() {
             </div>
             <div className="flex items-start gap-4">
               <span className="text-4xl text-green-600">✔</span>
-              <p>No trip fee in 77365 / 77357</p>
-            </div>
-            <div className="flex items-start gap-4">
-              <span className="text-4xl text-green-600">✔</span>
-              <p>90-day warranty on every repair</p>
-            </div>
-            <div className="flex items-start gap-4">
-              <span className="text-4xl text-green-600">✔</span>
               <p>Text photos → quote in minutes → same/next day</p>
             </div>
           </div>
+
+          <h2 className="text-4xl md:text-5xl font-black text-center mt-16 mb-8">
+            Common Repairs in Porter TX
+          </h2>
+          <div className="grid md:grid-cols-2 gap-10 max-w-4xl mx-auto text-xl">
+            <div className="flex items-start gap-4">
+              <span className="text-4xl text-green-600">✔</span>
+              <p>Suspension fixes for bumpy rural roads in Porter Heights and New Caney</p>
+            </div>
+            <div className="flex items-start gap-4">
+              <span className="text-4xl text-green-600">✔</span>
+              <p>No-start diagnostics for trucks in Valley Ranch after heavy rains</p>
+            </div>
+            <div className="flex items-start gap-4">
+              <span className="text-4xl text-green-600">✔</span>
+              <p>AC repairs for humid commutes along East River Drive</p>
+            </div>
+            <div className="flex items-start gap-4">
+              <span className="text-4xl text-green-600">✔</span>
+              <p>Brake service for stop-and-go in Splendora traffic</p>
+            </div>
+          </div>
+
           <div className="text-center mt-16">
             <CTAButton />
           </div>

@@ -33,7 +33,7 @@ export default function WoodlandsMechanicPage() {
             </a>
           </div>
           <p className="mt-10 text-lg opacity-95">
-            ★ ASE Certified ★ Beat Shop Quotes by 50%+ ★ No Trip Fee in The Woodlands ★ 90-Day Warranty
+            ★ ASE Certified ★ Beat Shop Quotes by 50%+
           </p>
         </div>
       </section>
@@ -58,17 +58,32 @@ export default function WoodlandsMechanicPage() {
             </div>
             <div className="flex items-start gap-4">
               <span className="text-4xl text-green-600">✔</span>
-              <p>No trip fee in 77380 / 77381 / 77382 / 77389</p>
-            </div>
-            <div className="flex items-start gap-4">
-              <span className="text-4xl text-green-600">✔</span>
-              <p>90-day warranty on every repair</p>
-            </div>
-            <div className="flex items-start gap-4">
-              <span className="text-4xl text-green-600">✔</span>
               <p>Text photos → quote in minutes → same/next day service</p>
             </div>
           </div>
+
+          <h2 className="text-4xl md:text-5xl font-black text-center mt-16 mb-8">
+            Common Repairs in The Woodlands TX
+          </h2>
+          <div className="grid md:grid-cols-2 gap-10 max-w-4xl mx-auto text-xl">
+            <div className="flex items-start gap-4">
+              <span className="text-4xl text-green-600">✔</span>
+              <p>AC diagnostics for high-humidity issues in Creekside Park and Sterling Ridge</p>
+            </div>
+            <div className="flex items-start gap-4">
+              <span className="text-4xl text-green-600">✔</span>
+              <p>Battery replacements for hot summers along The Woodlands Parkway</p>
+            </div>
+            <div className="flex items-start gap-4">
+              <span className="text-4xl text-green-600">✔</span>
+              <p>Suspension fixes for trail and golf cart paths in Panther Creek</p>
+            </div>
+            <div className="flex items-start gap-4">
+              <span className="text-4xl text-green-600">✔</span>
+              <p>Check engine light scans for hybrids in Alden Bridge communities</p>
+            </div>
+          </div>
+
           <div className="text-center mt-16">
             <CTAButton />
           </div>
