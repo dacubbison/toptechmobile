@@ -28,16 +28,16 @@ export default function Contact() {
         'service_qwd7ppr',
         'template_eshjegs',
         templateParams,
-        'GKtBdMlfFWUKUn7M7'  // ← Updated to your provided public key (without 'user_')
+        'GKtBdMlfFWUKUn7M7'
       )
       .then(() => {
         setStatus('success');
         setName(''); setEmail(''); setPhone(''); setMessage('');
       })
-      .catch((err) => {
+      .catch((err: any) => {
         console.error('EmailJS error:', err);
         if (err.text) {
-          err.text().then((text) => console.error('Error details:', text));
+          err.text().then((text: string) => console.error('Error details:', text));
         }
         setStatus('error');
       });
