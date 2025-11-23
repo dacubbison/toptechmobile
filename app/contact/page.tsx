@@ -15,12 +15,12 @@ export default function Contact() {
     setStatus('sending');
 
     const templateParams = {
-      from_name: name,
-      reply_to: email,
-      message: message,
-      custom_params: {
+      from_name: name,           // ← matches {{from_name}} in template
+      reply_to: email,           // ← matches {{reply_to}} in template
+      custom_params: {           // ← nest phone here to match {{custom_params.phone}}
         phone: phone || 'Not provided',
       },
+      message: message,          // ← matches {{message}} in template
     };
 
     emailjs
