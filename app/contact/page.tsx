@@ -9,7 +9,15 @@ export default function Contact() {
   const [phone, setPhone] = useState('');
   const [vehicleDetails, setVehicleDetails] = useState('');
   const [message, setMessage] = useState('');
+  const [contactPreferences, setContactPreferences] = useState<string[]>([]);
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
+
+  const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setContactPreferences((prev) =>
+      prev.includes(value) ? prev.filter((p) => p !== value) : [...prev, value]
+    );
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -21,6 +29,7 @@ export default function Contact() {
       custom_params: {           
         phone: phone || 'Not provided',
         vehicle_details: vehicleDetails || 'Not provided',
+        contact_preferences: contactPreferences.join(', ') || 'Any method',
       },
       message: message,          
     };
@@ -34,7 +43,7 @@ export default function Contact() {
       )
       .then(() => {
         setStatus('success');
-        setName(''); setEmail(''); setPhone(''); setVehicleDetails(''); setMessage('');
+        setName(''); setEmail(''); setPhone(''); setVehicleDetails(''); setMessage(''); setContactPreferences([]);
       })
       .catch((err: any) => {
         console.error('EmailJS error:', err);
@@ -56,6 +65,25 @@ export default function Contact() {
             <input type="text" placeholder="Your Name" value={name} onChange={(e) => setName(e.target.value)} required className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-600" />
             <input type="email" placeholder="Your Email" value={email} onChange={(e) => setEmail(e.target.value)} required className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-600" />
             <input type="tel" placeholder="Your Phone – for lightning-fast quotes via text or call" value={phone} onChange={(e) => setPhone(e.target.value)} className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-600" />
+            {phone && (
+              <div className="space-y-2">
+                <p className="text-sm font-medium">Preferred contact method (optional):</p>
+                <div className="flex space-x-4">
+                  <label className="flex items-center">
+                    <input type="checkbox" value="Call" checked={contactPreferences.includes('Call')} onChange={handleCheckboxChange} className="mr-2" />
+                    Call
+                  </label>
+                  <label className="flex items-center">
+                    <input type="checkbox" value="Text" checked={contactPreferences.includes('Text')} onChange={handleCheckboxChange} className="mr-2" />
+                    Text
+                  </label>
+                  <label className="flex items-center">
+                    <input type="checkbox" value="Email" checked={contactPreferences.includes('Email')} onChange={handleCheckboxChange} className="mr-2" />
+                    Email
+                  </label>
+                </div>
+              </div>
+            )}
             <input type="text" placeholder="Vehicle Details (optional, e.g., 2019 Hyundai Santa Fe 2.4L)" value={vehicleDetails} onChange={(e) => setVehicleDetails(e.target.value)} className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-600" />
             <textarea placeholder="Message – e.g., $129 winterizing quote, brake job, etc." value={message} onChange={(e) => setMessage(e.target.value)} required rows={5} className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-600"></textarea>
 
