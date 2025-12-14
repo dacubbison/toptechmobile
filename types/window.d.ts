@@ -1,7 +1,7 @@
-interface Window {
-  gtag?: (
-    event: string,
-    action: string,
-    options?: Record<string, unknown>
-  ) => void;
+declare global {
+  interface Window {
+    gtag_report_conversion: (url?: string) => boolean;
+  }
 }
+
+export {};
