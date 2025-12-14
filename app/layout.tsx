@@ -2,8 +2,9 @@
 import './globals.css';
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Script from 'next/script';  // New import for handling scripts
 import ClientWrapper from '../components/ClientWrapper';
-import FloatingWhatsApp from '@/components/FloatingWhatsApp';   // ← NEW LINE
+import FloatingWhatsApp from '@/components/FloatingWhatsApp';
 
 export const metadata: Metadata = {
   title: 'Top Tech Mobile Mechanic',
@@ -17,6 +18,24 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <link rel="preload" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" as="style" />
         <link rel="preload" href="/images/mobile-mechanic-kingwood-tx.png" as="image" />
+
+        {/* Google Ads tracking code */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=AW-11405049920"
+          strategy="afterInteractive"
+        />
+        <Script
+          id="gtag-init"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'AW-11405049920');
+            `,
+          }}
+        />
       </head>
       <body>
         <ClientWrapper>
