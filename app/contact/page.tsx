@@ -4,6 +4,10 @@
 import { useState } from 'react';
 import emailjs from '@emailjs/browser';
 
+interface Window {
+  gtag_report_conversion: (url?: string) => boolean;
+}
+
 export default function Contact() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
