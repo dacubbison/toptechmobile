@@ -36,6 +36,28 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             `,
           }}
         />
+
+        {/* Conversion event snippet for Request quote */}
+        <Script
+          id="conversion-event"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              function gtag_report_conversion(url) {
+                var callback = function () {
+                  if (typeof(url) != 'undefined') {
+                    window.location = url;
+                  }
+                };
+                gtag('event', 'conversion', {
+                    'send_to': 'AW-11405049920/-fyICIrmodEbEMCArb4q',
+                    'event_callback': callback
+                });
+                return false;
+              }
+            `,
+          }}
+        />
       </head>
       <body>
         <ClientWrapper>

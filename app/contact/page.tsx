@@ -1,3 +1,4 @@
+// app/contact/page.tsx
 'use client';
 
 import { useState } from 'react';
@@ -44,6 +45,11 @@ export default function Contact() {
       .then(() => {
         setStatus('success');
         setName(''); setEmail(''); setPhone(''); setVehicleDetails(''); setMessage(''); setContactPreferences([]);
+
+        // Trigger Google Ads conversion on success
+        if (typeof window.gtag_report_conversion === 'function') {
+          gtag_report_conversion();  // No URL needed since no redirect
+        }
       })
       .catch((err: any) => {
         console.error('EmailJS error:', err);
