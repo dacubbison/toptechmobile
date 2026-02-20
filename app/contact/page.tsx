@@ -5,7 +5,6 @@ import QuoteForm from '@/components/QuoteForm';
 
 export default function Contact() {
   const handleGoogleConversion = () => {
-    // Google Ads conversion tracking — EXACTLY as it was in your original code
     if (typeof gtag_report_conversion === 'function') {
       gtag_report_conversion();
     }
@@ -17,12 +16,10 @@ export default function Contact() {
       <p className="text-xl text-center mb-8">Get a Free Quote in Minutes – No Shop Visit Needed!</p>
 
       <div className="grid md:grid-cols-[2fr,1fr] gap-12">
-        {/* Left: Form gets 2/3 width so labels NEVER wrap — alignment now perfect */}
         <div className="w-full">
           <QuoteForm onSuccess={handleGoogleConversion} />
         </div>
 
-        {/* Right sidebar — exactly like your original, just a bit narrower */}
         <div className="space-y-8">
           <div className="bg-gray-50 p-8 rounded-xl text-center">
             <h2 className="text-3xl font-bold mb-6">Faster? Call or Text Me</h2>
