@@ -3,7 +3,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import { useActionState } from 'react';
-import { sendQuoteEmail } from '@/lib/quoteActions';
+import { sendQuoteEmail } from '../lib/quoteActions';   // ← fixed relative path
 
 interface QuoteFormProps {
   onSuccess?: () => void;
