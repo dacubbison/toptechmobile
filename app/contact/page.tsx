@@ -1,167 +1,28 @@
 // app/contact/page.tsx
 'use client';
 
-import { useState } from 'react';
-import emailjs from '@emailjs/browser';
+import QuoteForm from '@/components/QuoteForm';
 
 export default function Contact() {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
-  const [vehicleDetails, setVehicleDetails] = useState('');
-  const [message, setMessage] = useState('');
-  const [contactPreferences, setContactPreferences] = useState<string[]>([]);
-  const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
-
-  const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    setContactPreferences((prev) =>
-      prev.includes(value) ? prev.filter((p) => p !== value) : [...prev, value]
-    );
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setStatus('sending');
-
-    const templateParams = {
-      from_name: name,
-      reply_to: email,
-      custom_params: {
-        phone: phone || 'Not provided',
-        vehicle_details: vehicleDetails || 'Not provided',
-        contact_preferences: contactPreferences.join(', ') || 'Any method',
-      },
-      message: message,
-    };
-
-    try {
-      // Send email via EmailJS
-      await emailjs.send(
-        'service_qwd7ppr',
-        'template_eshjegs',
-        templateParams,
-        'GKtBdMlfFWUKUn7M7'
-      );
-
-      // Send SMS notification to YOU via our API route
-      await fetch('/api/send-lead-sms', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name,
-          email,
-          phone,
-          vehicleDetails,
-          contactPreferences,
-          message,
-        }),
-      });
-
-      setStatus('success');
-      setName('');
-      setEmail('');
-      setPhone('');
-      setVehicleDetails('');
-      setMessage('');
-      setContactPreferences([]);
-
-      // Google Ads conversion tracking
-      if (typeof gtag_report_conversion === 'function') {
-        gtag_report_conversion();
-      }
-    } catch (err: any) {
-      console.error('Form submission error:', err);
-      setStatus('error');
+  const handleGoogleConversion = () => {
+    // Google Ads conversion tracking — EXACTLY as it was in your original code
+    if (typeof gtag_report_conversion === 'function') {
+      gtag_report_conversion();
     }
   };
 
   return (
-    <main className="py-16 max-w-5xl mx-auto px-6">
+    <main className="py-16 max-w-7xl mx-auto px-6">
       <h1 className="text-4xl md:text-5xl font-black text-center mb-12">Contact Top Tech Mobile</h1>
       <p className="text-xl text-center mb-8">Get a Free Quote in Minutes – No Shop Visit Needed!</p>
 
-      <div className="grid md:grid-cols-2 gap-12">
-        <div className="bg-white p-8 rounded-xl shadow-xl">
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <input
-              type="text"
-              placeholder="Your Name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              required
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-600"
-            />
-            <input
-              type="email"
-              placeholder="Your Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-600"
-            />
-            <input
-              type="tel"
-              placeholder="Your Phone – for lightning-fast quotes via text or call"
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-600"
-            />
-            {phone && (
-              <div className="space-y-2">
-                <p className="text-sm font-medium">Preferred contact method (optional):</p>
-                <div className="flex space-x-4">
-                  <label className="flex items-center">
-                    <input type="checkbox" value="Call" checked={contactPreferences.includes('Call')} onChange={handleCheckboxChange} className="mr-2" />
-                    Call
-                  </label>
-                  <label className="flex items-center">
-                    <input type="checkbox" value="Text" checked={contactPreferences.includes('Text')} onChange={handleCheckboxChange} className="mr-2" />
-                    Text
-                  </label>
-                  <label className="flex items-center">
-                    <input type="checkbox" value="Email" checked={contactPreferences.includes('Email')} onChange={handleCheckboxChange} className="mr-2" />
-                    Email
-                  </label>
-                </div>
-              </div>
-            )}
-            <input
-              type="text"
-              placeholder="Vehicle Details (optional, e.g., 2019 Hyundai Santa Fe 2.4L)"
-              value={vehicleDetails}
-              onChange={(e) => setVehicleDetails(e.target.value)}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-600"
-            />
-            <textarea
-              placeholder="Message – e.g., $129 winterizing quote, brake job, etc."
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
-              required
-              rows={5}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-600"
-            ></textarea>
-
-            <button
-              type="submit"
-              disabled={status === 'sending'}
-              className="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-4 rounded-lg transition disabled:opacity-70"
-            >
-              {status === 'sending' ? 'Sending...' : 'Send Message'}
-            </button>
-
-            {status === 'success' && (
-              <div className="text-green-600 font-bold text-center">
-                <p>Message sent! I’ll hit you back ASAP 🔥</p>
-                <a href="/" className="text-blue-600 underline">Back to Home</a>
-              </div>
-            )}
-            {status === 'error' && (
-              <p className="text-red-600 text-center">Oops – try again or call/text me at 936-529-4748</p>
-            )}
-          </form>
+      <div className="grid md:grid-cols-[2fr,1fr] gap-12">
+        {/* Left: Form gets 2/3 width so labels NEVER wrap — alignment now perfect */}
+        <div className="w-full">
+          <QuoteForm onSuccess={handleGoogleConversion} />
         </div>
 
+        {/* Right sidebar — exactly like your original, just a bit narrower */}
         <div className="space-y-8">
           <div className="bg-gray-50 p-8 rounded-xl text-center">
             <h2 className="text-3xl font-bold mb-6">Faster? Call or Text Me</h2>
