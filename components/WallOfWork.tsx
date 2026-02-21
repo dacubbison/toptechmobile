@@ -4,11 +4,12 @@ import Image from 'next/image';
 import { useState } from 'react';
 
 const wallOfWorkImages = [
-  { src: '/images/wall-of-work/wall-of-work-rezvani-tank-front.jpg', alt: 'Rezvani Tank Front', caption: 'Rezvani Tank - Front View' },
-  { src: '/images/wall-of-work/wall-of-work-rezvani-tank-side.jpg', alt: 'Rezvani Tank Side', caption: 'Rezvani Tank - Side Profile' },
-  { src: '/images/wall-of-work/wall-of-work-rezvani-tank-rear.jpg', alt: 'Rezvani Tank Rear', caption: 'Rezvani Tank - Rear View' },
-  { src: '/images/wall-of-work/wall-of-work-rezvani-tank-engine.jpg', alt: 'Rezvani Tank Engine', caption: 'Rezvani Tank Engine Bay' },
-  { src: '/images/wall-of-work/wall-of-work-rezvani-tank-closeup-front.jpg', alt: 'Rezvani Tank Closeup', caption: 'Rezvani Tank Front Close-Up' },
+  { src: '/images/wall-of-work/wall-of-work-rezvani-supercharger-waterpump.jpg', alt: 'Rezvani Tank Supercharger Water Pump Repair', caption: 'Rezvani Tank – Supercharger Water Pump Repair' },
+  { src: '/images/wall-of-work/wall-of-work-rezvani-tank-front.jpg', alt: 'Rezvani Tank Front', caption: 'Rezvani Tank' },
+  { src: '/images/wall-of-work/wall-of-work-rezvani-tank-side.jpg', alt: 'Rezvani Tank Side', caption: 'Rezvani Tank' },
+  { src: '/images/wall-of-work/wall-of-work-rezvani-tank-rear.jpg', alt: 'Rezvani Tank Rear', caption: 'Rezvani Tank' },
+  { src: '/images/wall-of-work/wall-of-work-rezvani-tank-engine.jpg', alt: 'Rezvani Tank Engine', caption: 'Rezvani Tank' },
+  { src: '/images/wall-of-work/wall-of-work-rezvani-tank-closeup-front.jpg', alt: 'Rezvani Tank Closeup', caption: 'Rezvani Tank' },
   { src: '/images/wall-of-work/wall-of-work-srt-brake-before.jpg', alt: 'SRT Brake Before', caption: 'SRT Brake Job - Before' },
   { src: '/images/wall-of-work/wall-of-work-srt-drilled-slotted-rotor.jpg', alt: 'SRT Drilled Rotors', caption: 'SRT Drilled & Slotted Rotors Installed' },
   { src: '/images/wall-of-work/wall-of-work-brake-job-milwaukee.jpg', alt: 'Brake Job Milwaukee', caption: 'Brake Job with Milwaukee Tools' },

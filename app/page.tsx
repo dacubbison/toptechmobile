@@ -32,13 +32,14 @@ export default function Home() {
       </section>
 
       <About />
-      <Services />
 
-      {/* 🔥 WALL OF WORK – NEW 🔥 */}
+      {/* 🔥 WALL OF WORK – RIGHT AFTER ABOUT 🔥 */}
       <WallOfWork />
 
-      {/* 🔥 GOOGLE REVIEWS CAROUSEL – RIGHT AFTER WALL (OLD ONES GONE FOREVER) 🔥 */}
+      {/* 🔥 GOOGLE REVIEWS CAROUSEL – SMOOTH FADE + PERFECT FLOW 🔥 */}
       <GoogleReviewsCarousel />
+
+      <Services />
 
       {/* 🔥 NEW SERVICE AREAS GRID – THIS IS PURE GOLD 🔥 */}
       <section className="py-20 bg-gray-100">

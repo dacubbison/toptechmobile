@@ -18,15 +18,31 @@ const reviews = [
 export default function GoogleReviewsCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [isFading, setIsFading] = useState(false);
 
   useEffect(() => {
-    if (isPaused) return;
-    const interval = setInterval(() => setCurrentIndex((prev) => (prev + 1) % reviews.length), 5000);
+    if (isPaused || isFading) return;
+    const interval = setInterval(() => {
+      handleNext();
+    }, 5000);
     return () => clearInterval(interval);
-  }, [isPaused]);
+  }, [isPaused, isFading, currentIndex]);
 
-  const next = () => setCurrentIndex((prev) => (prev + 1) % reviews.length);
-  const prev = () => setCurrentIndex((prev) => (prev - 1 + reviews.length) % reviews.length);
+  const handleNext = () => {
+    setIsFading(true);
+    setTimeout(() => {
+      setCurrentIndex((prev) => (prev + 1) % reviews.length);
+      setIsFading(false);
+    }, 350);
+  };
+
+  const handlePrev = () => {
+    setIsFading(true);
+    setTimeout(() => {
+      setCurrentIndex((prev) => (prev - 1 + reviews.length) % reviews.length);
+      setIsFading(false);
+    }, 350);
+  };
 
   const review = reviews[currentIndex];
 
@@ -40,16 +56,18 @@ export default function GoogleReviewsCarousel() {
         </div>
 
         <div
-          className="relative bg-white rounded-3xl shadow-2xl p-10 md:p-16 min-h-[420px] flex flex-col"
+          className="relative bg-white rounded-3xl shadow-2xl p-10 md:p-16 min-h-[420px] flex flex-col overflow-hidden"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
         >
-          <div className="flex-1">
+          <div 
+            className={`flex-1 transition-opacity duration-700 ${isFading ? 'opacity-0' : 'opacity-100'}`}
+          >
             <div className="text-6xl text-green-600 mb-8">“</div>
             <p className="text-xl md:text-2xl leading-relaxed text-gray-700 italic mb-10">{review.text}</p>
           </div>
 
-          <div className="flex items-center justify-between">
+          <div className={`flex items-center justify-between transition-opacity duration-700 ${isFading ? 'opacity-0' : 'opacity-100'}`}>
             <div>
               <div className="font-bold text-2xl text-gray-900">{review.name}</div>
               <div className="text-green-600 font-medium">{review.date}</div>
@@ -58,14 +76,22 @@ export default function GoogleReviewsCarousel() {
             <div className="text-4xl">⭐⭐⭐⭐⭐</div>
           </div>
 
-          <button onClick={prev} className="absolute left-6 top-1/2 -translate-y-1/2 bg-white hover:bg-gray-100 w-14 h-14 rounded-full shadow-lg flex items-center justify-center text-3xl border">←</button>
-          <button onClick={next} className="absolute right-6 top-1/2 -translate-y-1/2 bg-white hover:bg-gray-100 w-14 h-14 rounded-full shadow-lg flex items-center justify-center text-3xl border">→</button>
+          <button onClick={handlePrev} className="absolute left-6 top-1/2 -translate-y-1/2 bg-white hover:bg-gray-100 w-14 h-14 rounded-full shadow-lg flex items-center justify-center text-3xl border transition">←</button>
+          <button onClick={handleNext} className="absolute right-6 top-1/2 -translate-y-1/2 bg-white hover:bg-gray-100 w-14 h-14 rounded-full shadow-lg flex items-center justify-center text-3xl border transition">→</button>
 
           <div className="flex justify-center gap-3 mt-10">
             {reviews.map((_, idx) => (
               <button
                 key={idx}
-                onClick={() => setCurrentIndex(idx)}
+                onClick={() => {
+                  if (idx !== currentIndex) {
+                    setIsFading(true);
+                    setTimeout(() => {
+                      setCurrentIndex(idx);
+                      setIsFading(false);
+                    }, 350);
+                  }
+                }}
                 className={`w-3 h-3 rounded-full transition-all ${idx === currentIndex ? 'bg-green-600 scale-125' : 'bg-gray-300'}`}
               />
             ))}
