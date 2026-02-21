@@ -7,6 +7,8 @@ import QuoteForm from '../components/QuoteForm';
 import Footer from '../components/Footer';
 import DynamicTestimonials from '../components/DynamicTestimonials';
 import CTAButton from '../components/CTAButton';
+import WallOfWork from '../components/WallOfWork';
+import GoogleReviewsCarousel from '../components/GoogleReviewsCarousel';
 import Link from 'next/link';
 
 export const metadata = {
@@ -17,7 +19,7 @@ export const metadata = {
 export default function Home() {
   return (
     <main>
-      <Hero /> {/* Your beautiful hero stays untouched */}
+      <Hero />
 
       {/* Small Engine Announcement */}
       <section className="bg-green-100 py-12 text-center">
@@ -32,6 +34,10 @@ export default function Home() {
 
       <About />
       <Services />
+
+      {/* 🔥 WALL OF WORK – NEW 🔥 */}
+      <WallOfWork />
+
       <DynamicTestimonials />
 
       {/* 🔥 NEW SERVICE AREAS GRID – THIS IS PURE GOLD 🔥 */}
@@ -86,6 +92,9 @@ export default function Home() {
         </div>
       </section>
 
+      {/* 🔥 GOOGLE REVIEWS CAROUSEL – NEW 🔥 */}
+      <GoogleReviewsCarousel />
+
       <QuoteForm />
       <Footer />
       <CTAButton />
@@ -125,7 +134,6 @@ export default function Home() {
               "https://www.facebook.com/profile.php?id=61553382422240",
               "https://www.instagram.com/toptechmobile3"
             ],
-            // keeping your reviews, reviews, aggregateRating, etc.
           })
         }}
       />
