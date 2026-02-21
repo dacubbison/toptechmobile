@@ -5,7 +5,6 @@ import About from '../components/About';
 import Services from '../components/Services';
 import QuoteForm from '../components/QuoteForm';
 import Footer from '../components/Footer';
-import DynamicTestimonials from '../components/DynamicTestimonials';
 import CTAButton from '../components/CTAButton';
 import WallOfWork from '../components/WallOfWork';
 import GoogleReviewsCarousel from '../components/GoogleReviewsCarousel';
@@ -38,7 +37,8 @@ export default function Home() {
       {/* 🔥 WALL OF WORK – NEW 🔥 */}
       <WallOfWork />
 
-      <DynamicTestimonials />
+      {/* 🔥 GOOGLE REVIEWS CAROUSEL – RIGHT AFTER WALL (OLD ONES GONE FOREVER) 🔥 */}
+      <GoogleReviewsCarousel />
 
       {/* 🔥 NEW SERVICE AREAS GRID – THIS IS PURE GOLD 🔥 */}
       <section className="py-20 bg-gray-100">
@@ -91,9 +91,6 @@ export default function Home() {
           <p className="mt-12 text-xl text-gray-700">Not listed? Text us anyway – we cover damn near everything north of Houston 🔥</p>
         </div>
       </section>
-
-      {/* 🔥 GOOGLE REVIEWS CAROUSEL – NEW 🔥 */}
-      <GoogleReviewsCarousel />
 
       <QuoteForm />
       <Footer />
