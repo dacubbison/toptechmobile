@@ -61,33 +61,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body>
         <ClientWrapper>
-          {/* Sticky Header - Clean professional white + green accents */}
-          <nav className="sticky top-0 z-50 bg-white border-b border-gray-100 shadow-sm">
-            <div className="max-w-7xl mx-auto px-6">
-              <div className="flex items-center justify-between py-5">
-                {/* Logo */}
-                <Link href="/" className="text-2xl font-bold text-green-700 tracking-tight">
-                  Top Tech Mobile
-                </Link>
-
-                {/* Navigation Links */}
-                <ul className="hidden md:flex gap-8 text-gray-700 font-medium">
-                  <li><Link href="/" className="hover:text-green-700 transition-colors">Home</Link></li>
-                  <li><Link href="/services" className="hover:text-green-700 transition-colors">Services</Link></li>
-                  <li><Link href="/blog" className="hover:text-green-700 transition-colors">Blog</Link></li>
-                  <li><Link href="/contact" className="hover:text-green-700 transition-colors">Contact</Link></li>
-                  <li><Link href="/about" className="hover:text-green-700 transition-colors">About</Link></li>
-                </ul>
-
-                {/* Prominent Green CTA Button */}
-                <a 
-                  href="/book"
-                  className="bg-green-600 hover:bg-green-700 active:bg-green-800 text-white px-8 py-4 rounded-2xl font-semibold text-lg shadow-lg shadow-green-600/30 transition-all flex items-center gap-2 whitespace-nowrap"
-                >
-                  Book Your Service – 936-529-4748
-                </a>
-              </div>
-            </div>
+          {/* Navbar - O.G. clean version with FIXED matching green */}
+          <nav className="bg-white border-b border-gray-100 shadow-sm sticky top-0 z-50 p-4">
+            <ul className="flex justify-center gap-6 flex-wrap text-green-700 font-medium">
+              <li><Link href="/" className="hover:text-green-600 transition-colors">Home</Link></li>
+              <li><Link href="/services" className="hover:text-green-600 transition-colors">Services</Link></li>
+              <li><Link href="/blog" className="hover:text-green-600 transition-colors">Blog</Link></li>
+              <li><Link href="/contact" className="hover:text-green-600 transition-colors">Contact</Link></li>
+              <li><Link href="/about" className="hover:text-green-600 transition-colors">About</Link></li>
+              <li><Link href="/book" className="text-green-600 font-semibold hover:text-green-700 transition-colors">Book Now</Link></li>
+            </ul>
           </nav>
 
           {children}

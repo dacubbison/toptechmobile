@@ -1,8 +1,8 @@
 // components/Hero.tsx
 'use client';
-
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import Select, { SingleValue } from 'react-select';
 import { differenceInDays } from 'date-fns';
 
@@ -62,34 +62,49 @@ export default function Hero() {
         alt="ASE Certified Master Technician"
         width={120}
         height={120}
-        className="absolute left-4 top-4 md:left-10 md:top-10 w-20 md:w-32 opacity-90"
+        className="absolute left-4 top-4 md:left-10 md:top-10 w-20 md:w-32 opacity-90 z-10"
       />
       <Image
         src="/images/ASE-logo.png"
         alt="We Support ASE"
         width={120}
         height={120}
-        className="absolute right-4 top-4 md:right-10 md:top-10 w-20 md:w-32 opacity-90"
+        className="absolute right-4 top-4 md:right-10 md:top-10 w-20 md:w-32 opacity-90 z-10"
       />
+
       {/* Hero text */}
       <div className="hero-text">
         <h1>Top Tech Mobile Mechanic: ASE-Certified</h1>
         <p>I'm your trusted on-site auto service in The Woodlands, Montgomery County, and Kingwood areas.</p>
         <p>Fair pricing—share your shop quote, and I'll often beat it by up to 50%!</p>
         <p>Call or Text me for a Free Quote: 936-529-4748</p>
-        {/* Removed expired special; added new ongoing one */}
         <p className="text-green-500 font-bold">Ongoing Special: 10% off your first service! Contact us to claim.</p>
       </div>
+
+      {/* Original two buttons */}
       <div className="hero-buttons">
-        <button onClick={toggleCallModal} className="call-now-btn" aria-label="Open contact modal for mobile mechanic in The Woodlands">Call Now</button>
-        <a 
-          href="mailto:david@toptechmobile.com?subject=Shop%20Quote%20for%20Price%20Beat&body=Hi%20David,%0A%0APlease%20find%20attached%20my%20shop%20quote%20(PDF%20or%20screenshot).%20I'd%20like%20to%20see%20if%20you%20can%20beat%20it!%0A%0AVehicle%20Details:%20[Year/Make/Model]%0AAddress/ZIP:%20[Your%20Address]%0AContact:%20[Phone/Email]%0A%0AThanks!" 
-          className="book-now-btn" 
+        <button onClick={toggleCallModal} className="call-now-btn" aria-label="Open contact modal for mobile mechanic in The Woodlands">
+          Call Now
+        </button>
+        <a
+          href="mailto:david@toptechmobile.com?subject=Shop%20Quote%20for%20Price%20Beat&body=Hi%20David,%0A%0APlease%20find%20attached%20my%20shop%20quote%20(PDF%20or%20screenshot).%20I'd%20like%20to%20see%20if%20you%20can%20beat%20it!%0A%0AVehicle%20Details:%20[Year/Make/Model]%0AAddress/ZIP:%20[Your%20Address]%0AContact:%20[Phone/Email]%0A%0AThanks!"
+          className="book-now-btn"
           aria-label="Email shop quote for auto service in Montgomery County"
         >
           Beat Quote Now
         </a>
       </div>
+
+      {/* FIXED BIG BOOK BUTTON — high z-index + pointer-events-auto so NOTHING can block clicks */}
+      <div className="mt-6 flex justify-center px-4 relative z-50">
+        <Link
+          href="/book"
+          className="bg-green-600 hover:bg-green-700 active:bg-green-800 text-white font-bold px-10 py-5 rounded-2xl text-xl shadow-lg transition-all w-full max-w-md flex items-center justify-center gap-3 cursor-pointer pointer-events-auto hover:scale-105 z-50 relative"
+        >
+          📅 Book Your Service – 936-529-4748
+        </Link>
+      </div>
+
       {isCallModalOpen && (
         <div className="modal-overlay" aria-modal="true" role="dialog">
           <div className="book-modal-content">
@@ -102,6 +117,7 @@ export default function Hero() {
           </div>
         </div>
       )}
+
       {isQuoteModalOpen && (
         <div className="modal-overlay" aria-modal="true" role="dialog">
           <div className="book-modal-content">
