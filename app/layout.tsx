@@ -2,7 +2,7 @@
 import './globals.css';
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import Script from 'next/script';  // New import for handling scripts
+import Script from 'next/script';
 import ClientWrapper from '../components/ClientWrapper';
 import FloatingWhatsApp from '@/components/FloatingWhatsApp';
 
@@ -61,15 +61,33 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body>
         <ClientWrapper>
-          {/* Navbar */}
-          <nav className="bg-navy-900 text-white p-4">
-            <ul className="flex justify-center gap-6">
-              <li><Link href="/">Home</Link></li>
-              <li><Link href="/services">Services</Link></li>
-              <li><Link href="/blog">Blog</Link></li>
-              <li><Link href="/contact">Contact</Link></li>
-              <li><Link href="/about">About</Link></li>
-            </ul>
+          {/* Sticky Header - Clean professional white + green accents */}
+          <nav className="sticky top-0 z-50 bg-white border-b border-gray-100 shadow-sm">
+            <div className="max-w-7xl mx-auto px-6">
+              <div className="flex items-center justify-between py-5">
+                {/* Logo */}
+                <Link href="/" className="text-2xl font-bold text-green-700 tracking-tight">
+                  Top Tech Mobile
+                </Link>
+
+                {/* Navigation Links */}
+                <ul className="hidden md:flex gap-8 text-gray-700 font-medium">
+                  <li><Link href="/" className="hover:text-green-700 transition-colors">Home</Link></li>
+                  <li><Link href="/services" className="hover:text-green-700 transition-colors">Services</Link></li>
+                  <li><Link href="/blog" className="hover:text-green-700 transition-colors">Blog</Link></li>
+                  <li><Link href="/contact" className="hover:text-green-700 transition-colors">Contact</Link></li>
+                  <li><Link href="/about" className="hover:text-green-700 transition-colors">About</Link></li>
+                </ul>
+
+                {/* Prominent Green CTA Button */}
+                <a 
+                  href="/book"
+                  className="bg-green-600 hover:bg-green-700 active:bg-green-800 text-white px-8 py-4 rounded-2xl font-semibold text-lg shadow-lg shadow-green-600/30 transition-all flex items-center gap-2 whitespace-nowrap"
+                >
+                  Book Your Service – 936-529-4748
+                </a>
+              </div>
+            </div>
           </nav>
 
           {children}
