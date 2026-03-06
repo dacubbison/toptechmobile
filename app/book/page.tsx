@@ -7,7 +7,7 @@ export default function BookPage() {
   const servicesWithCalendly = getAllServices().filter(s => s.calendlyLink && s.calendlyLink.length > 10);
 
   const initialService = servicesWithCalendly[0];
-  const [selectedService, setSelectedService] = useState(initialService || null);
+  const [selectedService, setSelectedService] = useState<typeof initialService | null>(initialService || null);
   const [selectedCalendly, setSelectedCalendly] = useState(initialService?.calendlyLink || '');
   const [isBookingOpen, setIsBookingOpen] = useState(false);
   const [zip, setZip] = useState('');
