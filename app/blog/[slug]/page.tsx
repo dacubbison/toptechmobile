@@ -10,6 +10,90 @@ interface Post {
 }
 
 const postData: Record<string, Post> = {
+  'mobile-brake-repair-conroe-tx': {
+    title: 'Mobile Brake Repair in Conroe TX: What to Expect',
+    content: `
+      <p>Stop-and-go traffic on I-45, SH 105, and local Conroe roads means brakes wear out faster than most people expect. As an ASE Master mobile mechanic serving Conroe, Willis, and Montgomery, here’s exactly how our brake service works.</p>
+      <h2>What We Inspect</h2>
+      <ul class="list-disc pl-6 space-y-3">
+        <li>Pad and shoe thickness</li>
+        <li>Rotor thickness, runout, and surface condition (warping is common in Texas heat)</li>
+        <li>Caliper function and slide pins</li>
+        <li>Brake hoses, lines, and fluid condition</li>
+      </ul>
+      <p>If replacement is needed, we install quality pads and rotors at your home or work and bed them in properly. No shop wait, no towing.</p>
+      <p>Serving Conroe, Willis, Montgomery, Lake Conroe, and surrounding areas. Text photos to (936) 529-4748 for a quote.</p>
+      <p>Related: <a href="/services/brake-inspection">Full brake inspection details</a> | <a href="/mobile-mechanic-conroe-tx">Mobile mechanic in Conroe</a></p>
+    `,
+    date: '2026-01-15',
+    author: 'David, Top Tech Mobile Mechanic',
+  },
+  'ac-problems-kingwood-summers': {
+    title: 'AC Problems in Kingwood Summers and How a Mobile Mechanic Fixes Them',
+    content: `
+      <p>Kingwood’s combination of heat and humidity is hard on air conditioning systems. Weak or warm air is one of the top calls we receive from the villages.</p>
+      <h2>Most Common AC Failures We See</h2>
+      <ul class="list-disc pl-6 space-y-3">
+        <li>Low refrigerant from small leaks</li>
+        <li>Failing compressors</li>
+        <li>Clogged condensers or bad condenser fans</li>
+        <li>Blend door or electrical control issues</li>
+      </ul>
+      <p>As an ASE and EPA 609 certified technician, we recover refrigerant properly, find leaks, and restore cold air at your driveway or office parking lot.</p>
+      <p>Serving all Kingwood villages. <a href="/services/ac-diagnostic-check">See AC diagnostic process</a> | <a href="/mobile-mechanic-kingwood-tx">Kingwood mobile mechanic</a></p>
+    `,
+    date: '2026-01-10',
+    author: 'David, Top Tech Mobile Mechanic',
+  },
+  'why-choose-mobile-mechanic-woodlands-tx': {
+    title: 'Why Choose a Mobile Mechanic in The Woodlands TX',
+    content: `
+      <p>More Woodlands residents are switching from traditional shops to mobile service. Here’s why.</p>
+      <ul class="list-disc pl-6 space-y-3">
+        <li><strong>Convenience</strong>: We come to your home or office near Market Street, The Woodlands Mall, or any village.</li>
+        <li><strong>ASE Master Certification</strong>: ASE ID ASE-2000-2319, current through 2027–2029. Advanced Level Specialist.</li>
+        <li><strong>Accurate Diagnostics</strong>: Professional scan tools mean we fix it right the first time.</li>
+        <li><strong>No Shop Wait</strong>: Stay productive while the work is done in your driveway.</li>
+      </ul>
+      <p>Whether you need brakes, AC, oil changes, or a check engine light diagnosis, mobile service fits the busy Woodlands lifestyle.</p>
+      <p><a href="/mobile-mechanic-the-woodlands-tx">Learn more about our Woodlands service</a></p>
+    `,
+    date: '2026-01-05',
+    author: 'David, Top Tech Mobile Mechanic',
+  },
+  'common-battery-issues-montgomery-county-updated': {
+    title: 'Common Battery Issues in Montgomery County TX (Updated)',
+    content: `
+      <p>Texas heat is the number one killer of car batteries. In The Woodlands, Conroe, Kingwood, and across Montgomery County, we replace batteries year-round because of short trips and high temperatures.</p>
+      <h2>Warning Signs</h2>
+      <ul class="list-disc pl-6 space-y-3">
+        <li>Slow cranking or clicking</li>
+        <li>Dim lights or electronics acting up</li>
+        <li>Battery light on the dash</li>
+        <li>Battery more than 3–4 years old</li>
+      </ul>
+      <p>We perform a full load test, check the alternator, and inspect cables. Most replacements are done on the spot.</p>
+      <p><a href="/services/battery-electrical-check">Battery & no-start service details</a></p>
+    `,
+    date: '2025-12-20',
+    author: 'David, Top Tech Mobile Mechanic',
+  },
+  'mobile-mechanic-vs-traditional-shop': {
+    title: 'Mobile Mechanic vs Traditional Shop: The Local Montgomery County Perspective',
+    content: `
+      <p>Both options have a place, but for most everyday repairs in The Woodlands, Conroe, and Kingwood, a mobile mechanic saves significant time.</p>
+      <h2>Key Differences</h2>
+      <ul class="list-disc pl-6 space-y-3">
+        <li><strong>Time</strong>: No driving to the shop, no waiting room, no loaner car needed.</li>
+        <li><strong>Convenience</strong>: Work is done at your home or office.</li>
+        <li><strong>Quality</strong>: ASE Master certified diagnostics and repairs with the same tools as a good shop.</li>
+        <li><strong>Transparency</strong>: You can watch the work if you want and get clear explanations.</li>
+      </ul>
+      <p>For major engine or transmission work that requires a lift, a shop is still better. For brakes, AC, diagnostics, oil changes, batteries, and most electrical issues, mobile is usually the smarter choice.</p>
+    `,
+    date: '2025-12-15',
+    author: 'David, Top Tech Mobile Mechanic',
+  },
   'why-winterize-lawn-mower-woodlands-tx': {
     title: 'Why Winterize Your Lawn Mower in The Woodlands TX: Top Tips from a Mobile Expert',
     content: `

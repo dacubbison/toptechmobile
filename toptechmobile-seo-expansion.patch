@@ -1,0 +1,1437 @@
+diff --git a/app/blog/[slug]/page.tsx b/app/blog/[slug]/page.tsx
+index c2b353e..4cca944 100644
+--- a/app/blog/[slug]/page.tsx
++++ b/app/blog/[slug]/page.tsx
+@@ -10,6 +10,90 @@ interface Post {
+ }
+ 
+ const postData: Record<string, Post> = {
++  'mobile-brake-repair-conroe-tx': {
++    title: 'Mobile Brake Repair in Conroe TX: What to Expect',
++    content: `
++      <p>Stop-and-go traffic on I-45, SH 105, and local Conroe roads means brakes wear out faster than most people expect. As an ASE Master mobile mechanic serving Conroe, Willis, and Montgomery, here’s exactly how our brake service works.</p>
++      <h2>What We Inspect</h2>
++      <ul class="list-disc pl-6 space-y-3">
++        <li>Pad and shoe thickness</li>
++        <li>Rotor thickness, runout, and surface condition (warping is common in Texas heat)</li>
++        <li>Caliper function and slide pins</li>
++        <li>Brake hoses, lines, and fluid condition</li>
++      </ul>
++      <p>If replacement is needed, we install quality pads and rotors at your home or work and bed them in properly. No shop wait, no towing.</p>
++      <p>Serving Conroe, Willis, Montgomery, Lake Conroe, and surrounding areas. Text photos to (936) 529-4748 for a quote.</p>
++      <p>Related: <a href="/services/brake-inspection">Full brake inspection details</a> | <a href="/mobile-mechanic-conroe-tx">Mobile mechanic in Conroe</a></p>
++    `,
++    date: '2026-01-15',
++    author: 'David, Top Tech Mobile Mechanic',
++  },
++  'ac-problems-kingwood-summers': {
++    title: 'AC Problems in Kingwood Summers and How a Mobile Mechanic Fixes Them',
++    content: `
++      <p>Kingwood’s combination of heat and humidity is hard on air conditioning systems. Weak or warm air is one of the top calls we receive from the villages.</p>
++      <h2>Most Common AC Failures We See</h2>
++      <ul class="list-disc pl-6 space-y-3">
++        <li>Low refrigerant from small leaks</li>
++        <li>Failing compressors</li>
++        <li>Clogged condensers or bad condenser fans</li>
++        <li>Blend door or electrical control issues</li>
++      </ul>
++      <p>As an ASE and EPA 609 certified technician, we recover refrigerant properly, find leaks, and restore cold air at your driveway or office parking lot.</p>
++      <p>Serving all Kingwood villages. <a href="/services/ac-diagnostic-check">See AC diagnostic process</a> | <a href="/mobile-mechanic-kingwood-tx">Kingwood mobile mechanic</a></p>
++    `,
++    date: '2026-01-10',
++    author: 'David, Top Tech Mobile Mechanic',
++  },
++  'why-choose-mobile-mechanic-woodlands-tx': {
++    title: 'Why Choose a Mobile Mechanic in The Woodlands TX',
++    content: `
++      <p>More Woodlands residents are switching from traditional shops to mobile service. Here’s why.</p>
++      <ul class="list-disc pl-6 space-y-3">
++        <li><strong>Convenience</strong>: We come to your home or office near Market Street, The Woodlands Mall, or any village.</li>
++        <li><strong>ASE Master Certification</strong>: ASE ID ASE-2000-2319, current through 2027–2029. Advanced Level Specialist.</li>
++        <li><strong>Accurate Diagnostics</strong>: Professional scan tools mean we fix it right the first time.</li>
++        <li><strong>No Shop Wait</strong>: Stay productive while the work is done in your driveway.</li>
++      </ul>
++      <p>Whether you need brakes, AC, oil changes, or a check engine light diagnosis, mobile service fits the busy Woodlands lifestyle.</p>
++      <p><a href="/mobile-mechanic-the-woodlands-tx">Learn more about our Woodlands service</a></p>
++    `,
++    date: '2026-01-05',
++    author: 'David, Top Tech Mobile Mechanic',
++  },
++  'common-battery-issues-montgomery-county-updated': {
++    title: 'Common Battery Issues in Montgomery County TX (Updated)',
++    content: `
++      <p>Texas heat is the number one killer of car batteries. In The Woodlands, Conroe, Kingwood, and across Montgomery County, we replace batteries year-round because of short trips and high temperatures.</p>
++      <h2>Warning Signs</h2>
++      <ul class="list-disc pl-6 space-y-3">
++        <li>Slow cranking or clicking</li>
++        <li>Dim lights or electronics acting up</li>
++        <li>Battery light on the dash</li>
++        <li>Battery more than 3–4 years old</li>
++      </ul>
++      <p>We perform a full load test, check the alternator, and inspect cables. Most replacements are done on the spot.</p>
++      <p><a href="/services/battery-electrical-check">Battery & no-start service details</a></p>
++    `,
++    date: '2025-12-20',
++    author: 'David, Top Tech Mobile Mechanic',
++  },
++  'mobile-mechanic-vs-traditional-shop': {
++    title: 'Mobile Mechanic vs Traditional Shop: The Local Montgomery County Perspective',
++    content: `
++      <p>Both options have a place, but for most everyday repairs in The Woodlands, Conroe, and Kingwood, a mobile mechanic saves significant time.</p>
++      <h2>Key Differences</h2>
++      <ul class="list-disc pl-6 space-y-3">
++        <li><strong>Time</strong>: No driving to the shop, no waiting room, no loaner car needed.</li>
++        <li><strong>Convenience</strong>: Work is done at your home or office.</li>
++        <li><strong>Quality</strong>: ASE Master certified diagnostics and repairs with the same tools as a good shop.</li>
++        <li><strong>Transparency</strong>: You can watch the work if you want and get clear explanations.</li>
++      </ul>
++      <p>For major engine or transmission work that requires a lift, a shop is still better. For brakes, AC, diagnostics, oil changes, batteries, and most electrical issues, mobile is usually the smarter choice.</p>
++    `,
++    date: '2025-12-15',
++    author: 'David, Top Tech Mobile Mechanic',
++  },
+   'why-winterize-lawn-mower-woodlands-tx': {
+     title: 'Why Winterize Your Lawn Mower in The Woodlands TX: Top Tips from a Mobile Expert',
+     content: `
+diff --git a/app/blog/page.tsx b/app/blog/page.tsx
+index bcef356..1f4e963 100644
+--- a/app/blog/page.tsx
++++ b/app/blog/page.tsx
+@@ -2,6 +2,11 @@
+ import Link from 'next/link';
+ 
+ const posts = [
++  { slug: 'mobile-brake-repair-conroe-tx', title: 'Mobile Brake Repair in Conroe TX: What to Expect', excerpt: 'Stop-and-go traffic on I-45 and local Conroe roads wears brakes fast. Learn how our ASE Master mobile brake service works and why it saves time versus a traditional shop.', date: '2026-01-15' },
++  { slug: 'ac-problems-kingwood-summers', title: 'AC Problems in Kingwood Summers and How a Mobile Mechanic Fixes Them', excerpt: 'Kingwood humidity and heat destroy air conditioning systems. Discover the most common AC failures and how we diagnose and repair them at your home.', date: '2026-01-10' },
++  { slug: 'why-choose-mobile-mechanic-woodlands-tx', title: 'Why Choose a Mobile Mechanic in The Woodlands TX', excerpt: 'Convenience, ASE Master certification, and no shop wait. Here’s why more Woodlands residents are switching to mobile service for brakes, diagnostics, AC, and oil changes.', date: '2026-01-05' },
++  { slug: 'common-battery-issues-montgomery-county-updated', title: 'Common Battery Issues in Montgomery County TX (Updated)', excerpt: 'Texas heat kills batteries. Learn the warning signs, what we test, and how mobile battery replacement works across The Woodlands, Conroe, and Kingwood.', date: '2025-12-20' },
++  { slug: 'mobile-mechanic-vs-traditional-shop', title: 'Mobile Mechanic vs Traditional Shop: The Local Montgomery County Perspective', excerpt: 'Compare time, cost, and quality. See why many drivers in The Woodlands, Conroe, and Kingwood prefer an ASE Master mobile mechanic for most repairs.', date: '2025-12-15' },
+   { slug: 'why-winterize-lawn-mower-woodlands-tx', title: 'Why Winterize Your Lawn Mower in The Woodlands TX: Top Tips from a Mobile Expert', excerpt: 'Even in mild Texas winters, winterizing protects your mower from corrosion and stale fuel. Learn why it\'s essential and how our $129 special keeps your equipment ready for spring in Montgomery County TX.', date: '2025-11-18' },
+   { slug: 'winter-car-maintenance-tips-woodlands-tx', title: 'Winter Car Maintenance Tips for The Woodlands TX Drivers', excerpt: 'Prepare your vehicle for cooler months in The Woodlands TX. From battery checks to fluid top-offs, learn essential tips to avoid breakdowns in Montgomery County\'s variable weather.', date: '2025-11-11' },
+   { slug: 'common-small-engine-problems-montgomery-county', title: 'Common Small Engine Problems and Fixes in Montgomery County TX', excerpt: 'From won\'t-start issues to carburetor clogs, discover frequent small engine problems and simple solutions for lawn mowers and generators in The Woodlands and Conroe.', date: '2025-11-04' },
+diff --git a/app/mobile-mechanic-atascocita-tx/page.tsx b/app/mobile-mechanic-atascocita-tx/page.tsx
+index 67c021c..d0baf20 100644
+--- a/app/mobile-mechanic-atascocita-tx/page.tsx
++++ b/app/mobile-mechanic-atascocita-tx/page.tsx
+@@ -1,14 +1,31 @@
+ import { Metadata } from 'next';
+ import CTAButton from '@/components/CTAButton';
++import Link from 'next/link';
++import Script from 'next/script';
+ 
+ export const metadata: Metadata = {
+-  title: 'Mobile Mechanic Atascocita TX | Car & Truck Repair At Your Home',
+-  description: 'ASE certified mobile mechanic Atascocita TX – brakes, no-start, AC, diagnostics. We come to you in Eagle Springs, Walden, Summerwood & beat shop quotes by 50%+. Text photos - (936) 529-4748',
++  title: 'Mobile Mechanic Atascocita TX | ASE Master Certified On-Site Service Eagle Springs',
++  description: 'Mobile mechanic serving Atascocita, Eagle Springs, and Walden TX. ASE Master certified diagnostics, brakes, AC, batteries at your home. Call (936) 529-4748.',
+ };
+ 
+ export default function AtascocitaMechanicPage() {
+   return (
+     <>
++      <Script
++        type="application/ld+json"
++        strategy="afterInteractive"
++        dangerouslySetInnerHTML={{
++          __html: JSON.stringify({
++            "@context": "https://schema.org",
++            "@type": "LocalBusiness",
++            "name": "Top Tech Mobile Mechanic - Atascocita TX",
++            "description": "ASE Master certified mobile mechanic serving Atascocita and surrounding areas.",
++            "telephone": "936-529-4748",
++            "url": "https://toptechmobile.com/mobile-mechanic-atascocita-tx",
++            "areaServed": "Atascocita, TX"
++          })
++        }}
++      />
+       <section 
+         className="relative min-h-screen bg-cover bg-center bg-no-repeat flex items-center justify-center text-center text-white"
+         style={{ backgroundImage: "url('https://images.unsplash.com/photo-1544636331-9576b8bf12ec?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')" }}
+@@ -20,57 +37,51 @@ export default function AtascocitaMechanicPage() {
+             Mobile Mechanic<br />Atascocita TX
+           </h1>
+           <p className="text-2xl md:text-4xl font-bold mb-10 drop-shadow-2xl">
+-            Car • Truck • SUV Repair<br />
+-            At Your Home or Neighborhood Pool
++            ASE Master Certified • Eagle Springs • Walden
+           </p>
+           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+             <CTAButton />
+             <a
+-              href="https://wa.me/19365294748?text=Hey%20David%2C%20Atascocita%20car%20issue%20-%20pics"
++              href="https://wa.me/19365294748?text=Hey%20David%2C%20Atascocita%20vehicle%20issue%20-%20here%27s%20pics"
+               className="bg-green-600 hover:bg-green-700 text-white font-bold py-5 px-10 rounded-xl text-xl shadow-2xl transition transform hover:scale-105"
+             >
+               WhatsApp / Text Photos Now
+             </a>
+           </div>
+           <p className="mt-10 text-lg opacity-95">
+-            ★ ASE Certified ★ Beat Shop Quotes by 50%+ ★ No Trip Fee in Atascocita ★ 90-Day Warranty
++            ★ ASE Master Automobile Technician ★ 20+ Years Experience ★ 90-Day Warranty
+           </p>
+         </div>
+       </section>
+ 
+-      <section className="py-24 bg-gray-50">
+-        <div className="max-w-6xl mx-auto px-6">
+-          <h2 className="text-4xl md:text-5xl font-black text-center mb-16">
+-            Why Atascocita Loves Top Tech Mobile
+-          </h2>
+-          <div className="grid md:grid-cols-2 gap-10 max-w-4xl mx-auto text-xl">
+-            <div className="flex items-start gap-4">
+-              <span className="text-4xl text-green-600">✔</span>
+-              <p>ASE-certified 20+ years – brakes, diagnostics, AC, check engine, hybrids/EVs</p>
+-            </div>
+-            <div className="flex items-start gap-4">
+-              <span className="text-4xl text-green-600">✔</span>
+-              <p>We come to Eagle Springs, Walden, Summerwood, Fall Creek, Kings River, entire Lake Houston side</p>
+-            </div>
+-            <div className="flex items-start gap-4">
+-              <span className="text-4xl text-green-600">✔</span>
+-              <p>Beat any written shop quote by 50% or more – guaranteed</p>
+-            </div>
+-            <div className="flex items-start gap-4">
+-              <span className="text-4xl text-green-600">✔</span>
+-              <p>No trip fee in 77346 / 77396</p>
+-            </div>
+-            <div className="flex items-start gap-4">
+-              <span className="text-4xl text-green-600">✔</span>
+-              <p>90-day warranty on every repair</p>
+-            </div>
+-            <div className="flex items-start gap-4">
+-              <span className="text-4xl text-green-600">✔</span>
+-              <p>Text photos → quote in minutes → same/next day</p>
+-            </div>
+-          </div>
+-          <div className="text-center mt-16">
+-            <CTAButton />
++      <section className="py-20 bg-white">
++        <div className="max-w-5xl mx-auto px-6">
++          <h2 className="text-4xl font-bold mb-8 text-center">Mobile Mechanic Service in Atascocita & Eagle Springs</h2>
++          <p className="text-xl mb-6">
++            Atascocita, Eagle Springs, and Walden residents get convenient ASE Master mobile service. We come to homes along Atascocita Road, near the lakes, and throughout the 77346 and 77396 areas so you never have to drive to a shop.
++          </p>
++          <p className="text-xl mb-6">
++            Heat and humidity create the same issues we see across the region: AC problems, battery failures, and brake wear from local traffic. We diagnose and repair on-site.
++          </p>
++          <h3 className="text-3xl font-bold mt-12 mb-6">Coverage</h3>
++          <ul className="list-disc pl-8 text-lg space-y-2 mb-8">
++            <li>Atascocita and Eagle Springs</li>
++            <li>Walden and nearby lake communities</li>
++            <li>Along Atascocita Road and FM 1960</li>
++            <li>Near local schools and commercial centers</li>
++          </ul>
++        </div>
++      </section>
++
++      <section className="py-20 bg-gray-50">
++        <div className="max-w-5xl mx-auto px-6">
++          <h2 className="text-4xl font-bold mb-10 text-center">Services Available</h2>
++          <div className="grid md:grid-cols-2 gap-6 text-lg">
++            <Link href="/services/ac-diagnostic" className="p-4 border rounded-lg hover:bg-gray-50">AC Diagnostic & Repair</Link>
++            <Link href="/services/brake-inspection" className="p-4 border rounded-lg hover:bg-gray-50">Brake Service</Link>
++            <Link href="/services/battery-electrical" className="p-4 border rounded-lg hover:bg-gray-50">Battery & Electrical</Link>
++            <Link href="/services/check-engine-light-diagnostic" className="p-4 border rounded-lg hover:bg-gray-50">Diagnostics</Link>
++            <Link href="/services/mobile-oil-change" className="p-4 border rounded-lg hover:bg-gray-50">Mobile Oil Change</Link>
+           </div>
+         </div>
+       </section>
+@@ -78,14 +89,11 @@ export default function AtascocitaMechanicPage() {
+       <section className="py-20 bg-green-700 text-white text-center">
+         <div className="max-w-5xl mx-auto px-6">
+           <h2 className="text-4xl md:text-6xl font-bold mb-8">
+-            Atascocita – Your Mechanic Comes to You<br />(936) 529-4748
++            Atascocita Mobile Mechanic<br />(936) 529-4748
+           </h2>
+           <div className="flex flex-col sm:flex-row gap-6 justify-center">
+             <CTAButton />
+-            <a
+-              href="https://wa.me/19365294748"
+-              className="bg-white text-green-700 hover:bg-gray-100 font-bold py-5 px-10 rounded-xl text-xl shadow-2xl transition transform hover:scale-105"
+-            >
++            <a href="https://wa.me/19365294748" className="bg-white text-green-700 hover:bg-gray-100 font-bold py-5 px-10 rounded-xl text-xl shadow-2xl transition transform hover:scale-105">
+               WhatsApp Chat
+             </a>
+           </div>
+@@ -93,4 +101,4 @@ export default function AtascocitaMechanicPage() {
+       </section>
+     </>
+   );
+-}
+\ No newline at end of file
++}
+diff --git a/app/mobile-mechanic-conroe-tx/page.tsx b/app/mobile-mechanic-conroe-tx/page.tsx
+index eaca0af..84e4b84 100644
+--- a/app/mobile-mechanic-conroe-tx/page.tsx
++++ b/app/mobile-mechanic-conroe-tx/page.tsx
+@@ -1,14 +1,37 @@
+ import { Metadata } from 'next';
+ import CTAButton from '@/components/CTAButton';
++import Link from 'next/link';
++import Script from 'next/script';
+ 
+ export const metadata: Metadata = {
+-  title: 'Mobile Mechanic Conroe TX | Car & Truck Repair At Your Home or Work',
+-  description: 'ASE certified mobile mechanic Conroe TX – brakes, diagnostics, AC, no-start, batteries. We come to you in Conroe, Willis, Montgomery & beat shop quotes by 50%+. Text photos for quote - (936) 529-4748',
++  title: 'Mobile Mechanic Conroe TX | ASE Master Certified On-Site Car & Truck Repair',
++  description: 'Trusted ASE Master mobile mechanic in Conroe TX. We come to you in Willis, Montgomery, Lake Conroe, Panorama Village & Cut and Shoot for diagnostics, brakes, AC, batteries, oil changes & more. Call or text (936) 529-4748.',
+ };
+ 
+ export default function ConroeMechanicPage() {
+   return (
+     <>
++      <Script
++        type="application/ld+json"
++        strategy="afterInteractive"
++        dangerouslySetInnerHTML={{
++          __html: JSON.stringify({
++            "@context": "https://schema.org",
++            "@type": "LocalBusiness",
++            "name": "Top Tech Mobile Mechanic - Conroe TX",
++            "description": "ASE Master certified mobile mechanic serving Conroe, Willis, Montgomery, and Lake Conroe TX with on-site auto repairs.",
++            "telephone": "936-529-4748",
++            "url": "https://toptechmobile.com/mobile-mechanic-conroe-tx",
++            "areaServed": "Conroe, TX",
++            "address": {
++              "@type": "PostalAddress",
++              "addressLocality": "Conroe",
++              "addressRegion": "TX",
++              "addressCountry": "US"
++            }
++          })
++        }}
++      />
+       <section 
+         className="relative min-h-screen bg-cover bg-center bg-no-repeat flex items-center justify-center text-center text-white"
+         style={{ backgroundImage: "url('https://images.unsplash.com/photo-1544636331-9576b8bf12ec?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')" }}
+@@ -20,8 +43,7 @@ export default function ConroeMechanicPage() {
+             Mobile Mechanic<br />Conroe TX
+           </h1>
+           <p className="text-2xl md:text-4xl font-bold mb-10 drop-shadow-2xl">
+-            Car • Truck • SUV Repair<br />
+-            At Your Home, Work, or Parking Lot
++            ASE Master Certified • We Come to Your Home, Work, or Parking Lot
+           </p>
+           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+             <CTAButton />
+@@ -33,52 +55,120 @@ export default function ConroeMechanicPage() {
+             </a>
+           </div>
+           <p className="mt-10 text-lg opacity-95">
+-            ★ ASE Certified ★ Beat Shop Quotes by 50%+ ★ No Trip Fee in Conroe Area ★ 90-Day Warranty
++            ★ ASE Master Automobile Technician ★ 20+ Years Experience ★ 90-Day Warranty
+           </p>
+         </div>
+       </section>
+ 
+-      <section className="py-24 bg-gray-50">
+-        <div className="max-w-6xl mx-auto px-6">
+-          <h2 className="text-4xl md:text-5xl font-black text-center mb-16">
+-            Why Conroe Trusts Top Tech Mobile
+-          </h2>
+-          <div className="grid md:grid-cols-2 gap-10 max-w-4xl mx-auto text-xl">
+-            <div className="flex items-start gap-4">
+-              <span className="text-4xl text-green-600">✔</span>
+-              <p>ASE-certified 20+ years – brakes, diagnostics, AC, check engine, hybrids/EVs</p>
++      <section className="py-20 bg-white">
++        <div className="max-w-5xl mx-auto px-6">
++          <h2 className="text-4xl font-bold mb-8 text-center">Reliable Mobile Mechanic Service in Conroe and Surrounding Areas</h2>
++          <p className="text-xl mb-6">
++            Looking for a trustworthy mobile mechanic in Conroe TX? Top Tech Mobile brings ASE Master certified expertise directly to you. Whether you’re in downtown Conroe near the Montgomery County Courthouse, out by Lake Conroe, in Willis, Montgomery, Panorama Village, or Cut and Shoot, we handle everything from check engine lights to full brake jobs without you ever leaving home or work.
++          </p>
++          <p className="text-xl mb-6">
++            Texas heat takes a toll on vehicles around Conroe. We regularly see failed AC systems, weak batteries from short trips and high temperatures, warped brake rotors, and cooling system issues. Our mobile service means you avoid towing fees and shop wait times while getting the same quality diagnostics and repairs you’d expect from a top shop.
++          </p>
++          <h3 className="text-3xl font-bold mt-12 mb-6">Neighborhoods & Roads We Serve in Conroe</h3>
++          <p className="text-lg mb-4">We cover all of Conroe and nearby communities including:</p>
++          <ul className="list-disc pl-8 text-lg space-y-2 mb-8">
++            <li>Willis and the FM 1097 / SH 75 corridor</li>
++            <li>Montgomery and the historic downtown area</li>
++            <li>Lake Conroe, including areas around the dam and waterfront communities</li>
++            <li>Panorama Village and Cut and Shoot</li>
++            <li>Along I-45, SH 105, FM 1484, and the Grand Parkway (SH 99)</li>
++            <li>Near Conroe Regional Medical Center, Lone Star College-Montgomery, and the Conroe Outlet Marketplace</li>
++          </ul>
++        </div>
++      </section>
++
++      <section className="py-20 bg-gray-50">
++        <div className="max-w-5xl mx-auto px-6">
++          <h2 className="text-4xl font-bold mb-10 text-center">Common Vehicle Issues We Fix in Conroe TX</h2>
++          <div className="grid md:grid-cols-2 gap-8">
++            <div>
++              <h3 className="text-2xl font-bold mb-4">AC & Cooling System Problems</h3>
++              <p className="text-lg">Conroe summers are brutal. Weak AC, refrigerant leaks, bad compressors, and overheating are extremely common. We diagnose and repair on-site so you stay cool.</p>
+             </div>
+-            <div className="flex items-start gap-4">
+-              <span className="text-4xl text-green-600">✔</span>
+-              <p>We come to Willis, Montgomery, Panorama Village, Cut and Shoot, Lake Conroe area</p>
++            <div>
++              <h3 className="text-2xl font-bold mb-4">Brakes & Suspension</h3>
++              <p className="text-lg">Stop-and-go traffic on I-45 and local roads wears brakes quickly. We do full brake inspections, pad and rotor replacement, and address grinding or pulsating issues.</p>
+             </div>
+-            <div className="flex items-start gap-4">
+-              <span className="text-4xl text-green-600">✔</span>
+-              <p>Beat any written shop quote by 50% or more – guaranteed</p>
++            <div>
++              <h3 className="text-2xl font-bold mb-4">Battery & No-Start Issues</h3>
++              <p className="text-lg">Heat kills batteries. If your vehicle won’t start or has slow cranking, we test the battery, alternator, and starter and replace what’s needed.</p>
+             </div>
+-            <div className="flex items-start gap-4">
+-              <span className="text-4xl text-green-600">✔</span>
+-              <p>No trip fee in Conroe / Willis / Montgomery</p>
++            <div>
++              <h3 className="text-2xl font-bold mb-4">Check Engine Light & Diagnostics</h3>
++              <p className="text-lg">Modern vehicles need proper scanning. We use professional tools to diagnose codes accurately the first time — no guessing.</p>
+             </div>
+-            <div className="flex items-start gap-4">
+-              <span className="text-4xl text-green-600">✔</span>
+-              <p>90-day warranty on every repair</p>
++          </div>
++          <div className="mt-12 text-center">
++            <Link href="/services/check-engine-light-diagnostic" className="text-blue-600 font-semibold text-lg hover:underline">See our diagnostic process →</Link>
++          </div>
++        </div>
++      </section>
++
++      <section className="py-20 bg-white">
++        <div className="max-w-5xl mx-auto px-6">
++          <h2 className="text-4xl font-bold mb-10 text-center">Services Available from Your Mobile Mechanic in Conroe</h2>
++          <div className="grid md:grid-cols-2 gap-6 text-lg">
++            <Link href="/services/check-engine-light-diagnostic" className="p-4 border rounded-lg hover:bg-gray-50">Check Engine Light Diagnostic</Link>
++            <Link href="/services/brake-inspection" className="p-4 border rounded-lg hover:bg-gray-50">Brake Inspection & Service</Link>
++            <Link href="/services/ac-diagnostic" className="p-4 border rounded-lg hover:bg-gray-50">AC Diagnostic & Repair</Link>
++            <Link href="/services/mobile-oil-change" className="p-4 border rounded-lg hover:bg-gray-50">Mobile Oil Change</Link>
++            <Link href="/services/battery-electrical" className="p-4 border rounded-lg hover:bg-gray-50">Battery & Electrical / No-Start</Link>
++            <Link href="/services/general-vehicle-diagnostic" className="p-4 border rounded-lg hover:bg-gray-50">General Vehicle Diagnostic</Link>
++          </div>
++        </div>
++      </section>
++
++      <section className="py-20 bg-gray-50">
++        <div className="max-w-4xl mx-auto px-6">
++          <h2 className="text-4xl font-bold mb-10 text-center">Frequently Asked Questions – Conroe Mobile Mechanic</h2>
++          <div className="space-y-8">
++            <div>
++              <h3 className="text-2xl font-bold mb-3">Do you really come to my house or work in Conroe?</h3>
++              <p className="text-lg">Yes. We perform the majority of repairs at your home, office, or a convenient parking lot. Just text us your location and vehicle details.</p>
+             </div>
+-            <div className="flex items-start gap-4">
+-              <span className="text-4xl text-green-600">✔</span>
+-              <p>Text photos → quote in minutes → same/next day service</p>
++            <div>
++              <h3 className="text-2xl font-bold mb-3">How fast can you get to me in the Conroe area?</h3>
++              <p className="text-lg">Same-day or next-day service is often available depending on the schedule. Text or call for the quickest response.</p>
++            </div>
++            <div>
++              <h3 className="text-2xl font-bold mb-3">Are you ASE certified?</h3>
++              <p className="text-lg">Yes — ASE Master Automobile Technician with Advanced Level Specialist certification (ASE ID: ASE-2000-2319). Certifications are current through 2027–2029.</p>
+             </div>
+           </div>
+-          <div className="text-center mt-16">
+-            <CTAButton />
+-          </div>
++          <Script
++            type="application/ld+json"
++            strategy="afterInteractive"
++            dangerouslySetInnerHTML={{
++              __html: JSON.stringify({
++                "@context": "https://schema.org",
++                "@type": "FAQPage",
++                "mainEntity": [
++                  {
++                    "@type": "Question",
++                    "name": "Do you really come to my house or work in Conroe?",
++                    "acceptedAnswer": { "@type": "Answer", "text": "Yes. We perform the majority of repairs at your home, office, or a convenient parking lot." }
++                  },
++                  {
++                    "@type": "Question",
++                    "name": "Are you ASE certified?",
++                    "acceptedAnswer": { "@type": "Answer", "text": "Yes — ASE Master Automobile Technician with Advanced Level Specialist certification (ASE ID: ASE-2000-2319). Certifications current through 2027–2029." }
++                  }
++                ]
++              })
++            }}
++          />
+         </div>
+       </section>
+ 
+       <section className="py-20 bg-green-700 text-white text-center">
+         <div className="max-w-5xl mx-auto px-6">
+           <h2 className="text-4xl md:text-6xl font-bold mb-8">
+-            Conroe – Your Mechanic Comes to You<br />(936) 529-4748
++            Ready for a Mobile Mechanic in Conroe?<br />(936) 529-4748
+           </h2>
+           <div className="flex flex-col sm:flex-row gap-6 justify-center">
+             <CTAButton />
+@@ -93,4 +183,4 @@ export default function ConroeMechanicPage() {
+       </section>
+     </>
+   );
+-}
+\ No newline at end of file
++}
+diff --git a/app/mobile-mechanic-humble-tx/page.tsx b/app/mobile-mechanic-humble-tx/page.tsx
+index cf19d31..f0dfdee 100644
+--- a/app/mobile-mechanic-humble-tx/page.tsx
++++ b/app/mobile-mechanic-humble-tx/page.tsx
+@@ -1,14 +1,31 @@
+ import { Metadata } from 'next';
+ import CTAButton from '@/components/CTAButton';
++import Link from 'next/link';
++import Script from 'next/script';
+ 
+ export const metadata: Metadata = {
+-  title: 'Mobile Mechanic Humble TX | Car & Truck Repair At Your Home',
+-  description: 'ASE certified mobile mechanic Humble TX – brakes, no-start, AC, diagnostics. Beat shop quotes by 50%+. Text photos - (936) 529-4748',
++  title: 'Mobile Mechanic Humble TX | ASE Master Certified On-Site Car Repair',
++  description: 'Mobile mechanic serving Humble, Atascocita, and Summerwood TX. ASE Master certified diagnostics, brakes, AC, batteries at your location. Call (936) 529-4748.',
+ };
+ 
+ export default function HumbleMechanicPage() {
+   return (
+     <>
++      <Script
++        type="application/ld+json"
++        strategy="afterInteractive"
++        dangerouslySetInnerHTML={{
++          __html: JSON.stringify({
++            "@context": "https://schema.org",
++            "@type": "LocalBusiness",
++            "name": "Top Tech Mobile Mechanic - Humble TX",
++            "description": "ASE Master certified mobile mechanic serving Humble and surrounding areas.",
++            "telephone": "936-529-4748",
++            "url": "https://toptechmobile.com/mobile-mechanic-humble-tx",
++            "areaServed": "Humble, TX"
++          })
++        }}
++      />
+       <section 
+         className="relative min-h-screen bg-cover bg-center bg-no-repeat flex items-center justify-center text-center text-white"
+         style={{ backgroundImage: "url('https://images.unsplash.com/photo-1544636331-9576b8bf12ec?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')" }}
+@@ -20,72 +37,60 @@ export default function HumbleMechanicPage() {
+             Mobile Mechanic<br />Humble TX
+           </h1>
+           <p className="text-2xl md:text-4xl font-bold mb-10 drop-shadow-2xl">
+-            Car • Truck • SUV Repair<br />
+-            At Your Home or Work – Full Humble Coverage
++            ASE Master Certified • Serving Humble & Atascocita
+           </p>
+           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+             <CTAButton />
+             <a
+-              href="https://wa.me/19365294748?text=Hey%20David%2C%20Humble%20car%20down%20-%20pics"
++              href="https://wa.me/19365294748?text=Hey%20David%2C%20Humble%20vehicle%20issue%20-%20here%27s%20pics"
+               className="bg-green-600 hover:bg-green-700 text-white font-bold py-5 px-10 rounded-xl text-xl shadow-2xl transition transform hover:scale-105"
+             >
+               WhatsApp / Text Photos Now
+             </a>
+           </div>
+           <p className="mt-10 text-lg opacity-95">
+-            ★ ASE Certified ★ Beat Shop Quotes by 50%+
++            ★ ASE Master Automobile Technician ★ 20+ Years Experience ★ 90-Day Warranty
+           </p>
+         </div>
+       </section>
+ 
+-      <section className="py-24 bg-gray-50">
+-        <div className="max-w-6xl mx-auto px-6">
+-          <h2 className="text-4xl md:text-5xl font-black text-center mb-16">
+-            Why Humble & Atascocita Choose Top Tech Mobile
+-          </h2>
+-          <div className="grid md:grid-cols-2 gap-10 max-w-4xl mx-auto text-xl">
+-            <div className="flex items-start gap-4">
+-              <span className="text-4xl text-green-600">✔</span>
+-              <p>ASE-certified 20+ years – brakes, diagnostics, AC, check engine, hybrids/EVs</p>
+-            </div>
+-            <div className="flex items-start gap-4">
+-              <span className="text-4xl text-green-600">✔</span>
+-              <p>We come to Atascocita, Summerwood, Fall Creek, Kings River – every neighborhood</p>
+-            </div>
+-            <div className="flex items-start gap-4">
+-              <span className="text-4xl text-green-600">✔</span>
+-              <p>Beat any written shop quote by 50% or more – guaranteed</p>
+-            </div>
+-            <div className="flex items-start gap-4">
+-              <span className="text-4xl text-green-600">✔</span>
+-              <p>Text photos → quote in minutes → same/next day service</p>
+-            </div>
+-          </div>
++      <section className="py-20 bg-white">
++        <div className="max-w-5xl mx-auto px-6">
++          <h2 className="text-4xl font-bold mb-8 text-center">Convenient Mobile Mechanic Service in Humble TX</h2>
++          <p className="text-xl mb-6">
++            Humble and the surrounding Atascocita and Summerwood communities get the same ASE Master level service as our other areas. We come to homes near Humble High School, along FM 1960, near the Deerbrook Mall area, and throughout the 77338 and 77346 zip codes.
++          </p>
++          <p className="text-xl mb-6">
++            Traffic on FM 1960 and US 59 creates brake wear, while the heat causes frequent battery and AC issues. We handle diagnostics, repairs, oil changes, and more at your location so you stay productive.
++          </p>
++          <h3 className="text-3xl font-bold mt-12 mb-6">Areas We Cover Around Humble</h3>
++          <ul className="list-disc pl-8 text-lg space-y-2 mb-8">
++            <li>Humble proper and near downtown Humble</li>
++            <li>Atascocita and Summerwood</li>
++            <li>Along FM 1960, US 59 / I-69, and Will Clayton Parkway</li>
++            <li>Near Deerbrook Mall, Humble Civic Center, and local schools</li>
++          </ul>
++        </div>
++      </section>
+ 
+-          <h2 className="text-4xl md:text-5xl font-black text-center mt-16 mb-8">
+-            Common Repairs in Humble TX
+-          </h2>
+-          <div className="grid md:grid-cols-2 gap-10 max-w-4xl mx-auto text-xl">
+-            <div className="flex items-start gap-4">
+-              <span className="text-4xl text-green-600">✔</span>
+-              <p>Flood-related battery corrosion from Lake Houston rains – quick mobile swaps</p>
+-            </div>
+-            <div className="flex items-start gap-4">
+-              <span className="text-4xl text-green-600">✔</span>
+-              <p>AC recharges for Humble's humid summers in Atascocita neighborhoods</p>
+-            </div>
+-            <div className="flex items-start gap-4">
+-              <span className="text-4xl text-green-600">✔</span>
+-              <p>Brake fixes for stop-and-go on FM 1960 and Highway 59</p>
++      <section className="py-20 bg-gray-50">
++        <div className="max-w-5xl mx-auto px-6">
++          <h2 className="text-4xl font-bold mb-10 text-center">Services & Common Issues in Humble</h2>
++          <div className="grid md:grid-cols-2 gap-8">
++            <div>
++              <h3 className="text-2xl font-bold mb-4">AC & Battery Problems</h3>
++              <p className="text-lg">Texas heat is hard on both. We diagnose and repair on-site.</p>
+             </div>
+-            <div className="flex items-start gap-4">
+-              <span className="text-4xl text-green-600">✔</span>
+-              <p>Check engine light diagnostics for older trucks in Fall Creek</p>
++            <div>
++              <h3 className="text-2xl font-bold mb-4">Brakes & Diagnostics</h3>
++              <p className="text-lg">Full brake service and accurate check engine light diagnosis available.</p>
+             </div>
+           </div>
+-
+-          <div className="text-center mt-16">
+-            <CTAButton />
++          <div className="mt-10 grid md:grid-cols-2 gap-6 text-lg">
++            <Link href="/services/ac-diagnostic" className="p-4 border rounded-lg hover:bg-gray-50">AC Diagnostic</Link>
++            <Link href="/services/brake-inspection" className="p-4 border rounded-lg hover:bg-gray-50">Brake Service</Link>
++            <Link href="/services/battery-electrical" className="p-4 border rounded-lg hover:bg-gray-50">Battery & No-Start</Link>
++            <Link href="/services/mobile-oil-change" className="p-4 border rounded-lg hover:bg-gray-50">Oil Change</Link>
+           </div>
+         </div>
+       </section>
+@@ -93,14 +98,11 @@ export default function HumbleMechanicPage() {
+       <section className="py-20 bg-green-700 text-white text-center">
+         <div className="max-w-5xl mx-auto px-6">
+           <h2 className="text-4xl md:text-6xl font-bold mb-8">
+-            Humble – Your Mechanic Comes to You<br />(936) 529-4748
++            Humble Mobile Mechanic Ready<br />(936) 529-4748
+           </h2>
+           <div className="flex flex-col sm:flex-row gap-6 justify-center">
+             <CTAButton />
+-            <a
+-              href="https://wa.me/19365294748"
+-              className="bg-white text-green-700 hover:bg-gray-100 font-bold py-5 px-10 rounded-xl text-xl shadow-2xl transition transform hover:scale-105"
+-            >
++            <a href="https://wa.me/19365294748" className="bg-white text-green-700 hover:bg-gray-100 font-bold py-5 px-10 rounded-xl text-xl shadow-2xl transition transform hover:scale-105">
+               WhatsApp Chat
+             </a>
+           </div>
+@@ -108,4 +110,4 @@ export default function HumbleMechanicPage() {
+       </section>
+     </>
+   );
+-}
+\ No newline at end of file
++}
+diff --git a/app/mobile-mechanic-kingwood-tx/page.tsx b/app/mobile-mechanic-kingwood-tx/page.tsx
+index 51933a0..9667830 100644
+--- a/app/mobile-mechanic-kingwood-tx/page.tsx
++++ b/app/mobile-mechanic-kingwood-tx/page.tsx
+@@ -1,14 +1,31 @@
+ import { Metadata } from 'next';
+ import CTAButton from '@/components/CTAButton';
++import Link from 'next/link';
++import Script from 'next/script';
+ 
+ export const metadata: Metadata = {
+-  title: 'Mobile Mechanic Kingwood TX | Car & Truck Repair At Your Home or Work',
+-  description: 'ASE certified mobile mechanic Kingwood TX – brakes, no-start, AC, diagnostics, batteries. We come to you in all villages & beat shop quotes by 50%+. Text photos for quote - (936) 529-4748',
++  title: 'Mobile Mechanic Kingwood TX | ASE Master Certified On-Site Repair All Villages',
++  description: 'ASE Master mobile mechanic serving all of Kingwood TX villages. Brakes, AC, diagnostics, batteries, oil changes at your home or work. Call or text (936) 529-4748 for fast service.',
+ };
+ 
+ export default function KingwoodMechanicPage() {
+   return (
+     <>
++      <Script
++        type="application/ld+json"
++        strategy="afterInteractive"
++        dangerouslySetInnerHTML={{
++          __html: JSON.stringify({
++            "@context": "https://schema.org",
++            "@type": "LocalBusiness",
++            "name": "Top Tech Mobile Mechanic - Kingwood TX",
++            "description": "ASE Master certified mobile mechanic serving Kingwood TX and surrounding areas with on-site auto repairs.",
++            "telephone": "936-529-4748",
++            "url": "https://toptechmobile.com/mobile-mechanic-kingwood-tx",
++            "areaServed": "Kingwood, TX"
++          })
++        }}
++      />
+       <section 
+         className="relative min-h-screen bg-cover bg-center bg-no-repeat flex items-center justify-center text-center text-white"
+         style={{ backgroundImage: "url('https://images.unsplash.com/photo-1544636331-9576b8bf12ec?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')" }}
+@@ -20,72 +37,131 @@ export default function KingwoodMechanicPage() {
+             Mobile Mechanic<br />Kingwood TX
+           </h1>
+           <p className="text-2xl md:text-4xl font-bold mb-10 drop-shadow-2xl">
+-            Car • Truck • SUV Repair<br />
+-            At Your Home, Work, or HEB Parking Lot
++            ASE Master Certified • All Villages Covered
+           </p>
+           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+             <CTAButton />
+             <a
+-              href="https://wa.me/19365294748?text=Hey%20David%2C%20my%20truck%20won%27t%20start%20-%20here%27s%20pics"
++              href="https://wa.me/19365294748?text=Hey%20David%2C%20Kingwood%20vehicle%20issue%20-%20here%27s%20pics"
+               className="bg-green-600 hover:bg-green-700 text-white font-bold py-5 px-10 rounded-xl text-xl shadow-2xl transition transform hover:scale-105"
+             >
+               WhatsApp / Text Photos Now
+             </a>
+           </div>
+           <p className="mt-10 text-lg opacity-95">
+-            ★ ASE Certified ★ Beat Shop Quotes by 50%+ ★ No Trip Fee in Kingwood ★ 90-Day Warranty
++            ★ ASE Master Automobile Technician ★ 20+ Years Experience ★ 90-Day Warranty
+           </p>
+         </div>
+       </section>
+ 
+-      <section className="py-24 bg-gray-50">
+-        <div className="max-w-6xl mx-auto px-6">
+-          <h2 className="text-4xl md:text-5xl font-black text-center mb-16">
+-            Why Kingwood Trusts Top Tech Mobile
+-          </h2>
+-          <div className="grid md:grid-cols-2 gap-10 max-w-4xl mx-auto text-xl">
+-            <div className="flex items-start gap-4">
+-              <span className="text-4xl text-green-600">✔</span>
+-              <p>ASE-certified with 20+ years – brakes, diagnostics, AC, check engine, hybrids/EVs</p>
++      <section className="py-20 bg-white">
++        <div className="max-w-5xl mx-auto px-6">
++          <h2 className="text-4xl font-bold mb-8 text-center">Trusted Mobile Mechanic Across All of Kingwood</h2>
++          <p className="text-xl mb-6">
++            Kingwood residents know the convenience of a true mobile mechanic. Top Tech Mobile serves every village — from Kingwood Greens and Forest Cove to Trailwood, Elm Grove, and Bear Branch. We come to your driveway, office parking lot, or near Kingwood Town Center so you never have to deal with shop traffic or waiting rooms.
++          </p>
++          <p className="text-xl mb-6">
++            The humidity and heat around Lake Houston and the San Jacinto River create unique challenges: frequent AC failures, battery drain, and brake wear from stop-and-go traffic on Kingwood Drive, Northpark Drive, and FM 1960. Our ASE Master technician diagnoses and repairs these issues on-site with professional-grade tools.
++          </p>
++          <h3 className="text-3xl font-bold mt-12 mb-6">Kingwood Villages & Areas We Cover</h3>
++          <ul className="list-disc pl-8 text-lg space-y-2 mb-8">
++            <li>Kingwood Greens, Forest Cove, Trailwood, Elm Grove</li>
++            <li>Bear Branch, Sand Creek, Greentree, and Hunters Ridge</li>
++            <li>Near Kingwood Town Center, Kingwood High School, and Lone Star College-Kingwood</li>
++            <li>Along Kingwood Drive, Northpark Drive, West Lake Houston Parkway, and FM 1960</li>
++            <li>Areas near Lake Houston and the San Jacinto River</li>
++          </ul>
++        </div>
++      </section>
++
++      <section className="py-20 bg-gray-50">
++        <div className="max-w-5xl mx-auto px-6">
++          <h2 className="text-4xl font-bold mb-10 text-center">Common Problems We Solve in Kingwood Summers</h2>
++          <div className="grid md:grid-cols-2 gap-8">
++            <div>
++              <h3 className="text-2xl font-bold mb-4">AC Failures in High Humidity</h3>
++              <p className="text-lg">Weak or warm AC is one of the top calls we get. Refrigerant leaks, compressor issues, and condenser problems are common after long Texas summers.</p>
++            </div>
++            <div>
++              <h3 className="text-2xl font-bold mb-4">Battery & Electrical No-Starts</h3>
++              <p className="text-lg">Heat and short trips around the villages kill batteries quickly. We test and replace on the spot.</p>
+             </div>
+-            <div className="flex items-start gap-4">
+-              <span className="text-4xl text-green-600">✔</span>
+-              <p>We come to every village – Trailwood, Kings Point, Fosters Mill, etc.</p>
++            <div>
++              <h3 className="text-2xl font-bold mb-4">Brake Service</h3>
++              <p className="text-lg">Heavy traffic on the main roads means frequent brake jobs. We inspect, replace pads/rotors, and address noise or vibration.</p>
+             </div>
+-            <div className="flex items-start gap-4">
+-              <span className="text-4xl text-green-600">✔</span>
+-              <p>Beat any written shop quote by 50% or more – guaranteed</p>
++            <div>
++              <h3 className="text-2xl font-bold mb-4">Check Engine Light Diagnostics</h3>
++              <p className="text-lg">Accurate first-visit diagnosis using professional scan tools so the light stays off.</p>
+             </div>
+-            <div className="flex items-start gap-4">
+-              <span className="text-4xl text-green-600">✔</span>
+-              <p>No trip fee in 77339 / 77345 / 77325</p>
++          </div>
++        </div>
++      </section>
++
++      <section className="py-20 bg-white">
++        <div className="max-w-5xl mx-auto px-6">
++          <h2 className="text-4xl font-bold mb-10 text-center">Services Available in Kingwood</h2>
++          <div className="grid md:grid-cols-2 gap-6 text-lg">
++            <Link href="/services/ac-diagnostic" className="p-4 border rounded-lg hover:bg-gray-50">AC Diagnostic & Repair</Link>
++            <Link href="/services/brake-inspection" className="p-4 border rounded-lg hover:bg-gray-50">Brake Inspection & Service</Link>
++            <Link href="/services/battery-electrical" className="p-4 border rounded-lg hover:bg-gray-50">Battery & No-Start Repair</Link>
++            <Link href="/services/mobile-oil-change" className="p-4 border rounded-lg hover:bg-gray-50">Mobile Oil Change</Link>
++            <Link href="/services/check-engine-light-diagnostic" className="p-4 border rounded-lg hover:bg-gray-50">Check Engine Light Diagnostic</Link>
++            <Link href="/services/general-vehicle-diagnostic" className="p-4 border rounded-lg hover:bg-gray-50">General Diagnostic</Link>
++          </div>
++        </div>
++      </section>
++
++      <section className="py-20 bg-gray-50">
++        <div className="max-w-4xl mx-auto px-6">
++          <h2 className="text-4xl font-bold mb-10 text-center">Kingwood Mobile Mechanic FAQs</h2>
++          <div className="space-y-8">
++            <div>
++              <h3 className="text-2xl font-bold mb-3">Do you cover every Kingwood village?</h3>
++              <p className="text-lg">Yes. From the older established villages to newer developments, we service the entire Kingwood area.</p>
+             </div>
+-            <div className="flex items-start gap-4">
+-              <span className="text-4xl text-green-600">✔</span>
+-              <p>90-day warranty on every repair</p>
++            <div>
++              <h3 className="text-2xl font-bold mb-3">How do I get a quote?</h3>
++              <p className="text-lg">Text photos of your vehicle and a description of the issue to (936) 529-4748 or use WhatsApp. Most quotes come back the same day.</p>
+             </div>
+-            <div className="flex items-start gap-4">
+-              <span className="text-4xl text-green-600">✔</span>
+-              <p>Text photos → quote in minutes → same or next day</p>
++            <div>
++              <h3 className="text-2xl font-bold mb-3">Are certifications current?</h3>
++              <p className="text-lg">Yes — ASE Master Automobile Technician, Advanced Level Specialist, ASE ID ASE-2000-2319, current through 2027–2029.</p>
+             </div>
+           </div>
+-          <div className="text-center mt-16">
+-            <CTAButton />
+-          </div>
++          <Script
++            type="application/ld+json"
++            strategy="afterInteractive"
++            dangerouslySetInnerHTML={{
++              __html: JSON.stringify({
++                "@context": "https://schema.org",
++                "@type": "FAQPage",
++                "mainEntity": [
++                  {
++                    "@type": "Question",
++                    "name": "Do you cover every Kingwood village?",
++                    "acceptedAnswer": { "@type": "Answer", "text": "Yes. We service the entire Kingwood area including all villages." }
++                  },
++                  {
++                    "@type": "Question",
++                    "name": "Are certifications current?",
++                    "acceptedAnswer": { "@type": "Answer", "text": "Yes — ASE Master Automobile Technician with certifications current through 2027–2029." }
++                  }
++                ]
++              })
++            }}
++          />
+         </div>
+       </section>
+ 
+       <section className="py-20 bg-green-700 text-white text-center">
+         <div className="max-w-5xl mx-auto px-6">
+           <h2 className="text-4xl md:text-6xl font-bold mb-8">
+-            Kingwood – Your Mechanic Comes to You<br />(936) 529-4748
++            Need a Mobile Mechanic in Kingwood?<br />(936) 529-4748
+           </h2>
+           <div className="flex flex-col sm:flex-row gap-6 justify-center">
+             <CTAButton />
+-            <a
+-              href="https://wa.me/19365294748"
+-              className="bg-white text-green-700 hover:bg-gray-100 font-bold py-5 px-10 rounded-xl text-xl shadow-2xl transition transform hover:scale-105"
+-            >
++            <a href="https://wa.me/19365294748" className="bg-white text-green-700 hover:bg-gray-100 font-bold py-5 px-10 rounded-xl text-xl shadow-2xl transition transform hover:scale-105">
+               WhatsApp Chat
+             </a>
+           </div>
+@@ -93,4 +169,4 @@ export default function KingwoodMechanicPage() {
+       </section>
+     </>
+   );
+-}
+\ No newline at end of file
++}
+diff --git a/app/mobile-mechanic-porter-tx/page.tsx b/app/mobile-mechanic-porter-tx/page.tsx
+index c67bd73..2459b5e 100644
+--- a/app/mobile-mechanic-porter-tx/page.tsx
++++ b/app/mobile-mechanic-porter-tx/page.tsx
+@@ -1,14 +1,31 @@
+ import { Metadata } from 'next';
+ import CTAButton from '@/components/CTAButton';
++import Link from 'next/link';
++import Script from 'next/script';
+ 
+ export const metadata: Metadata = {
+-  title: 'Mobile Mechanic Porter TX | Car & Truck Repair At Your Home',
+-  description: 'ASE certified mobile mechanic Porter TX – brakes, no-start, AC, diagnostics. We come to you in Porter, New Caney, Splendora & beat shop quotes by 50%+. Text photos - (936) 529-4748',
++  title: 'Mobile Mechanic Porter TX | ASE Master Certified On-Site Repair New Caney & Splendora',
++  description: 'Mobile mechanic serving Porter, New Caney, and Splendora TX. ASE Master certified service for brakes, AC, diagnostics, batteries. Call (936) 529-4748.',
+ };
+ 
+ export default function PorterMechanicPage() {
+   return (
+     <>
++      <Script
++        type="application/ld+json"
++        strategy="afterInteractive"
++        dangerouslySetInnerHTML={{
++          __html: JSON.stringify({
++            "@context": "https://schema.org",
++            "@type": "LocalBusiness",
++            "name": "Top Tech Mobile Mechanic - Porter TX",
++            "description": "ASE Master certified mobile mechanic serving Porter, New Caney, and Splendora.",
++            "telephone": "936-529-4748",
++            "url": "https://toptechmobile.com/mobile-mechanic-porter-tx",
++            "areaServed": "Porter, TX"
++          })
++        }}
++      />
+       <section 
+         className="relative min-h-screen bg-cover bg-center bg-no-repeat flex items-center justify-center text-center text-white"
+         style={{ backgroundImage: "url('https://images.unsplash.com/photo-1544636331-9576b8bf12ec?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')" }}
+@@ -20,72 +37,51 @@ export default function PorterMechanicPage() {
+             Mobile Mechanic<br />Porter TX
+           </h1>
+           <p className="text-2xl md:text-4xl font-bold mb-10 drop-shadow-2xl">
+-            Car • Truck • SUV Repair<br />
+-            At Your Home or Work – Porter Heights to Splendora
++            ASE Master Certified • New Caney • Splendora
+           </p>
+           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+             <CTAButton />
+             <a
+-              href="https://wa.me/19365294748?text=Hey%20David%2C%20Porter%20vehicle%20down%20-%20here%27s%20pics"
++              href="https://wa.me/19365294748?text=Hey%20David%2C%20Porter%20vehicle%20issue%20-%20here%27s%20pics"
+               className="bg-green-600 hover:bg-green-700 text-white font-bold py-5 px-10 rounded-xl text-xl shadow-2xl transition transform hover:scale-105"
+             >
+               WhatsApp / Text Photos Now
+             </a>
+           </div>
+           <p className="mt-10 text-lg opacity-95">
+-            ★ ASE Certified ★ Beat Shop Quotes by 50%+
++            ★ ASE Master Automobile Technician ★ 20+ Years Experience ★ 90-Day Warranty
+           </p>
+         </div>
+       </section>
+ 
+-      <section className="py-24 bg-gray-50">
+-        <div className="max-w-6xl mx-auto px-6">
+-          <h2 className="text-4xl md:text-5xl font-black text-center mb-16">
+-            Why Porter & New Caney Choose Top Tech Mobile
+-          </h2>
+-          <div className="grid md:grid-cols-2 gap-10 max-w-4xl mx-auto text-xl">
+-            <div className="flex items-start gap-4">
+-              <span className="text-4xl text-green-600">✔</span>
+-              <p>ASE-certified 20+ years – brakes, diagnostics, AC, check engine, hybrids/EVs</p>
+-            </div>
+-            <div className="flex items-start gap-4">
+-              <span className="text-4xl text-green-600">✔</span>
+-              <p>We come to Porter Heights, Kingwood border, Splendora, New Caney, Valley Ranch</p>
+-            </div>
+-            <div className="flex items-start gap-4">
+-              <span className="text-4xl text-green-600">✔</span>
+-              <p>Beat any written shop quote by 50% or more – guaranteed</p>
+-            </div>
+-            <div className="flex items-start gap-4">
+-              <span className="text-4xl text-green-600">✔</span>
+-              <p>Text photos → quote in minutes → same/next day</p>
+-            </div>
+-          </div>
+-
+-          <h2 className="text-4xl md:text-5xl font-black text-center mt-16 mb-8">
+-            Common Repairs in Porter TX
+-          </h2>
+-          <div className="grid md:grid-cols-2 gap-10 max-w-4xl mx-auto text-xl">
+-            <div className="flex items-start gap-4">
+-              <span className="text-4xl text-green-600">✔</span>
+-              <p>Suspension fixes for bumpy rural roads in Porter Heights and New Caney</p>
+-            </div>
+-            <div className="flex items-start gap-4">
+-              <span className="text-4xl text-green-600">✔</span>
+-              <p>No-start diagnostics for trucks in Valley Ranch after heavy rains</p>
+-            </div>
+-            <div className="flex items-start gap-4">
+-              <span className="text-4xl text-green-600">✔</span>
+-              <p>AC repairs for humid commutes along East River Drive</p>
+-            </div>
+-            <div className="flex items-start gap-4">
+-              <span className="text-4xl text-green-600">✔</span>
+-              <p>Brake service for stop-and-go in Splendora traffic</p>
+-            </div>
+-          </div>
++      <section className="py-20 bg-white">
++        <div className="max-w-5xl mx-auto px-6">
++          <h2 className="text-4xl font-bold mb-8 text-center">Mobile Mechanic Service for Porter, New Caney & Splendora</h2>
++          <p className="text-xl mb-6">
++            Porter and the growing New Caney and Splendora areas get full ASE Master mobile service. We come to homes along US 59, FM 1485, and near the new developments, as well as the more rural stretches toward Splendora.
++          </p>
++          <p className="text-xl mb-6">
++            Heat, humidity, and longer drives create the usual Texas issues: AC problems, battery failures, and brake wear. We handle them at your location.
++          </p>
++          <h3 className="text-3xl font-bold mt-12 mb-6">Coverage Area</h3>
++          <ul className="list-disc pl-8 text-lg space-y-2 mb-8">
++            <li>Porter and the 77365 area</li>
++            <li>New Caney and along the US 59 corridor</li>
++            <li>Splendora and surrounding rural roads</li>
++            <li>Near local schools and commercial areas along FM 1485</li>
++          </ul>
++        </div>
++      </section>
+ 
+-          <div className="text-center mt-16">
+-            <CTAButton />
++      <section className="py-20 bg-gray-50">
++        <div className="max-w-5xl mx-auto px-6">
++          <h2 className="text-4xl font-bold mb-10 text-center">Services Available</h2>
++          <div className="grid md:grid-cols-2 gap-6 text-lg">
++            <Link href="/services/check-engine-light-diagnostic" className="p-4 border rounded-lg hover:bg-gray-50">Diagnostics</Link>
++            <Link href="/services/ac-diagnostic" className="p-4 border rounded-lg hover:bg-gray-50">AC Repair</Link>
++            <Link href="/services/brake-inspection" className="p-4 border rounded-lg hover:bg-gray-50">Brake Service</Link>
++            <Link href="/services/battery-electrical" className="p-4 border rounded-lg hover:bg-gray-50">Battery Replacement</Link>
++            <Link href="/services/mobile-oil-change" className="p-4 border rounded-lg hover:bg-gray-50">Oil Change</Link>
+           </div>
+         </div>
+       </section>
+@@ -93,14 +89,11 @@ export default function PorterMechanicPage() {
+       <section className="py-20 bg-green-700 text-white text-center">
+         <div className="max-w-5xl mx-auto px-6">
+           <h2 className="text-4xl md:text-6xl font-bold mb-8">
+-            Porter – Your Mechanic Comes to You<br />(936) 529-4748
++            Porter Area Mobile Mechanic<br />(936) 529-4748
+           </h2>
+           <div className="flex flex-col sm:flex-row gap-6 justify-center">
+             <CTAButton />
+-            <a
+-              href="https://wa.me/19365294748"
+-              className="bg-white text-green-700 hover:bg-gray-100 font-bold py-5 px-10 rounded-xl text-xl shadow-2xl transition transform hover:scale-105"
+-            >
++            <a href="https://wa.me/19365294748" className="bg-white text-green-700 hover:bg-gray-100 font-bold py-5 px-10 rounded-xl text-xl shadow-2xl transition transform hover:scale-105">
+               WhatsApp Chat
+             </a>
+           </div>
+@@ -108,4 +101,4 @@ export default function PorterMechanicPage() {
+       </section>
+     </>
+   );
+-}
+\ No newline at end of file
++}
+diff --git a/app/mobile-mechanic-the-woodlands-tx/page.tsx b/app/mobile-mechanic-the-woodlands-tx/page.tsx
+index 232a0cd..6bdd9ad 100644
+--- a/app/mobile-mechanic-the-woodlands-tx/page.tsx
++++ b/app/mobile-mechanic-the-woodlands-tx/page.tsx
+@@ -1,14 +1,31 @@
+ import { Metadata } from 'next';
+ import CTAButton from '@/components/CTAButton';
++import Link from 'next/link';
++import Script from 'next/script';
+ 
+ export const metadata: Metadata = {
+-  title: 'Mobile Mechanic The Woodlands TX | Car & Truck Repair At Your Home',
+-  description: 'ASE certified mobile mechanic The Woodlands TX – brakes, no-start, AC, diagnostics, batteries. We come to you in all villages & beat shop quotes by 50%+. Text photos for quote - (936) 529-4748',
++  title: 'Mobile Mechanic The Woodlands TX | ASE Master Certified On-Site Service',
++  description: 'ASE Master mobile mechanic in The Woodlands TX. Serving all villages with diagnostics, brakes, AC, oil changes, batteries and more at your home or office. Call (936) 529-4748.',
+ };
+ 
+ export default function WoodlandsMechanicPage() {
+   return (
+     <>
++      <Script
++        type="application/ld+json"
++        strategy="afterInteractive"
++        dangerouslySetInnerHTML={{
++          __html: JSON.stringify({
++            "@context": "https://schema.org",
++            "@type": "LocalBusiness",
++            "name": "Top Tech Mobile Mechanic - The Woodlands TX",
++            "description": "ASE Master certified mobile mechanic serving The Woodlands TX and Montgomery County.",
++            "telephone": "936-529-4748",
++            "url": "https://toptechmobile.com/mobile-mechanic-the-woodlands-tx",
++            "areaServed": "The Woodlands, TX"
++          })
++        }}
++      />
+       <section 
+         className="relative min-h-screen bg-cover bg-center bg-no-repeat flex items-center justify-center text-center text-white"
+         style={{ backgroundImage: "url('https://images.unsplash.com/photo-1544636331-9576b8bf12ec?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')" }}
+@@ -20,8 +37,7 @@ export default function WoodlandsMechanicPage() {
+             Mobile Mechanic<br />The Woodlands TX
+           </h1>
+           <p className="text-2xl md:text-4xl font-bold mb-10 drop-shadow-2xl">
+-            Car • Truck • SUV Repair<br />
+-            At Your Home, Work, or HEB
++            ASE Master Certified • We Come to Every Village
+           </p>
+           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+             <CTAButton />
+@@ -33,74 +49,110 @@ export default function WoodlandsMechanicPage() {
+             </a>
+           </div>
+           <p className="mt-10 text-lg opacity-95">
+-            ★ ASE Certified ★ Beat Shop Quotes by 50%+
++            ★ ASE Master Automobile Technician ★ 20+ Years Experience ★ 90-Day Warranty
+           </p>
+         </div>
+       </section>
+ 
+-      <section className="py-24 bg-gray-50">
+-        <div className="max-w-6xl mx-auto px-6">
+-          <h2 className="text-4xl md:text-5xl font-black text-center mb-16">
+-            Why The Woodlands Chooses Top Tech Mobile
+-          </h2>
+-          <div className="grid md:grid-cols-2 gap-10 max-w-4xl mx-auto text-xl">
+-            <div className="flex items-start gap-4">
+-              <span className="text-4xl text-green-600">✔</span>
+-              <p>ASE-certified 20+ years – brakes, diagnostics, AC, check engine, hybrids/EVs</p>
++      <section className="py-20 bg-white">
++        <div className="max-w-5xl mx-auto px-6">
++          <h2 className="text-4xl font-bold mb-8 text-center">Why The Woodlands Chooses Top Tech Mobile</h2>
++          <p className="text-xl mb-6">
++            From Cochran’s Crossing and Grogan’s Mill to Sterling Ridge, Panther Creek, and Creekside Park, residents of The Woodlands rely on a mobile mechanic who actually shows up and does the job right. We bring full diagnostic capability and repair tools to your driveway or office parking lot near The Woodlands Mall, Market Street, or along Research Forest Drive.
++          </p>
++          <p className="text-xl mb-6">
++            Texas heat, humidity, and heavy traffic on I-45 and the Hardy Toll Road create predictable vehicle problems: failed air conditioning, weak batteries, worn brakes, and check engine lights from sensor issues. Our ASE Master technician handles these on-site so you avoid the shop entirely.
++          </p>
++          <h3 className="text-3xl font-bold mt-12 mb-6">Villages & Landmarks We Serve</h3>
++          <ul className="list-disc pl-8 text-lg space-y-2 mb-8">
++            <li>Cochran’s Crossing, Grogan’s Mill, Panther Creek, Sterling Ridge</li>
++            <li>Indian Springs, Alden Bridge, College Park, Creekside Park</li>
++            <li>Near The Woodlands Mall, Market Street, Cynthia Woods Mitchell Pavilion</li>
++            <li>Along Research Forest Drive, Woodlands Parkway, Gosling Road, and Kuykendahl</li>
++            <li>Near Memorial Hermann The Woodlands and Lone Star College-Montgomery</li>
++          </ul>
++        </div>
++      </section>
++
++      <section className="py-20 bg-gray-50">
++        <div className="max-w-5xl mx-auto px-6">
++          <h2 className="text-4xl font-bold mb-10 text-center">Frequent Issues in The Woodlands</h2>
++          <div className="grid md:grid-cols-2 gap-8">
++            <div>
++              <h3 className="text-2xl font-bold mb-4">AC & Cooling System</h3>
++              <p className="text-lg">Long hot summers mean constant AC demand. We diagnose refrigerant leaks, compressors, and condensers on-site.</p>
+             </div>
+-            <div className="flex items-start gap-4">
+-              <span className="text-4xl text-green-600">✔</span>
+-              <p>We come to Sterling Ridge, Alden Bridge, Cochran's Crossing, Indian Springs, Creekside, Panther Creek – every village</p>
++            <div>
++              <h3 className="text-2xl font-bold mb-4">Battery & Starting Problems</h3>
++              <p className="text-lg">Heat and short trips around the villages kill batteries. We test and replace quickly.</p>
+             </div>
+-            <div className="flex items-start gap-4">
+-              <span className="text-4xl text-green-600">✔</span>
+-              <p>Beat any written shop quote by 50% or more – guaranteed</p>
++            <div>
++              <h3 className="text-2xl font-bold mb-4">Brakes</h3>
++              <p className="text-lg">Stop-and-go traffic on the major roads requires regular brake service. Full inspections and repairs available.</p>
+             </div>
+-            <div className="flex items-start gap-4">
+-              <span className="text-4xl text-green-600">✔</span>
+-              <p>Text photos → quote in minutes → same/next day service</p>
++            <div>
++              <h3 className="text-2xl font-bold mb-4">Diagnostics</h3>
++              <p className="text-lg">Accurate check engine light diagnosis the first time with professional scan tools.</p>
+             </div>
+           </div>
++        </div>
++      </section>
+ 
+-          <h2 className="text-4xl md:text-5xl font-black text-center mt-16 mb-8">
+-            Common Repairs in The Woodlands TX
+-          </h2>
+-          <div className="grid md:grid-cols-2 gap-10 max-w-4xl mx-auto text-xl">
+-            <div className="flex items-start gap-4">
+-              <span className="text-4xl text-green-600">✔</span>
+-              <p>AC diagnostics for high-humidity issues in Creekside Park and Sterling Ridge</p>
+-            </div>
+-            <div className="flex items-start gap-4">
+-              <span className="text-4xl text-green-600">✔</span>
+-              <p>Battery replacements for hot summers along The Woodlands Parkway</p>
+-            </div>
+-            <div className="flex items-start gap-4">
+-              <span className="text-4xl text-green-600">✔</span>
+-              <p>Suspension fixes for trail and golf cart paths in Panther Creek</p>
+-            </div>
+-            <div className="flex items-start gap-4">
+-              <span className="text-4xl text-green-600">✔</span>
+-              <p>Check engine light scans for hybrids in Alden Bridge communities</p>
+-            </div>
++      <section className="py-20 bg-white">
++        <div className="max-w-5xl mx-auto px-6">
++          <h2 className="text-4xl font-bold mb-10 text-center">Popular Services in The Woodlands</h2>
++          <div className="grid md:grid-cols-2 gap-6 text-lg">
++            <Link href="/services/check-engine-light-diagnostic" className="p-4 border rounded-lg hover:bg-gray-50">Check Engine Light Diagnostic</Link>
++            <Link href="/services/brake-inspection" className="p-4 border rounded-lg hover:bg-gray-50">Brake Service</Link>
++            <Link href="/services/ac-diagnostic" className="p-4 border rounded-lg hover:bg-gray-50">AC Repair</Link>
++            <Link href="/services/mobile-oil-change" className="p-4 border rounded-lg hover:bg-gray-50">Mobile Oil Change</Link>
++            <Link href="/services/battery-electrical" className="p-4 border rounded-lg hover:bg-gray-50">Battery Replacement</Link>
++            <Link href="/services/new-car-check-out" className="p-4 border rounded-lg hover:bg-gray-50">New Car Check-Out</Link>
+           </div>
++        </div>
++      </section>
+ 
+-          <div className="text-center mt-16">
+-            <CTAButton />
++      <section className="py-20 bg-gray-50">
++        <div className="max-w-4xl mx-auto px-6">
++          <h2 className="text-4xl font-bold mb-10 text-center">The Woodlands Mobile Mechanic FAQs</h2>
++          <div className="space-y-8">
++            <div>
++              <h3 className="text-2xl font-bold mb-3">Do you serve all Woodlands villages?</h3>
++              <p className="text-lg">Yes. Every village from the original core to Creekside Park and beyond is covered.</p>
++            </div>
++            <div>
++              <h3 className="text-2xl font-bold mb-3">How do quotes work?</h3>
++              <p className="text-lg">Text photos and a description. Most quotes are returned the same day so you can book quickly.</p>
++            </div>
+           </div>
++          <Script
++            type="application/ld+json"
++            strategy="afterInteractive"
++            dangerouslySetInnerHTML={{
++              __html: JSON.stringify({
++                "@context": "https://schema.org",
++                "@type": "FAQPage",
++                "mainEntity": [
++                  {
++                    "@type": "Question",
++                    "name": "Do you serve all Woodlands villages?",
++                    "acceptedAnswer": { "@type": "Answer", "text": "Yes. Every village is covered." }
++                  }
++                ]
++              })
++            }}
++          />
+         </div>
+       </section>
+ 
+       <section className="py-20 bg-green-700 text-white text-center">
+         <div className="max-w-5xl mx-auto px-6">
+           <h2 className="text-4xl md:text-6xl font-bold mb-8">
+-            The Woodlands – Your Mechanic Comes to You<br />(936) 529-4748
++            Book Your Woodlands Mobile Mechanic<br />(936) 529-4748
+           </h2>
+           <div className="flex flex-col sm:flex-row gap-6 justify-center">
+             <CTAButton />
+-            <a
+-              href="https://wa.me/19365294748"
+-              className="bg-white text-green-700 hover:bg-gray-100 font-bold py-5 px-10 rounded-xl text-xl shadow-2xl transition transform hover:scale-105"
+-            >
++            <a href="https://wa.me/19365294748" className="bg-white text-green-700 hover:bg-gray-100 font-bold py-5 px-10 rounded-xl text-xl shadow-2xl transition transform hover:scale-105">
+               WhatsApp Chat
+             </a>
+           </div>
+@@ -108,4 +160,4 @@ export default function WoodlandsMechanicPage() {
+       </section>
+     </>
+   );
+-}
+\ No newline at end of file
++}
+diff --git a/app/page.tsx b/app/page.tsx
+index aa341eb..fb3424a 100644
+--- a/app/page.tsx
++++ b/app/page.tsx
+@@ -11,8 +11,8 @@ import GoogleReviewsCarousel from '../components/GoogleReviewsCarousel';
+ import Link from 'next/link';
+ 
+ export const metadata = {
+-  title: 'Mobile Mechanic in The Woodlands TX - Top Tech Mobile: ASE-Certified Services',
+-  description: 'Reliable mobile mechanic near me in The Woodlands, Kingwood, Conroe, Spring, Humble, Porter, Atascocita, and Montgomery County TX. On-site auto repairs, diagnostics, oil changes, hybrid/EV, and now small engine/mower repairs.',
++  title: 'Mobile Mechanic The Woodlands, Conroe, Kingwood & Montgomery County TX | Top Tech Mobile',
++  description: 'ASE Master certified mobile mechanic serving The Woodlands, Conroe, Kingwood, Humble, Porter, Atascocita, and all of Montgomery County TX. On-site diagnostics, brakes, AC, oil changes, batteries, and more. Text or call (936) 529-4748.',
+ };
+ 
+ export default function Home() {
+@@ -33,6 +33,26 @@ export default function Home() {
+ 
+       <About />
+ 
++      {/* ASE Master Certification Section */}
++      <section className="py-20 bg-white">
++        <div className="max-w-5xl mx-auto px-6 text-center">
++          <h2 className="text-4xl md:text-5xl font-black mb-6 text-gray-900">ASE Master Automobile Technician</h2>
++          <p className="text-2xl text-green-700 font-semibold mb-8">Advanced Level Specialist • ASE ID: ASE-2000-2319</p>
++          <div className="bg-gray-50 rounded-2xl p-10 shadow-xl max-w-3xl mx-auto">
++            <p className="text-xl mb-6">
++              All certifications are current through 2027–2029. You’re working with a verified ASE Master Technician who brings full shop-quality diagnostics and repairs straight to your driveway across The Woodlands, Conroe, Kingwood, and Montgomery County.
++            </p>
++            <ul className="text-left text-lg space-y-3 max-w-md mx-auto">
++              <li>✔ ASE Master Automobile Technician</li>
++              <li>✔ Advanced Level Specialist</li>
++              <li>✔ 20+ years shop experience</li>
++              <li>✔ Certifications current through 2027–2029</li>
++            </ul>
++            <p className="mt-8 text-lg font-medium">Trust the certification. Get the convenience of mobile service.</p>
++          </div>
++        </div>
++      </section>
++
+       {/* 🔥 WALL OF WORK – RIGHT AFTER ABOUT 🔥 */}
+       <WallOfWork />
+ 
+@@ -52,7 +72,7 @@ export default function Home() {
+             </a>
+             <a href="/mobile-mechanic-kingwood-tx" className="bg-white p-10 rounded-2xl shadow-2xl hover:shadow-3xl transition transform hover:-translate-y-2">
+               <h3 className="text-3xl font-bold mb-2">Kingwood</h3>
+-              <p className="text-lg">All Villages Covered – No Trip Fee</p>
++              <p className="text-lg">All Villages Covered</p>
+             </a>
+             <a href="/mobile-mechanic-conroe-tx" className="bg-white p-10 rounded-2xl shadow-2xl hover:shadow-3xl transition transform hover:-translate-y-2">
+               <h3 className="text-3xl font-bold mb-2">Conroe</h3>
+@@ -106,7 +126,16 @@ export default function Home() {
+             "@context": "https://schema.org",
+             "@type": "LocalBusiness",
+             "name": "Top Tech Mobile Mechanic",
+-            "description": "ASE-certified mobile mechanic near me serving The Woodlands, Kingwood, Conroe, Spring, Humble, Porter, Atascocita, and Montgomery County TX with on-site repairs, small engine service, and diagnostics.",
++            "description": "ASE Master certified mobile mechanic serving The Woodlands, Conroe, Kingwood, Humble, Porter, Atascocita, and Montgomery County TX with on-site repairs, diagnostics, brakes, AC, oil changes, and small engine service.",
++            "areaServed": [
++              {"@type": "City", "name": "The Woodlands"},
++              {"@type": "City", "name": "Conroe"},
++              {"@type": "City", "name": "Kingwood"},
++              {"@type": "City", "name": "Humble"},
++              {"@type": "City", "name": "Porter"},
++              {"@type": "City", "name": "Atascocita"},
++              {"@type": "AdministrativeArea", "name": "Montgomery County"}
++            ],
+             "telephone": "936-529-4748",
+             "address": {
+               "@type": "PostalAddress",
+diff --git a/lib/services.ts b/lib/services.ts
+index b7d8e0e..d8c3193 100644
+--- a/lib/services.ts
++++ b/lib/services.ts
+@@ -15,7 +15,18 @@ const servicesData = [
+     desc: 'Comprehensive inspection for new vehicles, including safety checks, fluid levels, system scans, and full functionality testing to ensure everything operates perfectly from day one.',
+     image: '/images/new-car-inspection.jpg', // Download from https://unsplash.com/photos/a-man-working-on-a-car-engine-in-a-garage-EJr3XkHdBm0 and save as new-car-inspection.jpg in /public/images
+     calendlyLink: 'https://calendly.com/david-toptechmobile/new-car-inspection-100',
+-    fullContent: 'Buying a new car is exciting, but ensuring it\'s flawless is essential. Our New Car Check Out service includes a thorough examination for any hidden issues, such as manufacturing defects or transport damage. We inspect belts, brakes, hoses for wear or leaks; check all fluids; test windows, doors, locks, radio, and every button and feature for proper operation. Plus, a full systems scan detects any stored, cleared, or erased codes, and checks for recent battery disconnects that could mask problems. Drive with confidence knowing your new ride is road-ready.'
++    fullContent: `Just bought a new or used vehicle? Don’t assume it’s perfect. Our New Car Check-Out is a comprehensive pre-delivery style inspection performed at your home.
++
++We inspect:
++- All fluids and filters
++- Belts, hoses, and visible leaks
++- Brake thickness and condition
++- Tire condition and pressure
++- Every electrical function (windows, locks, lights, HVAC, infotainment)
++- Full systems scan for stored or pending codes and recent battery disconnects
++- Undercarriage and basic suspension check
++
++Especially valuable for vehicles purchased from dealers or private parties in The Woodlands, Conroe, or Kingwood area. Peace of mind before you drive it home.`
+   },
+   {
+     slug: 'check-engine-light-diagnostic',
+@@ -23,7 +34,16 @@ const servicesData = [
+     desc: 'Full diagnostic scan, testing, and troubleshooting to pinpoint the root cause of your check engine light and resolve it accurately on the first visit.',
+     image: '/images/check-engine-light.jpg', // Download from https://unsplash.com/photos/the-dashboard-of-a-car-with-a-key-in-it-2wGgZsEFQ-A and save as check-engine-light.jpg in /public/images
+     calendlyLink: 'https://calendly.com/david-toptechmobile/check-engine-light-diagnostic-100',
+-    fullContent: 'A check engine light can signal anything from a minor sensor glitch to a serious issue—don\'t ignore it. Our diagnostic service uses advanced scanning tools to read error codes, followed by in-depth testing and troubleshooting to identify the true root cause. Whether it\'s emissions, fuel system, or electrical problems, we get it right the first time, saving you money on unnecessary repairs. Quick, mobile service means no towing or waiting at a shop.'
++    fullContent: `A check engine light can mean anything from a loose gas cap to a failing catalytic converter or oxygen sensor. In The Woodlands, Conroe, Kingwood, and across Montgomery County, we see these lights frequently due to Texas heat, humidity, and short-trip driving that never fully warms up the engine.
++
++Our process is thorough and mobile:
++1. Connect professional-grade scan tools to read all stored, pending, and permanent codes.
++2. Review freeze-frame data to see the exact conditions when the light came on.
++3. Perform live data testing and component checks (sensors, fuel trims, misfire counts, etc.).
++4. Road-test when safe to confirm the issue.
++5. Provide a clear explanation and repair options before any work begins.
++
++We diagnose accurately the first visit so you don’t pay for parts you don’t need. Common local fixes include mass airflow sensors, EVAP leaks, coil packs, and catalytic efficiency codes. Service available throughout The Woodlands villages, Conroe, Kingwood, Humble, Porter, and Atascocita.`
+   },
+   {
+     slug: 'battery-electrical-check',
+@@ -31,7 +51,16 @@ const servicesData = [
+     desc: 'Expert testing of battery, starter, alternator, and electrical systems to diagnose no-start issues, including load tests, voltage checks, and wiring inspections for reliable fixes.',
+     image: '/images/battery-test-3.jpg',
+     calendlyLink: 'https://calendly.com/david-toptechmobile/battery-electrical-check-80',
+-    fullContent: 'Stranded with a no-start? Our specialized service gets to the bottom of it fast. We perform thorough battery load and voltage tests to check capacity and health; inspect the starter for proper cranking and solenoid function; test the alternator for charging output; and scan electrical systems for faults, loose connections, or corroded wiring. From dead batteries to faulty ignitions, we diagnose and repair on-site, often same-day, so you\'re back on the road without the tow truck drama.'
++    fullContent: `Heat kills batteries in Montgomery County. Slow cranking, clicking, or a complete no-start is common in The Woodlands, Conroe, Kingwood, and Atascocita after summer.
++
++Our no-start / battery & electrical service includes:
++- Battery load test and voltage/CCA check
++- Alternator charging system test
++- Starter draw and circuit testing
++- Inspection of cables, grounds, and connections for corrosion
++- Scan for related electrical or immobilizer issues
++
++We can usually replace a bad battery or repair the charging system on the spot so you’re not stranded. Service available same-day in most cases across our coverage area.`
+   },
+   {
+     slug: 'general-vehicle-diagnostic',
+@@ -39,7 +68,16 @@ const servicesData = [
+     desc: 'Broad-spectrum diagnostics for noises, vibrations, handling issues, broken components like windows or door handles, and other general concerns, using advanced tools for precise identification.',
+     image: '/images/fuel-pump-repair.jpg',
+     calendlyLink: 'https://calendly.com/david-toptechmobile/general-vehicle-diagnostic-100',
+-    fullContent: 'Not sure what\'s wrong? Our general diagnostic covers it all—from strange noises, bumps, or vibrations indicating suspension or drivetrain issues, to malfunctioning windows, door handles, or other accessories. We use state-of-the-art scanners and hands-on inspections to pinpoint problems like sensor failures, wiring glitches, or mechanical wear. Ideal for those "something\'s off" moments, ensuring safe, smooth driving without guesswork.'
++    fullContent: `When something just “doesn’t feel right” — a new noise, vibration, rough idle, or warning light that isn’t the check engine — our general diagnostic gets to the bottom of it.
++
++We use a combination of professional scan tools, live data, road testing, and hands-on inspection to identify the cause. Common local issues include:
++- Suspension and steering wear from rough roads
++- Transmission shift concerns
++- Cooling system problems in Texas heat
++- Electrical gremlins
++- Exhaust or sensor issues
++
++You get a clear diagnosis and repair options before any work is performed. Available at your location throughout The Woodlands, Conroe, Kingwood, and Montgomery County.`
+   },
+   {
+     slug: 'ac-diagnostic-check',
+@@ -47,7 +85,16 @@ const servicesData = [
+     desc: 'ASE and EPA 609-certified AC system evaluation, including pressure tests, refrigerant level checks, leak detection, and full recovery to protect the environment while restoring cool air.',
+     image: '/images/ac-service.jpg',
+     calendlyLink: 'https://calendly.com/david-toptechmobile/ac-diagnostic-check-80',
+-    fullContent: 'Texas heat demands a reliable AC—don\'t sweat it. As an ASE and EPA 609-certified technician, I use professional tools for pressure testing, refrigerant recovery (to avoid environmental harm), leak detection, and component checks like compressor, condenser, and evaporator. Whether it\'s low freon, clogged filters, or electrical faults, we diagnose accurately and repair efficiently on-site, getting your cool back without the shop wait.'
++    fullContent: `Texas summers are brutal on air conditioning systems. Weak or warm air is one of the most common calls we get in The Woodlands, Kingwood, Conroe, and around Lake Conroe and Lake Houston.
++
++As an ASE and EPA 609 certified technician, our mobile AC service includes:
++- Pressure testing the system
++- Proper refrigerant recovery and recharge (never venting to atmosphere)
++- Leak detection with dye or electronic sniffer
++- Inspection of compressor, condenser, evaporator, expansion valve/orifice tube, and electrical controls
++- Condenser fan and blend door checks
++
++We restore cold air at your home or office so you don’t sit in a hot waiting room. Available throughout Montgomery County.`
+   },
+   {
+     slug: 'brake-inspection',
+@@ -55,7 +102,17 @@ const servicesData = [
+     desc: 'Detailed brake system evaluation, inspecting pads, rotors, shoes, hoses, lines for leaks or wear, fluid condition, and recommending necessary repairs for optimal safety.',
+     image: '/images/brake-service-2.jpg',
+     calendlyLink: 'https://calendly.com/david-toptechmobile/brake-inspection-80',
+-    fullContent: 'Brakes are your first line of safety—keep them sharp. Our inspection covers pad and shoe thickness, rotor surface condition (warping/cracks), caliper function, hose/line integrity for leaks, and brake fluid quality/hydraulics. We check for uneven wear, noises, or pedal issues, providing honest recommendations for replacements or adjustments. Mobile service means quick, convenient checks without disrupting your day.'
++    fullContent: `Brakes are non-negotiable, especially with the stop-and-go traffic on I-45, Kingwood Drive, Research Forest, and FM 1960. We provide complete mobile brake inspections and service across The Woodlands, Conroe, Kingwood, and Montgomery County.
++
++What we check and repair:
++- Pad and shoe thickness and condition
++- Rotor thickness, runout, and surface (warping or scoring is common in Texas heat)
++- Caliper function and slide pins
++- Brake hoses and lines for leaks or swelling
++- Brake fluid condition and moisture content
++- Parking brake operation
++
++If replacement is needed, we install quality pads and rotors on-site and bed them in properly. You’ll get a clear report and options before any work. No shop wait, no towing.`
+   },
+   {
+     slug: 'mobile-oil-change',
+@@ -63,7 +120,17 @@ const servicesData = [
+     desc: 'Convenient on-site oil and filter change with premium synthetics, plus tire pressure adjustment, washer fluid top-off, and a preventive maintenance inspection to spot potential issues early.',
+     image: '/images/mobile-oil-change-woodlands.jpg',
+     calendlyLink: 'https://calendly.com/david-toptechmobile/mobil-1-oil-change-fluid-check-120',
+-    fullContent: 'Regular oil changes keep your engine humming—do it without the hassle. We use high-quality synthetic oils and filters, tailored to your vehicle, delivered right to you. Includes checking and topping off all fluids, adjusting tire pressures for safety and efficiency, and a full preventive inspection for leaks, belt wear, or other concerns. Catch small issues before they become big problems, all while you relax at home.'
++    fullContent: `Skip the shop and get a proper oil change at your driveway or office parking lot in The Woodlands, Conroe, Kingwood, Humble, or anywhere in Montgomery County.
++
++What’s included:
++- High-quality synthetic oil matched to your vehicle’s specification
++- New oil filter
++- Top-off of all other fluids (coolant, brake, power steering, washer)
++- Tire pressure adjustment
++- Multi-point inspection (belts, hoses, leaks, battery, lights, wipers)
++- Reset of oil life monitor
++
++We catch small issues early while you stay home. Perfect for busy schedules across the north Houston suburbs.`
+   },
+   {
+     slug: 'car-accessories-installation',
