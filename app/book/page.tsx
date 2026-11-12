@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { getAllServices } from '@/lib/services';
+import { isInServiceArea } from '@/lib/serviceArea';
 
 export default function BookPage() {
   const servicesWithCalendly = getAllServices().filter(s => s.calendlyLink && s.calendlyLink.length > 10);
@@ -12,8 +13,6 @@ export default function BookPage() {
   const [isBookingOpen, setIsBookingOpen] = useState(false);
   const [zip, setZip] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
-
-  const safeZips = ['77301', '77302', '77303', '77304', '77305', '77306', '77316', '77318', '77327', '77328', '77333', '77338', '77339', '77345', '77346', '77353', '77354', '77355', '77356', '77357', '77362', '77365', '77372', '77373', '77378', '77379', '77380', '77381', '77382', '77384', '77385', '77386', '77388', '77389', '77393', '77447', '77873', '77014', '77032', '77073', '77090', '77096', '77396'];
 
   const handleServiceChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const link = e.target.value;
@@ -31,8 +30,7 @@ export default function BookPage() {
 
   const handleBookingSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const cleanedZip = zip.trim().replace(/-/g, '');
-    if (!safeZips.includes(cleanedZip)) {
+    if (!isInServiceArea(zip)) {
       setErrorMessage('Sorry, you may be outside our service area. Please call 936-529-4748 for confirmation.');
       return;
     }

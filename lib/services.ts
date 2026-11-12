@@ -6,16 +6,16 @@ const servicesData = [
     title: 'Mobile Mechanic in The Woodlands TX',
     desc: 'On-site repairs and maintenance performed at your location for ultimate convenience.',
     image: '/images/mobile-mechanic-woodlands.jpg',
-    calendlyLink: '', // No link, quote only
+    calendlyLink: '',
     fullContent: 'Experience the ease of professional auto repairs without leaving your home or office. As your trusted mobile mechanic in The Woodlands TX, I bring shop-quality tools and expertise directly to you, saving you time and hassle. Whether it\'s a quick fix or major repair, count on reliable, transparent service every time.'
   },
   {
     slug: 'new-car-check-out',
-    title: 'New Car Check Out',
-    desc: 'Comprehensive inspection for new vehicles, including safety checks, fluid levels, system scans, and full functionality testing to ensure everything operates perfectly from day one.',
-    image: '/images/new-car-inspection.jpg', // Download from https://unsplash.com/photos/a-man-working-on-a-car-engine-in-a-garage-EJr3XkHdBm0 and save as new-car-inspection.jpg in /public/images
+    title: 'Pre-Purchase Vehicle Inspection',
+    desc: 'Just bought a new or used vehicle? Don’t assume it’s perfect. Our Pre-Purchase Inspection is a comprehensive pre-delivery style inspection performed at your home. We check fluids, brakes, tires, electrical systems, run a full scan, and look underneath. Peace of mind before you drive it home.',
+    image: '/images/new-car-inspection.jpg',
     calendlyLink: 'https://calendly.com/david-toptechmobile/new-car-inspection-100',
-    fullContent: `Just bought a new or used vehicle? Don’t assume it’s perfect. Our New Car Check-Out is a comprehensive pre-delivery style inspection performed at your home.
+    fullContent: `Just bought a new or used vehicle? Don’t assume it’s perfect. Our Pre-Purchase Inspection is a comprehensive pre-delivery style inspection performed at your home.
 
 We inspect:
 - All fluids and filters
@@ -29,10 +29,24 @@ We inspect:
 Especially valuable for vehicles purchased from dealers or private parties in The Woodlands, Conroe, or Kingwood area. Peace of mind before you drive it home.`
   },
   {
+    slug: 'ase-vin-track-inspection',
+    title: 'ASE VIN Inspection & Track Tech Inspection',
+    desc: 'ASE Master certified VIN inspections and Track Tech inspections for race cars, hot rods, custom builds, and title/insurance needs. Same expert, same booking calendar.',
+    image: '/images/new-car-inspection.jpg',
+    calendlyLink: 'https://calendly.com/david-toptechmobile/new-car-inspection-100',
+    fullContent: `ASE VIN Inspection and Track Tech Inspection performed by an ASE Master technician.
+
+• VIN verification and certification for titles, insurance, registration, or custom builds
+• Track Tech inspections for cars going on track (safety and mechanical checks)
+• Ideal for hot rods, race cars, and specialty vehicles
+
+Both services use the same booking calendar. Just select the one you need when you schedule.`
+  },
+  {
     slug: 'check-engine-light-diagnostic',
     title: 'Check Engine Light Diagnostic',
     desc: 'Full diagnostic scan, testing, and troubleshooting to pinpoint the root cause of your check engine light and resolve it accurately on the first visit.',
-    image: '/images/check-engine-light.jpg', // Download from https://unsplash.com/photos/the-dashboard-of-a-car-with-a-key-in-it-2wGgZsEFQ-A and save as check-engine-light.jpg in /public/images
+    image: '/images/check-engine-light.jpg',
     calendlyLink: 'https://calendly.com/david-toptechmobile/check-engine-light-diagnostic-100',
     fullContent: `A check engine light can mean anything from a loose gas cap to a failing catalytic converter or oxygen sensor. In The Woodlands, Conroe, Kingwood, and across Montgomery County, we see these lights frequently due to Texas heat, humidity, and short-trip driving that never fully warms up the engine.
 
@@ -133,11 +147,61 @@ What’s included:
 We catch small issues early while you stay home. Perfect for busy schedules across the north Houston suburbs.`
   },
   {
+    slug: 'timing-belt-service',
+    title: 'Timing Belt Service',
+    desc: 'On-site timing belt replacement with proper tensioner and idler service. Prevents catastrophic engine damage. ASE Master technician comes to you.',
+    image: '/images/new-car-inspection.jpg',
+    calendlyLink: '',
+    fullContent: `A broken timing belt can destroy an engine. We perform complete timing belt jobs on-site, including the belt, tensioner, and idlers when recommended.
+
+What’s included:
+- Timing belt replacement
+- Tensioner and idler pulley inspection/replacement
+- Water pump replacement when accessible and recommended
+- Proper timing verification
+- Clear explanation of the work and what we found
+
+Ideal for vehicles approaching the manufacturer’s interval or showing signs of wear. Available at your home or office throughout The Woodlands, Conroe, Kingwood, and Montgomery County.`
+  },
+  {
+    slug: 'suspension-steering',
+    title: 'Suspension & Steering Repair',
+    desc: 'On-site suspension work (control arms, struts, ball joints, bushings) and select steering repairs. ASE Master technician comes to your location.',
+    image: '/images/new-car-inspection.jpg',
+    calendlyLink: '',
+    fullContent: `Rough roads, potholes, and age wear out suspension components. We handle most suspension repairs at your location and select steering jobs when the job is practical to do mobile.
+
+Common services:
+- Control arms and ball joints
+- Struts and shocks
+- Sway bar links and bushings
+- Tie rods and select steering components
+- Rack and pinion (when the vehicle and job allow)
+
+You’ll get a clear diagnosis and options before any work. Service available across The Woodlands, Conroe, Kingwood, and Montgomery County.`
+  },
+  {
+    slug: 'tune-up-spark-plugs',
+    title: 'Tune-Up & Spark Plug Service',
+    desc: 'Spark plugs, coils, and basic tune-up items replaced on-site for smoother running and better fuel economy.',
+    image: '/images/new-car-inspection.jpg',
+    calendlyLink: '',
+    fullContent: `Misfires, rough idle, and poor fuel economy are often fixed with fresh spark plugs and coils. We replace them at your location.
+
+What’s included:
+- Spark plug replacement
+- Ignition coil inspection/replacement
+- Basic visual inspection of related components
+- Scan for related codes
+
+Available throughout our service area in The Woodlands, Conroe, Kingwood, and Montgomery County.`
+  },
+  {
     slug: 'car-accessories-installation',
     title: 'Car Accessories Installation',
     desc: 'Mobile installation for dash cams, GPS, and other accessories.',
     image: '/images/car-install-montgomerytx.jpg',
-    calendlyLink: '', // No link, quote only
+    calendlyLink: '',
     fullContent: 'Enhance your ride with professional on-site accessory installs. From dash cams for safety footage to GPS trackers for navigation and security, we handle wiring, mounting, and setup without the shop trip. Custom solutions for audio upgrades, lighting, or tech add-ons—get a quote for seamless integration.'
   },
   {
@@ -145,7 +209,7 @@ We catch small issues early while you stay home. Perfect for busy schedules acro
     title: 'Fleet Maintenance',
     desc: 'Custom plans for business fleets with on-site service.',
     image: '/images/fleet-repair-montgomerytx.jpg',
-    calendlyLink: '', // No link, quote only
+    calendlyLink: '',
     fullContent: 'Keep your business fleet rolling without downtime. Our customized on-site maintenance plans include scheduled inspections, repairs, and preventive care for multiple vehicles. From oil changes to diagnostics, we tailor services to your needs—contact us for a free fleet consultation and quote.'
   },
   {
@@ -153,11 +217,11 @@ We catch small issues early while you stay home. Perfect for busy schedules acro
     title: 'Hybrid & EV Repair',
     desc: 'Specialized mobile repair for hybrid and electric vehicles.',
     image: '/images/hybrid-ev.jpg',
-    calendlyLink: '', // No link, quote only
+    calendlyLink: '',
     fullContent: 'Expert care for your eco-friendly ride. As hybrid/EV specialists, we handle battery diagnostics, regenerative braking, electric motor issues, and charging system repairs on-site. Stay green and efficient—get a quote for specialized service without the dealership wait.'
   },
-  // Add more services from your real website if needed (e.g., tune-ups, fuel injection) without pricing mentions
 ];
+
 export function getAllServices() {
   return servicesData;
 }

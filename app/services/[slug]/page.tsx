@@ -1,141 +1,122 @@
-// app/services/[slug]/page.tsx
-"use client"; // Client for BookButton hooks
-import { getServiceBySlug } from '@/lib/services';
+import { getServiceBySlug, getAllServices } from '@/lib/services';
 import { notFound } from 'next/navigation';
 import Script from 'next/script';
 import Link from 'next/link';
-import { Suspense, useState } from 'react';
+import { Metadata } from 'next';
+import BookButton from './BookButton';
 
-function BookButton({ calendlyLink }: { calendlyLink: string }) {
-  const [isBookingOpen, setIsBookingOpen] = useState(false);
-  const [zip, setZip] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
+type Props = {
+  params: Promise<{ slug: string }>;
+};
 
-  const safeZips = ['77301', '77302', '77303', '77304', '77305', '77306', '77316', '77318', '77327', '77328', '77333', '77338', '77339', '77345', '77346', '77353', '77354', '77355', '77356', '77357', '77362', '77365', '77372', '77373', '77378', '77379', '77380', '77381', '77382', '77384', '77385', '77386', '77388', '77389', '77393', '77447', '77873', '77014', '77032', '77073', '77090', '77096', '77396'];
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+  const service = getServiceBySlug(slug);
+  if (!service) return { title: 'Service Not Found' };
 
-  const handleBookClick = () => {
-    setIsBookingOpen(true);
-    setZip('');
-    setErrorMessage('');
+  return {
+    title: `${service.title} | Top Tech Mobile Mechanic The Woodlands TX`,
+    description: service.desc || service.fullContent?.slice(0, 155) + '...',
   };
-
-  const handleBookingSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    const cleanedZip = zip.trim().replace(/-/g, '');
-    if (!safeZips.includes(cleanedZip)) {
-      setErrorMessage('Sorry, you may be outside our service area. Please call 936-529-4748 for confirmation.');
-      return;
-    }
-    window.location.href = calendlyLink;
-    setIsBookingOpen(false);
-  };
-
-  const handleClose = () => {
-    setIsBookingOpen(false);
-    setErrorMessage('');
-  };
-
-  return (
-    <>
-      <button
-        onClick={handleBookClick}
-        className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 mt-4"
-      >
-        Book Now
-      </button>
-      {isBookingOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50" role="dialog" aria-modal="true">
-          <div className="bg-white p-6 rounded-lg shadow-lg max-w-md w-full mx-4">
-            <h3 className="text-xl font-bold mb-4">Confirm Service Area</h3>
-            <form onSubmit={handleBookingSubmit} className="space-y-4">
-              <label htmlFor="zip" className="block text-sm font-medium">Enter Your ZIP Code</label>
-              <input
-                id="zip"
-                type="text"
-                value={zip}
-                onChange={(e) => setZip(e.target.value)}
-                placeholder="e.g., 77381"
-                required
-                className="w-full p-2 border border-gray-300 rounded-md"
-                aria-label="Enter ZIP code to confirm service area"
-              />
-              {errorMessage && <p className="text-red-500 text-sm">{errorMessage}</p>}
-              <div className="flex justify-end space-x-3">
-                <button type="button" onClick={handleClose} className="px-4 py-2 bg-gray-300 text-gray-700 rounded-md hover:bg-gray-400">
-                  Cancel
-                </button>
-                <button type="submit" className="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600">
-                  Submit
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      )}
-    </>
-  );
 }
 
-async function ServiceContent({ slug }: { slug: string }) {
+export default async function ServicePage({ params }: Props) {
+  const { slug } = await params;
   const service = getServiceBySlug(slug);
   if (!service) notFound();
 
+  // Simple formatter: turn fullContent into paragraphs and lists
+  const contentBlocks = (service.fullContent || service.desc || '')
+    .split('\n')
+    .map((line) => line.trim())
+    .filter(Boolean);
+
   return (
-    <main className="container mx-auto py-8 px-4">
-      <Script id="service-schema" type="application/ld+json">
-        {JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "Service",
-          "name": service.title,
-          "description": service.desc,
-          "provider": {
-            "@type": "LocalBusiness",
-            "name": "Top Tech Mobile Mechanic",
-            "telephone": "936-529-4748",
-            "address": {
-              "@type": "PostalAddress",
-              "addressLocality": "The Woodlands",
-              "addressRegion": "TX",
-              "postalCode": "77380",
-              "addressCountry": "US",
+    <main className="bg-white">
+      <Script
+        id="service-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "name": service.title,
+            "description": service.desc,
+            "provider": {
+              "@type": "LocalBusiness",
+              "name": "Top Tech Mobile Mechanic",
+              "telephone": "936-529-4748",
+              "url": "https://toptechmobile.com",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "The Woodlands",
+                "addressRegion": "TX",
+                "addressCountry": "US"
+              }
             },
-          },
-          "areaServed": [
-            {
-              "@type": "City",
-              "name": "The Woodlands",
-            },
-            {
-              "@type": "City",
-              "name": "Kingwood",
-            },
-            {
-              "@type": "AdministrativeArea",
-              "name": "Montgomery County",
-            },
-          ],
-        })}
-      </Script>
-      <h1 className="text-3xl font-bold mb-4">{service.title}</h1>
-      <p className="mb-6">{service.fullContent || service.desc}</p>
-      <p className="text-lg font-semibold mb-4">Please call or text us for details.</p>
-      {service.calendlyLink && <BookButton calendlyLink={service.calendlyLink} />}
-      <section className="mt-8">
-        <h2 className="text-2xl font-bold mb-4">Related Services</h2>
-        <ul className="list-disc pl-5 space-y-2">
-          {/* Add related logic if needed; placeholder */}
-          <li><Link href="/services" className="text-blue-600 hover:underline">View All Services</Link></li>
-        </ul>
+            "areaServed": ["The Woodlands", "Conroe", "Kingwood", "Humble", "Porter", "Atascocita", "Montgomery County"]
+          })
+        }}
+      />
+
+      <section className="max-w-4xl mx-auto px-6 py-16">
+        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">{service.title}</h1>
+
+        <div className="prose prose-lg max-w-none text-gray-700 space-y-4 mb-10">
+          {contentBlocks.map((block, i) => {
+            if (block.startsWith('- ') || block.startsWith('• ')) {
+              return (
+                <li key={i} className="ml-5 list-disc">
+                  {block.replace(/^[-•]\s*/, '')}
+                </li>
+              );
+            }
+            return <p key={i}>{block}</p>;
+          })}
+        </div>
+
+        <div className="mt-8 flex flex-col sm:flex-row gap-4">
+          <a
+            href="tel:9365294748"
+            className="inline-block bg-green-600 text-white font-semibold py-4 px-8 rounded-xl hover:bg-green-700 transition text-center"
+          >
+            Call or Text (936) 529-4748
+          </a>
+          <a
+            href="https://wa.me/19365294748"
+            className="inline-block bg-gray-800 text-white font-semibold py-4 px-8 rounded-xl hover:bg-gray-900 transition text-center"
+          >
+            WhatsApp
+          </a>
+        </div>
+
+        {service.calendlyLink && (
+          <div className="mt-6">
+            <BookButton calendlyLink={service.calendlyLink} />
+          </div>
+        )}
+
+        <section className="mt-16 pt-10 border-t">
+          <h2 className="text-2xl font-bold mb-6">Related Services</h2>
+          <div className="grid sm:grid-cols-2 gap-4">
+            {getAllServices()
+              .filter((s) => s.slug !== service.slug)
+              .slice(0, 4)
+              .map((s) => (
+                <Link
+                  key={s.slug}
+                  href={`/services/${s.slug}`}
+                  className="block p-4 border rounded-xl hover:border-gray-400 hover:shadow-sm transition"
+                >
+                  {s.title}
+                </Link>
+              ))}
+          </div>
+          <Link href="/services" className="inline-block mt-6 text-blue-600 font-medium hover:underline">
+            View All Services →
+          </Link>
+        </section>
       </section>
     </main>
-  );
-}
-
-export default async function ServicePage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
-  return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <ServiceContent slug={slug} />
-    </Suspense>
   );
 }

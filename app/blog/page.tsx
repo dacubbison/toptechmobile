@@ -2,6 +2,9 @@
 import Link from 'next/link';
 
 const posts = [
+  { slug: 'timing-belt-service-woodlands-conroe', title: 'Timing Belt Service in The Woodlands & Conroe TX: What You Need to Know', excerpt: 'A broken timing belt can destroy an engine. Learn when to replace it and why a mobile ASE Master technician is a smart choice in Montgomery County.', date: '2026-03-10' },
+  { slug: 'pre-purchase-inspection-woodlands-tx', title: 'Why You Need a Pre-Purchase Inspection Before Buying a Used Car in The Woodlands', excerpt: 'Don’t assume a used car is perfect. An ASE Master pre-purchase inspection can save you thousands in hidden repairs.', date: '2026-03-05' },
+  { slug: 'ase-vin-inspection-track-tech', title: 'ASE VIN Inspection & Track Tech Inspection in Montgomery County', excerpt: 'Need a VIN certification for a hot rod, custom build, or track car? Here’s how our ASE Master inspections work.', date: '2026-03-01' },
   { slug: 'mobile-brake-repair-conroe-tx', title: 'Mobile Brake Repair in Conroe TX: What to Expect', excerpt: 'Stop-and-go traffic on I-45 and local Conroe roads wears brakes fast. Learn how our ASE Master mobile brake service works and why it saves time versus a traditional shop.', date: '2026-01-15' },
   { slug: 'ac-problems-kingwood-summers', title: 'AC Problems in Kingwood Summers and How a Mobile Mechanic Fixes Them', excerpt: 'Kingwood humidity and heat destroy air conditioning systems. Discover the most common AC failures and how we diagnose and repair them at your home.', date: '2026-01-10' },
   { slug: 'why-choose-mobile-mechanic-woodlands-tx', title: 'Why Choose a Mobile Mechanic in The Woodlands TX', excerpt: 'Convenience, ASE Master certification, and no shop wait. Here’s why more Woodlands residents are switching to mobile service for brakes, diagnostics, AC, and oil changes.', date: '2026-01-05' },
@@ -27,18 +30,30 @@ const posts = [
 
 export default function Blog() {
   return (
-    <main className="blog-main py-10 max-w-4xl mx-auto">
-      <h1 className="text-3xl font-bold text-center mb-8">Top Tech Mobile Mechanic Blog</h1>
-      <p className="text-center mb-10">Insights on auto repairs, small engine maintenance, winterization tips for The Woodlands TX drivers, and more from your local mobile mechanic and small engine repair expert.</p>
-      <ul className="blog-list space-y-6">
-        {posts.map((post) => (
-          <li key={post.slug} className="bg-white p-6 rounded-lg shadow-md">
-            <h2 className="text-2xl font-bold mb-2"><Link href={`/blog/${post.slug}`}>{post.title}</Link></h2>
-            <p className="text-gray-500 mb-2">{post.date}</p>
-            <p>{post.excerpt}</p>
-          </li>
-        ))}
-      </ul>
+    <main className="py-16 bg-gray-50 min-h-screen">
+      <div className="max-w-4xl mx-auto px-6">
+        <h1 className="text-4xl md:text-5xl font-bold text-center text-gray-900 mb-4">
+          Top Tech Mobile Mechanic Blog
+        </h1>
+        <p className="text-center text-lg text-gray-600 mb-12 max-w-2xl mx-auto">
+          Practical advice on brakes, AC, batteries, inspections, and mobile repairs from an ASE Master technician serving The Woodlands, Conroe, Kingwood, and Montgomery County.
+        </p>
+
+        <div className="space-y-6">
+          {posts.map((post) => (
+            <Link
+              key={post.slug}
+              href={`/blog/${post.slug}`}
+              className="block bg-white border border-gray-200 rounded-2xl p-6 md:p-8 hover:border-gray-400 hover:shadow-md transition"
+            >
+              <p className="text-sm text-gray-500 mb-2">{post.date}</p>
+              <h2 className="text-2xl font-bold text-gray-900 mb-3">{post.title}</h2>
+              <p className="text-gray-700 leading-relaxed">{post.excerpt}</p>
+              <span className="inline-block mt-4 text-blue-600 font-medium">Read more →</span>
+            </Link>
+          ))}
+        </div>
+      </div>
     </main>
   );
 }
