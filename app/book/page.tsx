@@ -45,55 +45,36 @@ export default function BookPage() {
 
   return (
     <main className="min-h-screen bg-white">
-      {/* Shorter, punchier hero - no more green blob! */}
-      <div className="bg-gradient-to-br from-green-600 to-green-700 text-white py-16 text-center relative overflow-hidden">
-        <div className="max-w-4xl mx-auto px-6 relative z-10">
-          <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md px-6 py-2 rounded-full mb-6 text-sm font-medium">
-            ASE-Certified • Comes To You
-          </div>
-          
-          <h1 className="text-5xl md:text-6xl font-bold tracking-tight mb-4">
+      {/* Hero with background image */}
+      <section className="relative bg-gray-900 text-white overflow-hidden">
+        <div 
+          className="absolute inset-0 opacity-50 bg-cover bg-center"
+          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=2000&q=80')" }}
+        />
+        <div className="relative max-w-5xl mx-auto px-6 py-24 md:py-32 text-center">
+          <p className="text-blue-400 font-semibold tracking-widest uppercase mb-4 text-sm md:text-base">
+            ASE Master Certified • Comes To You
+          </p>
+          <h1 className="text-5xl md:text-6xl font-black leading-tight mb-6">
             Book Your Mobile<br />Mechanic
           </h1>
-          <p className="text-xl md:text-2xl text-green-100 mb-8 max-w-2xl mx-auto">
+          <p className="text-xl md:text-2xl mb-10 max-w-2xl mx-auto text-gray-100">
             Professional service at your doorstep in The Woodlands, Conroe, Kingwood & surrounding areas
           </p>
-
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center text-3xl font-semibold">
-            <a href="tel:9365294748" className="hover:text-green-200 transition-all flex items-center gap-3 group">
-              📞 Call <span className="group-hover:underline">936-529-4748</span>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="tel:9365294748" className="bg-white text-gray-900 font-bold py-4 px-8 rounded-xl text-lg hover:bg-gray-100 transition">
+              Call or Text (936) 529-4748
             </a>
-            <span className="hidden sm:block text-green-300">•</span>
-            <a href="sms:9365294748" className="hover:text-green-200 transition-all flex items-center gap-3 group">
-              ✉️ Text <span className="group-hover:underline">936-529-4748</span>
+            <a href="sms:9365294748" className="bg-green-600 hover:bg-green-700 text-white font-bold py-4 px-8 rounded-xl text-lg transition">
+              Text Us
             </a>
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* ASE Master Certification Trust Section - Your real certs front & center */}
-      <div className="bg-gray-50 py-16">
-        <div className="max-w-3xl mx-auto px-6">
-          <div className="bg-white border border-gray-100 shadow-xl rounded-3xl p-10 text-center">
-            <h2 className="text-3xl font-bold text-gray-900 mb-2">ASE Master Automobile Technician</h2>
-            <p className="text-green-700 font-semibold text-lg mb-8">Advanced Level Specialist • ASE ID: ASE-2000-2319</p>
-            
-            <img 
-              src="/images/ase-master-certification.png" 
-              alt="ASE Master Certification - David A. Cubbison" 
-              className="mx-auto rounded-2xl shadow-md max-w-full h-auto"
-            />
-            
-            <p className="mt-8 text-gray-600 max-w-md mx-auto">
-              All certifications are current through 2027–2029. You’re booking with a verified ASE Master Technician who brings shop-quality service straight to your driveway.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      {/* Main Booking Card - Clean & modern like Services page */}
-      <div className="max-w-3xl mx-auto px-6 pb-20">
-        <div className="bg-white border border-gray-100 shadow-2xl rounded-3xl p-12">
+      {/* Booking Card — moved up */}
+      <section className="max-w-3xl mx-auto px-6 -mt-12 relative z-10 pb-16">
+        <div className="bg-white border border-gray-100 shadow-2xl rounded-3xl p-8 md:p-12">
           <div className="text-center mb-10">
             <h2 className="text-4xl font-bold text-gray-900 mb-3">Choose Your Service</h2>
             <p className="text-gray-600 text-lg">Select what you need and we'll take it from there</p>
@@ -105,7 +86,7 @@ export default function BookPage() {
               <select
                 value={selectedCalendly}
                 onChange={handleServiceChange}
-                className="w-full p-6 text-xl border border-gray-200 rounded-2xl focus:outline-none focus:ring-4 focus:ring-green-100 focus:border-green-600 transition-all bg-white"
+                className="w-full p-5 text-lg border border-gray-200 rounded-2xl focus:outline-none focus:ring-4 focus:ring-green-100 focus:border-green-600 transition-all bg-white"
               >
                 {servicesWithCalendly.map((service) => (
                   <option key={service.slug} value={service.calendlyLink}>
@@ -115,10 +96,9 @@ export default function BookPage() {
               </select>
             </div>
 
-            {/* Dynamic service description - big UX upgrade */}
             {selectedService && (
-              <div className="p-8 bg-gray-50 border border-gray-100 rounded-2xl">
-                <p className="text-gray-700 leading-relaxed text-[17px]">
+              <div className="p-6 bg-gray-50 border border-gray-100 rounded-2xl">
+                <p className="text-gray-700 leading-relaxed">
                   {selectedService.desc}
                 </p>
               </div>
@@ -126,19 +106,30 @@ export default function BookPage() {
 
             <button
               onClick={handleBookClick}
-              className="w-full bg-green-600 hover:bg-green-700 active:bg-green-800 text-white text-2xl font-semibold py-8 rounded-2xl transition-all duration-200 shadow-lg shadow-green-600/30 active:scale-[0.985]"
+              className="w-full bg-green-600 hover:bg-green-700 text-white text-xl font-semibold py-6 rounded-2xl transition shadow-lg"
             >
               Book Now – Let's Get You Fixed
             </button>
           </div>
 
-          <p className="text-center text-sm text-gray-500 mt-8">
+          <p className="text-center text-sm text-gray-500 mt-6">
             Mobile service • No shop wait • ASE Certified technician
           </p>
         </div>
-      </div>
+      </section>
 
-      {/* ZIP Modal - Exact same logic as before */}
+      {/* Lighter ASE mention — moved down and smaller */}
+      <section className="py-12 bg-gray-50">
+        <div className="max-w-3xl mx-auto px-6 text-center">
+          <h2 className="text-2xl font-bold text-gray-900 mb-2">ASE Master Automobile Technician</h2>
+          <p className="text-green-700 font-medium mb-4">Advanced Level Specialist • ASE ID: ASE-2000-2319</p>
+          <p className="text-gray-600 max-w-md mx-auto text-sm">
+            Certifications current through 2027–2029. You’re booking with a verified ASE Master Technician.
+          </p>
+        </div>
+      </section>
+
+      {/* ZIP Modal */}
       {isBookingOpen && (
         <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[200] p-4">
           <div className="bg-white p-8 rounded-3xl shadow-2xl max-w-md w-full">
@@ -175,9 +166,6 @@ export default function BookPage() {
           </div>
         </div>
       )}
-
-      {/* Hidden Google test field */}
-      <input type="hidden" name="google-test-field" value="" />
     </main>
   );
 }

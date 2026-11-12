@@ -1,4 +1,3 @@
-// app/page.tsx
 import Script from 'next/script';
 import Hero from '../components/Hero';
 import About from '../components/About';
@@ -19,6 +18,18 @@ export default function Home() {
   return (
     <main>
       <Hero />
+
+      {/* Reviews Banner */}
+      <div className="bg-yellow-400 text-gray-900 text-center py-4 px-6 font-bold text-lg md:text-xl">
+        <a 
+          href="https://www.google.com/search?q=Top+Tech+Mobile+Mechanic+Woodlands+reviews" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="hover:underline"
+        >
+          READ OUR REVIEWS — 33 Five-Star Google Reviews!
+        </a>
+      </div>
 
       {/* Small Engine Announcement */}
       <section className="bg-green-100 py-12 text-center">

@@ -1,7 +1,9 @@
-// app/blog/page.tsx
-import Link from 'next/link';
+"use client";
 
-const posts = [
+import Link from 'next/link';
+import { useState, useEffect, useRef } from 'react';
+
+const allPosts = [
   { slug: 'timing-belt-service-woodlands-conroe', title: 'Timing Belt Service in The Woodlands & Conroe TX: What You Need to Know', excerpt: 'A broken timing belt can destroy an engine. Learn when to replace it and why a mobile ASE Master technician is a smart choice in Montgomery County.', date: '2026-03-10' },
   { slug: 'pre-purchase-inspection-woodlands-tx', title: 'Why You Need a Pre-Purchase Inspection Before Buying a Used Car in The Woodlands', excerpt: 'Don’t assume a used car is perfect. An ASE Master pre-purchase inspection can save you thousands in hidden repairs.', date: '2026-03-05' },
   { slug: 'ase-vin-inspection-track-tech', title: 'ASE VIN Inspection & Track Tech Inspection in Montgomery County', excerpt: 'Need a VIN certification for a hot rod, custom build, or track car? Here’s how our ASE Master inspections work.', date: '2026-03-01' },
@@ -28,7 +30,28 @@ const posts = [
   { slug: 'brake-safety-guide', title: 'The Ultimate Brake Safety Guide: When and Why to Inspect in Kingwood TX', excerpt: 'Brakes are your vehicle\'s most critical safety feature—uncover the signs of wear, prevention tips, and why regular checks are non-negotiable for safe driving.', date: '2025-07-15' },
 ];
 
+const POSTS_PER_LOAD = 6;
+
 export default function Blog() {
+  const [visibleCount, setVisibleCount] = useState(POSTS_PER_LOAD);
+  const loaderRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && visibleCount < allPosts.length) {
+          setVisibleCount((prev) => Math.min(prev + POSTS_PER_LOAD, allPosts.length));
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (loaderRef.current) observer.observe(loaderRef.current);
+    return () => observer.disconnect();
+  }, [visibleCount]);
+
+  const visiblePosts = allPosts.slice(0, visibleCount);
+
   return (
     <main className="py-16 bg-gray-50 min-h-screen">
       <div className="max-w-4xl mx-auto px-6">
@@ -40,7 +63,7 @@ export default function Blog() {
         </p>
 
         <div className="space-y-6">
-          {posts.map((post) => (
+          {visiblePosts.map((post) => (
             <Link
               key={post.slug}
               href={`/blog/${post.slug}`}
@@ -53,6 +76,12 @@ export default function Blog() {
             </Link>
           ))}
         </div>
+
+        {visibleCount < allPosts.length && (
+          <div ref={loaderRef} className="text-center py-10 text-gray-500">
+            Loading more posts...
+          </div>
+        )}
       </div>
     </main>
   );

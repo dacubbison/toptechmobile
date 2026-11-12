@@ -1,102 +1,109 @@
-'use client';
+"use client";
 
 import { useState, useEffect } from 'react';
 
 const reviews = [
-  { name: "Crystal", date: "1 week ago", text: "I’m beyond impressed and incredibly grateful for Top Tech Mobile Mechanic! I decided to call after reading the outstanding Google reviews—and they were absolutely right. From the start, he was professional, communicative, and right on time. He completed the work in just 30 minutes... Honest, skilled, and efficient—I highly recommend Top Tech Mobile Mechanic!", location: "The Woodlands, TX" },
-  { name: "Patrick G", date: "5 days ago", text: "I had an outstanding experience with Top Tech Mobile Mechanic, and I can’t say enough good things about David... From the moment I scheduled, everything was smooth... fair pricing, great communication, and the convenience of mobile service... Highly recommended!", location: "The Woodlands, TX" },
-  { name: "Jason Cavalier", date: "1 month ago", text: "Best mobile mechanic in the area! David diagnosed and fixed my battery issue in less than an hour! Very professional service. Good communication & great pricing. Will definitely use his services again!", location: "" },
-  { name: "Trent Martin", date: "2 months ago", text: "I called Top Tech Mobile to winterize my zero-turn mower and do an oil change on my Honda Civic, David absolutely nailed it! Showed up right on time, worked efficiently, left zero mess... Highly recommended!", location: "Kingwood, TX" },
-  { name: "Mandie Vaughn", date: "6 months ago", text: "I highly recommend Top Tech Mobile! They showed up on time, finished my brakes on the same day. No mess left behind!!! Job well done Top Tech!", location: "" },
-  { name: "Teah Ausbun", date: "5 months ago", text: "David was very knowledgeable and super easy to work with. My experience could not have been any better.", location: "" },
-  { name: "Brad Howard (String Fellow)", date: "4 months ago", text: "Had a brake issue that caused my brake lights to stay continuously on... David made it out that evening and fixed it in no time flat at a fair price. I have lived in the Woodlands for 29 years and I don’t give out 5-star recommendations lightly... highest endorsement.", location: "The Woodlands, TX" },
-  { name: "David Ridgely", date: "6 months ago", text: "Top Tech Mobile did great replacing my compressor... came out, replaced the part... no mess... very affordable... very helpful...", location: "" },
-  { name: "StephenCS", date: "3 months ago", text: "David came to my house to change my brake pads and rotors... fantastic job... highest recommendation...", location: "" },
-  { name: "Anya Madey", date: "6 months ago", text: "Excellent mobile mechanic service every time. Highly recommend David and Top Tech Mobile!", location: "Montgomery County, TX" },
+  {
+    name: "Ty Simon",
+    text: "David is a wealth of knowledge. I’ve run a few other mobile mechanics off my vehicles, he’s always upfront and the pricing is fair. He’s never given me the run around and has been excellent with communication. Can’t recommend him enough!!",
+    time: "1 week ago"
+  },
+  {
+    name: "James Garrison",
+    text: "David is an absolute professional. He does right by his customers and is willing to go the extra mile to make you feel comfortable. He has great rates and does a great job every time. Thanks David!!",
+    time: "4 weeks ago"
+  },
+  {
+    name: "todd ausbun",
+    text: "David is so helpful and was a god send. This was two years ago and I am still leaning on him today. Thank you for all you do for our family!!",
+    time: "5 weeks ago"
+  },
+  {
+    name: "Wilfred Stewart",
+    text: "David was a blessing to us. Our Church mower was not starting at all. He is awesome, courteous, reliable and dependable! Thanks David!",
+    time: "7 weeks ago"
+  },
+  {
+    name: "Adam Anthony",
+    text: "David did a fantastic job with my brakes/rotors/wheel bearings on my 2002 F150! It’s so convenient to have a mechanic come to your workplace. Clear communication, professionalism, and genuine care for the customer. I’d give more than 5 stars if I could!",
+    time: "7 weeks ago"
+  },
+  {
+    name: "Norma Escoto",
+    text: "David came to my home the same day I contacted him. He replaced the battery in my 2014 Mercedes-Benz ML63 AMG efficiently. It’s hard to find an honest, dependable, and skilled mobile mechanic. I highly recommend Top Tech Mobile.",
+    time: "16 weeks ago"
+  },
+  {
+    name: "emily phillips",
+    text: "David saved me hundreds of dollars on a tow! He came straight to me, quickly diagnosed the issue, and fixed my fuel pump in a timely and efficient manner. A mechanic friend of mine looked at the work and even commented that you can tell David really knows what he is doing.",
+    time: "24 weeks ago"
+  },
+  {
+    name: "Patrick G",
+    text: "I had an outstanding experience with Top Tech Mobile Mechanic. David arrived on time, came fully prepared, and quickly diagnosed the issue with complete transparency. Fair pricing and honest work is what everyone deserves.",
+    time: "39 weeks ago"
+  },
+  {
+    name: "Crystal",
+    text: "I’m beyond impressed and incredibly grateful for Top Tech Mobile Mechanic! He completed the work in just 30 minutes, which completely blew my mind. Honest, skilled, and efficient—I highly recommend Top Tech Mobile Mechanic.",
+    time: "39 weeks ago"
+  }
 ];
 
 export default function GoogleReviewsCarousel() {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [current, setCurrent] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
-  const [isFading, setIsFading] = useState(false);
 
   useEffect(() => {
-    if (isPaused || isFading) return;
-    const interval = setInterval(() => {
-      handleNext();
-    }, 5000);
-    return () => clearInterval(interval);
-  }, [isPaused, isFading, currentIndex]);
-
-  const handleNext = () => {
-    setIsFading(true);
-    setTimeout(() => {
-      setCurrentIndex((prev) => (prev + 1) % reviews.length);
-      setIsFading(false);
-    }, 350);
-  };
-
-  const handlePrev = () => {
-    setIsFading(true);
-    setTimeout(() => {
-      setCurrentIndex((prev) => (prev - 1 + reviews.length) % reviews.length);
-      setIsFading(false);
-    }, 350);
-  };
-
-  const review = reviews[currentIndex];
+    if (isPaused) return;
+    const timer = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % reviews.length);
+    }, 6500);
+    return () => clearInterval(timer);
+  }, [isPaused]);
 
   return (
-    <section className="py-20 bg-gradient-to-br from-gray-50 to-white">
-      <div className="max-w-4xl mx-auto px-6">
-        <div className="text-center mb-12">
-          <div className="flex justify-center mb-4 text-6xl">⭐⭐⭐⭐⭐</div>
-          <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-3">Real Google Reviews</h2>
-          <p className="text-xl text-gray-600">From your neighbors right here in The Woodlands, Kingwood & Montgomery County</p>
+    <section 
+      className="py-16 bg-gray-50"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+    >
+      <div className="max-w-3xl mx-auto px-6 text-center">
+        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
+          33 Five-Star Google Reviews
+        </h2>
+        <p className="text-gray-600 mb-10">Real feedback from customers across Montgomery County</p>
+
+        <div className="relative bg-white rounded-2xl shadow-xl p-8 md:p-10 min-h-[320px] flex flex-col justify-center transition-all duration-500">
+          <div className="text-yellow-400 text-3xl mb-4 tracking-widest">★★★★★</div>
+          <p className="text-lg md:text-xl text-gray-800 leading-relaxed italic mb-6">
+            “{reviews[current].text}”
+          </p>
+          <div className="font-semibold text-gray-900">{reviews[current].name}</div>
+          <div className="text-sm text-gray-500 mt-1">{reviews[current].time}</div>
         </div>
 
-        <div
-          className="relative bg-white rounded-3xl shadow-2xl p-10 md:p-16 min-h-[420px] flex flex-col overflow-hidden"
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
+        <div className="flex justify-center gap-2 mt-6">
+          {reviews.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setCurrent(i)}
+              aria-label={`Go to review ${i + 1}`}
+              className={`w-2.5 h-2.5 rounded-full transition-all ${
+                i === current ? 'bg-green-600 w-8' : 'bg-gray-300 hover:bg-gray-400'
+              }`}
+            />
+          ))}
+        </div>
+
+        <a
+          href="https://www.google.com/search?q=Top+Tech+Mobile+Mechanic+Woodlands+reviews"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-block mt-8 bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-8 rounded-xl transition"
         >
-          <div 
-            className={`flex-1 transition-opacity duration-700 ${isFading ? 'opacity-0' : 'opacity-100'}`}
-          >
-            <div className="text-6xl text-green-600 mb-8">“</div>
-            <p className="text-xl md:text-2xl leading-relaxed text-gray-700 italic mb-10">{review.text}</p>
-          </div>
-
-          <div className={`flex items-center justify-between transition-opacity duration-700 ${isFading ? 'opacity-0' : 'opacity-100'}`}>
-            <div>
-              <div className="font-bold text-2xl text-gray-900">{review.name}</div>
-              <div className="text-green-600 font-medium">{review.date}</div>
-              {review.location && <div className="text-sm text-gray-500 mt-1">{review.location}</div>}
-            </div>
-            <div className="text-4xl">⭐⭐⭐⭐⭐</div>
-          </div>
-
-          <button onClick={handlePrev} className="absolute left-6 top-1/2 -translate-y-1/2 bg-white hover:bg-gray-100 w-14 h-14 rounded-full shadow-lg flex items-center justify-center text-3xl border transition">←</button>
-          <button onClick={handleNext} className="absolute right-6 top-1/2 -translate-y-1/2 bg-white hover:bg-gray-100 w-14 h-14 rounded-full shadow-lg flex items-center justify-center text-3xl border transition">→</button>
-
-          <div className="flex justify-center gap-3 mt-10">
-            {reviews.map((_, idx) => (
-              <button
-                key={idx}
-                onClick={() => {
-                  if (idx !== currentIndex) {
-                    setIsFading(true);
-                    setTimeout(() => {
-                      setCurrentIndex(idx);
-                      setIsFading(false);
-                    }, 350);
-                  }
-                }}
-                className={`w-3 h-3 rounded-full transition-all ${idx === currentIndex ? 'bg-green-600 scale-125' : 'bg-gray-300'}`}
-              />
-            ))}
-          </div>
-        </div>
+          Read All 33 Reviews on Google
+        </a>
       </div>
     </section>
   );
